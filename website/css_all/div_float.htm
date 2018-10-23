@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Div_float</title>
+</head>
+<style>
+h1{
+	background-color:green;
+	color:yellow;
+		
+}
+h2{
+	background-color:green;
+	color:yellow;			
+}
+.div1{
+	background-color:red;
+	color:white;
+	width:45%;
+	float:left;			
+}
+
+.div2{
+	background-color:black;
+	color:white;
+	width:45%;
+	float:right;			
+}
+p{
+	border-color: green;
+	border-width:2px;
+	border-style:solid;			
+}
+#div_pic{
+    width:500px;
+    height:300px;
+    border:3px black solid;
+    background-image:url('beach.gif');
+    /*text-align:center;*/
+    /*line-height:290px;*/
+    position:relative;	 /*non static*/
+				
+}
+#div_pic:hover{
+	cursor:move;
+			
+}
+span{
+    position:absolute;  /*align to the last non static position*/
+    top:5px;
+    left:5px;			
+}
+</style>
+<body>
+  <h1>This is the title</h1>
+  
+    <div class="div1">
+        <h3> THIS IS  DIV_1 HEADER </h3>
+        <P>Paragraph 1 </P>
+        <P>Paragraph 2 </P>
+        <P>Paragraph 3 </P>
+
+    </div>
+
+    <div class="div2">
+         <h3> THIS IS  DIV_2 HEADER </h3>
+         <P>Paragraph 1 </P>
+         <P>Paragraph 2 </P>
+         <P>Paragraph 3 </P>
+
+    </div>
+    <div style="clear:both"></div>
+  <h2>This is the end </h2>
+  <div id="div_pic"><span>this is the bg-img</span>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+﻿body{
+    color: green;
+    font-family : Verdana,Arial,Geneva,Arial Black; 
+    font-weight: normal;
+    background-color: #ffcf79;
+    font-size:25px;
+    border-width: 5px;
+     border-style:solid;
+
+    padding:20px;
+
+    
+}
+h1{
+	text-decoration:  underline;
+	font-size:150%;
+      
+}
+h2{
+	text-decoration:  underline;
+	font-size:1.2em;
+      
+}
+.para1{
+    color: blue;
+
+}
+.para2{
+        color: black;
+        border-width: 2px;
+        border-style:solid;
+    font-size:25px;
+    line-height: :1.5em;
+    background-color:aqua;
+    padding:20px;
+    margin-top:100px;
+    margin-left:400px;
+
+}
+    
+
+
+.style1 {
+				border-collapse: collapse;
+				border-style: solid;
+				border-width: 3px;
+				border-color: "red";
+}
+
+.imagec{
+display:block;
+margin-left:auto;     /*it means put the impage in the central*/
+margin-right:auto;
+background-color:gray;
+border-color:blue;
+border-collapse:collapse;
+ border-width: 4px;
+ border-style:solid;
+
+					
+}
+

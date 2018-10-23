@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:200,100,400");
+
+body{
+    font-family: 'Raleway', sans-serif;
+    height:100vh;
+    background:#333 url('https://cdn.vox-cdn.com/thumbor/ZnP9cnjIn60slvybF_34lby1uMk=/0x0:2000x1125/1200x675/filters:focal(840x403:1160x723)/cdn.vox-cdn.com/uploads/chorus_image/image/58203557/171109_06_49_10_5DSR4201.0.jpg') no-repeat center center / cover;
+    color:#ccc;
+    overflow:hidden;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    height:100%;
+    padding:0 3rem;
+}
+
+h1,h2{
+  font-weight: 200;
+  margin:0.4rem;
+}
+
+h1{
+    font-size: 3.5rem;
+}
+
+h2{
+    font-size: 2rem;
+    color:#aaa;
+}
+
+/*Cursor*/
+.txt-type > .txt{
+    border-right: 0.2em solid #777;
+}
+
+@media(min-width:1200px){
+    h1{
+        font-size: 5rem;
+    }
+}
+
+@media(max-width:800px){
+    .container{
+        padding: 0 1rem;
+    }
+    h1{
+        font-size: 3rem
+    }
+}
+
+@media(max-width:500px){
+    h1{
+        font-size: 2.5rem;
+    }
+
+    h2{
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,77 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>New to CSS</title>
+<link rel="stylesheet" type = "text/css" href = "stylesheet.css">
+<style type="text/css">
+.style2 {
+				border-width: 5px;
+				border-style: solid;
+				border-color:fuchsia;
+}
+.style3 {
+				border-style: solid;
+				border-width: 1px;
+				width:200px;
+				height:50px;
+}
+</style>
+</head>
+<body>
+<h1 id="hh1">The new website</h1>
+<p class = "para1">This is the paragraph 1</p>
+<h2 >This is another headline 123</h2>
+<img class="imagec"  src="beach.gif">
+<p class = "para2" >This is the paragraph 2,and the word fish in Latin is <i>piscis</i></p>
+<p style="color:black;font-size: 25px;">This is inline style</p>
+<select name="Select1" style="width: 306px; height: 30px" placeholder="Taipei">
+<option>Taipei</option>
+<option>Taichung</option>
+</select>&nbsp;&nbsp;
+<input name="Button1" type="button" value="button"><br>
+<input name="Checkbox1" type="checkbox" "style="height: 20px" >  
+<span style="color:green">sport</span>
+<input name="Checkbox3" type="checkbox" "style="height: 20px" >  
+<span style="color:aqua">Reading</span><br>
+<input name="Radio1" type="radio"  > yes
+<input name="Radio1" type="radio"  > no 
+<br>
+<span style="color:navy" style="font-size:40px">Habits:</span>
+<input name="text" type="text" value="None" >
+<br>
+<div style="position: absolute; width: 100px; height: 100px; z-index: 1; left: 1059px; top: 139px" id="layer1">abc</div>
+<table style="width: 100%" class="style2" id="table" >
+				<tr>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+				</tr>
+				<tr>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+				</tr>
+				<tr>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+								<td class="style3">&nbsp;</td>
+				</tr>
+</table>
+<br>
+<div >
+    <div class="style3" style="float:left"></div>
+    <div class="style3" style="float:left"></div>
+    <div style="clear:both"></div>
+</div>
+<script>
+    var table = document.getElementById("table");
+    var dd = "nothing"
+    table.rows[2].cells[2].innerHTML = dd;
+
+</script>
+
+</body>
+</html>

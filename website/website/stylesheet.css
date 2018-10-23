@@ -1,0 +1,95 @@
+﻿body{
+    color: green;
+    font-family : Verdana,Arial,Geneva,Arial Black; 
+    font-weight: normal;
+    background-color: #ffcf79;
+
+    font-size:25px;
+    border-color: aqua;
+    border-style: solid;
+    border-width: 8px;  
+    margin: 0px;
+    padding: 30px; 
+
+
+}
+h1{
+	text-decoration:  underline;
+	font-size:150%;
+	color:green;
+      
+}
+h2{
+	text-decoration:  underline;
+	font-size:1.2em;
+	color:green;
+      
+}
+h3{
+	text-decoration:  underline;
+	font-size:1.2em;
+	color:green;
+      
+}
+#para1{
+    color: blue;
+
+}
+
+p.paragraph{
+    font-size:25px;
+    line-height: 1.5em;
+    color: black;
+    background-color: #e5e4d7;
+    padding:20px;
+    /*border-color: black;
+    border-style: solid;
+    border-width: 5px;*/
+    border: black solid 5px; /*all in a single line*/
+
+    background-image: url("cloud.jpg");         
+}
+
+#para4{
+    color: purple;
+    font-size:25px;
+    line-height: 1.5em;
+    background-color: #e5e4d7;
+    padding:20px;
+    border-color: black;
+    border-style: solid;
+    border-width: 5px; 
+
+    margin-left:500px;
+    padding-left: 40px;
+}
+img.imagec{
+	display:block;
+	margin-left: auto;   /*put the image in the central*/
+	margin-right: auto;
+	text-align: center;
+	padding: 3px;
+	background-color: silver;
+	border-color: red;
+    border-style: solid;
+    border-width: 5px;
+}
+#divmain{
+	color:black;
+}
+#divbass{
+	color:black;
+}
+.highlight{
+	background-color: red;
+}
+a:link{
+	color: blue;
+}
+}
+a:visited{
+	color:#8C8c9D;
+}
+a:hover{
+    color:#F15A51;
+}

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Form</title>
+</head>
+
+<style>
+#theForm{
+	color:white;
+	display:table;
+	padding: 15px;
+	/*ckground-color:#2c8f77;*/
+	background:linear-gradient( to right,blue,yellow);
+	border:solid 2px black;
+}
+
+.row{
+    display:table-row;
+}
+.row label{
+	display:table-cell;
+	padding:2px;
+	text-align:right;			
+}
+.row input{
+	display: table-cell;
+	padding: 2px;			
+}
+</style>
+
+<body>
+<h2>Fill out the form below and click "order now" to order</h2>
+<form action="" method="" id="theForm">
+<p>
+<div class="row">
+ <label for="name"> Name: </label>
+ <input type="text" name="" id="name"><br/><br/>
+</div>
+<div class="row">
+ <label for="adress"> Adress: </label>
+ <input type="text" name="" id="address"><br/><br/>
+</div>
+<div class="row">
+ <label for="phone"> Phone: </label>
+ <input type="tel" name="" id="phone"><br/><br/>
+</div>
+<div class="row">
+ <label for="email"> Email: </label>
+ <input type="email" name="" id="email"><br/>
+ </div>
+ <label style="display:table-cell;"></label>
+ <span style="text-align:center;display:table-cell;font:1000;">12345678n</span>
+</p>
+</form>
+</body>
+
+</html>

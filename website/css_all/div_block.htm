@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>block</title>
+<style>
+
+.div_h{
+ padding:10px;
+ border:black 2px solid;
+ margin: 25px;	
+ background-color:yellow;			
+}
+.special{
+ padding:10px;
+ border:black 2px solid;
+ margin: 25px;	
+ background-color:yellow;				
+}
+span{
+ padding:10px;
+ border:black 2px solid;
+ margin: 25px;	
+ background-color:yellow;			
+}
+#manu{
+    margin:0px;
+    margin-left:25px;
+    border-style:solid;
+    border-width:2px;
+	padding:0px;
+	height:60px;
+	background-color:aqua;			
+}
+
+#manu ul{
+	margin:0px;	
+	padding:0px;
+}
+
+#manu li{
+    list-style-type:none;
+    margin:0;
+    float:left;
+	display:block;
+	background-color:lime;
+	border-right:black 2px solid;
+	width:150px;
+	height:60px;
+	text-align:center;
+	line-height:55px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:17px;
+
+}
+#manu li a{
+  text-decoration:underline;
+  color:navy;				
+}
+#manu li:Hover{
+	background-color:gray;			
+}
+#pic{
+	background-color:white		
+}
+</style>
+</head>
+
+<body>
+<div class="div_h">Div's block element</div>
+
+<div class="div_h">Div's block element</div>
+<div id="manu">
+    <ul>
+     <li><a>abc</a></li>
+     <li><a>def</a></li>
+     <li><a>ghi</a></li>
+    </ul>
+</div>
+
+<div id="pic">
+<img class="special" width="300" height="200" src="beach.gif">
+    
+<img class="special" width="300" height="200" src="beach.gif">
+    
+<img class="special" width="300" height="200" src="beach.gif">
+   
+<img class="special" width="300" height="200" src="beach.gif">
+<span>This is an inline span</span>
+<span>This is an inline span</span>
+
+ </div>  
+
+
+</body>
+
+</html>

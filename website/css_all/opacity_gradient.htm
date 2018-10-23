@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>opacity</title>
+</head>
+<style>
+
+
+#box1{
+
+	width: 300px;
+	height:300px;
+	float:left;
+	padding:15px;
+	margin:10px;
+	background-color:blue;
+				
+}
+
+#box2{
+
+	width: 300px;
+	height:300px;
+	float:left;
+	padding:15px;
+	margin:10px;
+	background-color:blue;
+	opacity:0.5;
+				
+}
+#box2:hover{
+	opacity:1.0;
+}
+#box3{
+    margin:10px;
+	width:800px;
+	height:300px;
+	float:left;
+	background:blue;
+	background:linear-gradient( to right,blue,yellow);
+				
+}
+#box4{
+margin:10px;
+	width:800px;
+	height:300px;
+	float:left;
+	background:blue;
+	/*background:linear-gradient( 30deg,blue,yellow);*/
+	background:linear-gradient( 135deg,rgba(255,255,0,0.3),rgba(0,0,255,1));
+			
+}
+#text1{
+	text-align:center;
+	font:bold 60px Helvetica;
+	text-shadow: 3px 3px 20px orange,
+	             6px 6px 10px blue;
+}
+#text2{
+	text-align:center;
+	font:bold 60px Helvetica;
+	text-shadow: 6px 6px 10px rgba(0,0,255,0.3);
+}
+
+#box5{
+    margin:10px;
+	width:800px;
+	height:300px;
+
+	background-color:lightgray;
+	box-shadow: inset 0 0 15px black;
+			
+}
+
+</style>
+
+<body>
+<div id="box1">
+</div>
+<div id="box2">
+</div>
+<div style="clear:both"></div>
+<div id="box3">
+</div>
+<div id="box4">
+</div>
+<div style="clear:both"></div>
+<div id="box5">
+</div>
+
+<p id="text1">Some text in a paragraph </p>
+<p id="text2">Some text in a paragraph </p>
+
+</body>
+
+</html>
