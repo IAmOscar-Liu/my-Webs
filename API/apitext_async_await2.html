@@ -1,0 +1,42 @@
+<html>
+<body>
+<h1 onclick="handleClick()">Press Me</h1>
+<div id="showimg">
+        <img src="">
+    
+</div>
+
+<script>
+let results;
+async function loadJson(url) { // (1)
+  let response =  await fetch(url); // (2)
+  //console.log(response)
+  if (response.status == 200) {
+    //let json = await response.json(); // (3)
+    //console.log (json.results);
+    return  await response.json();
+
+  } else{
+    return 'error'
+  }
+}
+
+async function handleClick(){
+    results = await loadJson('https://api.themoviedb.org/3/movie/top_rated?api_key=5fb93387541fc093f329bc1481d3b3e8&language=en-US&page=1')
+    for(let i =0;i<results.results.length;i++){
+    document.getElementById('showimg').innerHTML += '<p>title:'+results.results[i].title+'</p><img style="width:150;height:100" src="http://image.tmdb.org/t/p/w500/'+results.results[i].poster_path+'"><br />';
+    }
+}
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

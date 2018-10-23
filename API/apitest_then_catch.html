@@ -1,0 +1,56 @@
+<html>
+<body>
+<h1>Hello World</h1>
+
+<div id="showimg">
+    <img src="">
+
+</div>
+
+
+<script>
+// async function loadJson(url) { // (1)
+//   let response = await fetch(url); // (2)
+//
+//   if (response.status == 200) {
+//     let json = await response.json(); // (3)
+//     console.log (json.results);
+//
+//     for(let i =0;i<json.results.length;i++){
+//       document.getElementById('showimg').innerHTML += '<p>title:'+json.results[i].title+'</p><img style="width:150;height:100" src="http://image.tmdb.org/t/p/w500/'+json.results[i].poster_path+'"><br />';
+//     }
+//
+//   } else{
+//
+//   throw new Error(response.status);}
+// }
+
+// loadJson('https://api.themoviedb.org/3/movie/top_rated?api_key=5fb93387541fc093f329bc1481d3b3e8&language=en-US&page=1')
+//   .catch(alert); // Error: 404 (4)
+
+function loadJson(url) { // (1)
+   fetch(url)
+   .then(response=>{
+      if(response.status==200){
+        return response.json()
+      }else{
+        throw new Error(response.status)
+      };
+    })
+   .then(json=>{
+     console.log (json.results);
+     for(let i =0;i<json.results.length;i++){
+       document.getElementById('showimg').innerHTML += '<p>title:'+json.results[i].title+'</p><img style="width:150;height:100" src="http://image.tmdb.org/t/p/w500/'+json.results[i].poster_path+'"><br />';
+     }
+   })
+   .catch(err => console.log(err))
+}
+
+loadJson('https://api.themoviedb.org/3/movie/top_rated?api_key=5fb93387541fc093f329bc1481d3b3e8&language=en-US&page=1')
+
+</script>
+
+
+
+</body>
+</html>
