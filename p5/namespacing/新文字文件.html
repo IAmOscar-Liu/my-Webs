@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>When you submit the form, a function is triggered which alerts some text.</p>
+
+<!-- <form action="/action_page.php" onSubmit="myFunction">
+  Enter firstname: <input type="text" name="fname">
+  <br />
+  Enter lastname: <input type="text" name="lname">
+
+</form> -->
+
+<form action="" id = "form">
+  Enter name: <input type="text" name="fname">
+  <input type="submit" value="Submit">
+</form>
+
+
+<script>
+// myFunction = (e) => {
+//   e.preventDefault();
+//   const fname = e.target.element.fname.value;
+//   const lname = e.target.element.lname.value;
+//   alert(fname+lname);
+// }
+
+  var form = document.getElementById("form");
+  form.onsubmit = function(e){
+    e.preventDefault();
+    var fname = form.fname.value;
+    form.fname.value = '';
+    alert(fname);
+  }
+</script>
+
+</body>
+</html>
