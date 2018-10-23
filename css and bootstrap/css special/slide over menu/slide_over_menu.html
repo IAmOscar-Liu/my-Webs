@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>slide over menu</title>
+<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+<link rel="stylesheet" type = "text/css" href = "stylesheet.css">
+</head>
+
+<body>
+
+<header>
+    <h1 class="site-title"> Site Name</h1>
+    <span class="nav-toggle"><i class=" far fa-folder-open"></i></span>
+    <nav class="main-navigation" role="navigation">
+        <span class="nav-toggle">Close</span>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Clients</a></li>
+            <li><a href="#">Contact us</a></li>
+        </ul>        
+    </nav>    
+</header>
+<main>
+    <h2>Hello</h2>
+    <p>In the example above, when a user types a character in the input field, a function called "showHint()" is executed.
+
+The function is triggered by the onkeyup event.
+
+Here is the HTML code:</p>
+    <p>In the example above, when a user types a character in the input field, a function called "showHint()" is executed.
+
+The function is triggered by the onkeyup event.
+
+Here is the HTML code:</p>
+
+</main>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".nav-toggle").on("click",function(){
+            $(".main-navigation").toggleClass("open");               
+        })
+    });
+    /*can also write like this*//*  
+        $(function(){
+        $(".nav-toggle").on("click",function(){
+            $(".main-navigation").toggleClass("open");               
+        })
+    }); 
+    */   
+</script>
+</html>
+
+
+
+
+
+

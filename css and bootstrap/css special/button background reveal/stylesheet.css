@@ -1,0 +1,41 @@
+﻿*{
+   box-sizing:border-box;				
+}
+
+
+body{
+    background:#ccc;
+	text-align:center;
+	color:#fff;		
+}
+h1{
+	margin:0;			
+}
+.reveal-wrapper{
+	margin:200px;
+	border:solid 1px #333;	
+	position:relative;		
+}
+.reveal-wrapper:hover .reveal-top{
+    height:0%				
+}
+.reveal-wrapper h1{
+	padding:100px;			
+}
+.reveal-content{
+	color:#000;
+	background:#fff;			
+}
+
+.reveal-top{
+    overflow:hidden;
+    position:absolute;
+    background:#1f122c;
+    top:0;
+    left:0;
+    width:100%;
+    height:90%;
+    transition:height 0.6s ease;
+    /*padding:100px;  */    
+}
+

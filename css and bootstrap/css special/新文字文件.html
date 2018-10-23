@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+    display:flex;
+}
+div span{
+  margin:auto
+}
+.init_anim{
+    animation: mymove 2s 1;
+    animation-delay: 0s;
+}
+
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+</style>
+</head>
+<body>
+
+<p id='pressMe'>Press here to start the animation</p>
+<div><span>I will move</span></div>
+<p><strong>Note:</strong> The animation-delay property is not supported in Internet Explorer 9 and earlier versions.</p>
+
+    <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'>
+    </script>
+<script>
+  $(document).ready(function() {
+    $('#pressMe').click(function(){
+       $('div').addClass('init_anim')
+
+       setTimeout(function(){
+          $('div').removeClass('init_anim')
+       },2000)
+    })
+
+  })
+</script>
+</body>
+</html>

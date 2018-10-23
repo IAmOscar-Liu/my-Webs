@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+button{
+  margin-bottom: 50px
+}
+div{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    left:0;
+}
+.myAnimation {
+    animation-name: example;
+    animation-duration: 4s;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+}
+.myAnimation2 {
+    animation-name: example2;
+    animation-duration: 4s;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+}
+
+
+/* Standard syntax */
+@keyframes example {
+    0%   {transform:translateX(+0px)}
+    12%  {transform:translateX(+50px)}
+
+    25%  {transform:translateX(+100px)}
+    38%  {transform:translateX(+250px)}
+
+    50% {transform:translateX(+200px)}
+    100% {transform:translateX(+200px)}
+}
+
+@keyframes example2 {
+  0%   {transform:translateX(+0px)}
+  12%  {transform:translateX(-50px)}
+
+  25%  {transform:translateX(-100px)}
+  38%  {transform:translateX(-250px)}
+
+  50% {transform:translateX(-200px)}
+  100% {transform:translateX(-200px)}
+}
+</style>
+
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<p><b>Note:</b> This example does not work in Internet Explorer 9 and earlier versions.</p><br />
+
+<button id="animateBtn2">move left</button>
+<button id="animateBtn">move right</button>
+
+<div></div>
+<script>
+$(document).ready(function() {
+   let yOffset = 0
+   $('#animateBtn').click(function(){
+     if(yOffset<=1000){
+       yOffset += 200
+       $('div').addClass('myAnimation')
+       setTimeout(function(){
+         $('div').removeClass('myAnimation')
+         $('div').css('left',yOffset);
+       },2000)
+     }
+   })
+
+   $('#animateBtn2').click(function(){
+     if(yOffset>0){
+       yOffset -= 200
+       $('div').addClass('myAnimation2')
+       setTimeout(function(){
+         $('div').removeClass('myAnimation2')
+         $('div').css('left',yOffset);
+       },2000)
+     }
+   })
+})
+
+</script>
+</body>
+</html>

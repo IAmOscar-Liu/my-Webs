@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<style>
+ .outerWrapper{
+   overflow: hidden; 
+  margin-left: 400px;
+  position:relative;
+  width:200px;
+  height:200px;
+  border:2px solid black
+ }
+ 
+ .outerWrapper div{
+   position:absolute;
+   width:200px;
+   height:200px;
+   display:flex;
+ }
+
+ .outerWrapper div p{
+     font-size: 24px;
+     text-align: center;
+     margin: auto;
+ }
+
+ 
+ .outerWrapper div:nth-child(1){
+   background:red;left:0px
+ }
+ 
+ .outerWrapper div:nth-child(2){
+   background:blue;left:200px
+ }
+ 
+ .outerWrapper div:nth-child(3){
+   background:yellow;left:400px;
+ }
+
+ .outerWrapper div:nth-child(4){
+   background:purple;left:600px;
+ }
+
+ .outerWrapper div:nth-child(5){
+   background:orange;left:800px;
+ }
+
+ .myAnimation {
+    animation-name: example;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+}
+
+@keyframes example {
+    0%   {transform:translateX(+0px)}
+    100% {transform:translateX(var(--main-transX))}
+}
+
+ .myAnimation2 {
+    animation-name: example2;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+}
+
+@keyframes example2 {
+    0%   {transform:translateX(+0px)}
+    100% {transform:translateX(var(--main-diff))}
+}
+  
+  
+</style>
+<body>
+
+<div id="myCarousel" class="outerWrapper" style="--main-diff:0px;--main-transX:0px">
+
+  <div><p>1</p></div>
+  <div><p>2</p></div>
+  <div><p>3</p></div>
+  <div><p>4</p></div>
+  <div><p>5</p></div>
+
+</div>
+  <button onclick="handleClickMinus()">Left</button>
+  <button onclick="handleClickPlus()">Right</button><br>
+  <button onclick="handleSwitch(0)">1</button>
+  <button onclick="handleSwitch(1)">2</button>  
+  <button onclick="handleSwitch(2)">3</button>
+  <button onclick="handleSwitch(3)">4</button> 
+  <button onclick="handleSwitch(4)">5</button>  
+
+<script>
+    let index = 0;
+
+    let ePos = [0,200,400,600,800]
+    function handleClickPlus(){
+        index += 1;
+        let x = document.querySelectorAll('.outerWrapper div')
+        document.getElementById('myCarousel').style.setProperty("--main-transX", "-200px");
+
+        if(index == 5){  
+          ePos[0] += 1000;
+          x[0].style.left = `${ePos[0]}px`
+        }
+         
+        for(let i = 0; i<x.length; i++){
+            ePos[i] -= 200;
+            x[i].classList.add("myAnimation");
+            setTimeout(function(){
+                x[i].classList.remove('myAnimation')
+                x[i].style.left = `${ePos[i]}px`   
+            },1000)
+        }
+
+        if(index == 5){
+            setTimeout(function(){
+                for(let i = 1; i<x.length;i++){
+                ePos[i] += 1000;
+                x[i].style.left = `${ePos[i]}px`
+            }
+            },1000)
+            index = 0
+        }
+    }
+
+    function handleClickMinus(){
+        index -= 1;
+        let x = document.querySelectorAll('.outerWrapper div')
+        document.getElementById('myCarousel').style.setProperty("--main-transX", "+200px");
+
+        if(index == -1){  
+          ePos[4] -= 1000;
+          x[4].style.left = `${ePos[4]}px`
+        }
+         
+        for(let i = 0; i<x.length; i++){
+            ePos[i] += 200;
+            x[i].classList.add("myAnimation");
+            setTimeout(function(){
+                x[i].classList.remove('myAnimation')
+                x[i].style.left = `${ePos[i]}px`   
+            },1000)
+        }
+
+        if(index == -1){
+            setTimeout(function(){
+                for(let i = 0; i<x.length-1;i++){
+                ePos[i] -= 1000;
+                x[i].style.left = `${ePos[i]}px`
+            }
+            },1000)
+            index = 4
+        }
+    }
+
+
+    function handleSwitch(k){
+    //   console.log('index',index)
+    //   console.log('k',k)    
+      if(k != index){         
+          let diff = (k - index)*200;
+          let y = document.querySelectorAll('.outerWrapper div');
+          document.getElementById('myCarousel').style.setProperty("--main-diff", `${-diff}px`); 
+          
+          for(let i = 0; i < y.length ; i++){
+            ePos[i] -= diff
+            y[i].classList.add("myAnimation2");
+            setTimeout(function(){
+                y[i].classList.remove('myAnimation2')
+                y[i].style.left = `${ePos[i]}px`   
+            },1000)
+          }
+
+          index = k
+      }
+    }
+
+</script>
+
+</body>
+</html>

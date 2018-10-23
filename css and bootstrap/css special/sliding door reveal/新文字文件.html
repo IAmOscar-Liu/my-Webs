@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<style>
+
+.c0{background:red}
+.c1{background:blue}
+.c2{background:yellow}
+</style>
+
+
+<body>
+
+<button>Alert the value of each list item</button>
+
+<ul>
+  <li class = "c0">Coffee</li>
+  <li class = "c1">Milk</li>
+  <li class = "c2">Soda</li>
+</ul>
+
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("li").each(function(index){
+            if (index == 2){
+
+            alert($(this).text()+"index: " + index  );
+            //var x = "c" + index;
+            $(this).removeClass("c" + index);
+            $(this).addClass("c0");
+            };
+
+        });
+    });
+});
+</script>
+
+
+</body>
+</html>
