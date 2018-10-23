@@ -1,0 +1,35 @@
+<html>
+<body>
+<h1>Hello World</h1>
+
+
+<script>
+
+var myApiKey = '7c883075cfd968dae05d85a1959b4a52'
+async function loadJson(url) { // (1)
+  let response = await fetch(url); // (2)
+
+  if (response.status == 200) {
+    let json = await response.json(); // (3)
+    console.log (json);
+
+
+  } else{
+
+  throw new Error(response.status);}
+}
+
+//loadJson('https://pixabay.com/api/?key=9358169-b7114ac8cc77d258100dd26aa&q=cat&image_type=photo&per_page=10&safesearch=true')
+//loadJson('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=7c883075cfd968dae05d85a1959b4a52')
+//loadJson('http://api.openweathermap.org/data/2.5/weather?q=London&APPID=7c883075cfd968dae05d85a1959b4a52')
+loadJson('http://api.openweathermap.org/data/2.5/forecast?q=Tokyo,jp&mode=json&APPID=7c883075cfd968dae05d85a1959b4a52')
+  .catch(alert); // Error: 404 (4)
+</script>
+
+  <div id="showimg">
+    <img src="">
+
+  </div>
+
+</body>
+</html>

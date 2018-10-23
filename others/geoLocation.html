@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        // $.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyD9wNjcFxJYrYIQkI_G9D42i_dLsDncRjU",
+        // function(data,status){
+        //     alert(data);
+        // });
+
+
+        fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyBH959l1KOCgndIu6yEQ1rgyFB8MffgPcA')
+        .then(
+            (response) => response.text()
+        )
+        .then(
+            (responseText) => {
+                console.log(responseText);
+            }
+        )
+        .catch(
+            (error) => {
+                console.warn(error);
+            }
+        );
+
+
+
+    });
+});
+</script>
+</head>
+<body>
+
+<button>Send an HTTP POST request to a page and get the result back</button>
+
+</body>
+</html>

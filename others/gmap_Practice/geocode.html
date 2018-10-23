@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+  <title>My Geocode App</title>
+</head>
+<body>
+
+
+  <script>
+
+   geocode();
+
+    function geocode(){
+      var location='22 Main st Bostion MA';
+      axios.get('https://maps.googleapis.com/maps/api/geocode/json?',{
+        params:{
+          address:location,
+          key:'AIzaSyBH959l1KOCgndIu6yEQ1rgyFB8MffgPcA'
+        }
+      }).then(function(response){
+        console.log(response);
+      }).catch(function(err){
+        console.log(err)
+      })
+    }
+
+
+ //    function geocode(){
+ //      var location='22 Main st Bostion MA';
+ //      axios.get('https://maps.googleapis.com/maps/api/place/details/json?',{
+ //        params:{
+ // placeid: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+ //          key: 'AIzaSyCeY4a6adPUWmT3g3YOgnYLGLjljLDS7pc'
+ //        }
+ //      }).then(function(response){
+ //        console.log(response);
+ //      }).catch(function(err){
+ //        console.log(err)
+ //      })
+ //    }
+  </script>
+
+
+
+
+
+</body>
+</html>

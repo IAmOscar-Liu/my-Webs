@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 600px;
+        width: 1200px
+       }
+       form input{
+         margin: 0  0 15px 15px;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <form id="submitForm" >
+      <h1>Add new place</h1>
+      lat:<input  type="text" name = "inputLat" /><br />
+      lng:<input  type ="text" name="inputLng" /><br />
+      <button type="submit" name="button">Submit</button>
+    </form>
+
+
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var Taipei ={lat: 25.105497, lng: 121.597366};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: {lat: 0, lng: 120}
+        });
+
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length],
+            map:map
+          });
+        });
+      }
+
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var locations = [
+          {lat: -31.563910, lng: 147.154312},
+          {lat: -33.718234, lng: 150.363181},
+     ]
+
+      //   var marker1 = new google.maps.Marker({
+      //     position: uluru,
+      //     map: map
+      //   });
+      //   var marker2= new google.maps.Marker({
+      //     position: Taipei,
+      //     map: map
+      //   });
+      // }
+
+      var form = document.getElementById("submitForm");
+      form.onsubmit = function(e){
+        e.preventDefault();
+        //alert(form.inputLat.value + "" + form.inputLng.value);
+        locations.push({lat:parseFloat(form.inputLat.value), lng:parseFloat(form.inputLng.value)});
+        form.inputLat.value = form.inputLng.value = "";
+        console.log(locations);
+        initMap();
+      }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9wNjcFxJYrYIQkI_G9D42i_dLsDncRjU&callback=initMap">
+    </script>
+
+  </body>
+</html>

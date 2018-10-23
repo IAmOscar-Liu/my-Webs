@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map-canvas {
+        height: 600px;
+        width: 1200px;
+        display:none;
+      }
+
+      form input{
+        margin: 0  0 15px 15px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+
+    </style>
+    <body>
+      <div id="map-canvas"></div>
+      <form id="submitForm" >
+        <h1>Add new place</h1>
+        lat:<input  type="text" name = "inputLat" /><br />
+        lng:<input  type ="text" name="inputLng" /><br />
+        <button type="submit" name="button">Submit</button>
+      </form>
+      <p id='resultList'></p>
+
+
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9wNjcFxJYrYIQkI_G9D42i_dLsDncRjU&libraries=places">
+    </script>
+    <script type="text/javascript">
+     var pyrmont = { lat: -34.397, lng: 150.644}
+
+      function initialize123() {
+        var mapOptions = {
+          center: pyrmont,
+          zoom: 8
+        };
+        var map = new google.maps.Map(
+            document.getElementById('map-canvas'),
+            mapOptions);
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pyrmont,
+          radius: 5000,
+          type: ['food']
+        }, callback);
+      }
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          //let newResults = results;
+          console.log(results.length)
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        console.log(place);
+        document.getElementById('resultList').innerHTML += place.name +'<br />'
+        var placeLoc = place.geometry.location;
+        // var marker = new google.maps.Marker({
+        //   map: map,
+        //   position: place.geometry.location
+        // });
+        //
+        // google.maps.event.addListener(marker, 'click', function() {
+        //   infowindow.setContent(place.name);
+        //   infowindow.open(map, this);
+        // });
+      }
+
+      var form = document.getElementById("submitForm");
+      form.onsubmit = function(e){
+        e.preventDefault();
+        //alert(form.inputLat.value + "" + form.inputLng.value);
+        pyrmont.lat=parseFloat(form.inputLat.value);
+        pyrmont.lng= parseFloat(form.inputLng.value);
+        form.inputLat.value = form.inputLng.value = "";
+        document.getElementById('resultList').innerHTML = ''
+        initialize123();
+      }
+
+
+      // google.maps.event.addDomListener(
+      //     window, 'load', initialize123);
+    </script>
+
+
+  </body>
+</html>
