@@ -1,0 +1,41 @@
+.dashboard{
+    width:540px;
+    display: flex;
+  }
+  
+  .dashboard div:nth-child(1){
+    flex:1;
+    align-self: flex-start;
+  }
+  
+  .dashboard div:nth-child(2){
+    flex:1;
+    align-self: flex-end;
+  }
+  
+  .dashboard div:nth-child(2) .pp{
+    text-align: right;
+  }
+  
+  .go{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-50%) translateY(-50%)
+  }
+  
+  .go p{
+    color: bisque;
+    font-weight: bolder;
+    font-size: 24px;
+  }
+  
+  .go button{
+    height: 25px;
+    border-radius: 5px;
+    border-color: transparent;
+  }
+  
+  .go button:hover{
+    background-color: darkgray;
+  }
