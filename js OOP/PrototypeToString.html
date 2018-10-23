@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+function Dog(name, breed, color, sex) {
+  this.name = name;
+  this.breed = breed;
+  this.color = color;
+  this.sex = sex;
+}
+
+Dog.prototype.toString = function dogToString() {
+  var ret = 'Dog ' + this.name + ' is a ' + this.sex + ' ' + this.color + ' ' + this.breed;
+  return ret;
+}
+
+let theDog = new Dog('Gabby', 'Lab', 'chocolate', 'female');
+
+console.dir(Dog)
+console.dir(theDog)
+console.dir(theDog.toString())
+
+</script>
+</body>
+</html>

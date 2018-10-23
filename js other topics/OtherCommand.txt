@@ -1,0 +1,8 @@
+let productStyle = document.querySelectorAll('.product')
+let proStyles = window.getComputedStyle(productStyle[0])
+console.log(proStyles.getPropertyValue('display'))
+
+document.body.contentEditable = true
+
+var html = document.getElementsByTagName('html')[0];
+html.style.setProperty("--main-background-color", "green");

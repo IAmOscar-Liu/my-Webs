@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Calculate the factorial</p>
+number: <input type="number" id="myInput" onchange="myFunction(event)" value=5>
+
+
+<p id="demo"></p>
+
+<script>
+//myFunction(4);//input the factorial you want to calculate
+
+function myFunction(e) {
+    //console.log(e.target.value)
+    //let a = parseFloat(document.getElementById('myInput').value)
+    let a = e.target.value;
+    //let x = factorial(a,a,a)
+    document.getElementById("demo").innerHTML ="result: " + factorial(a,a,a);
+}
+
+function factorial(n,result,f){
+  if(f>=0 && (f-Math.floor(f))==0){
+    if(f==1 || f==0){
+      return 1;
+    }
+    else if(n == 1){
+      return result;  
+    }
+    else{
+      return factorial(n-1,result*(n-1),f)
+    }
+  }else{
+    return "Please input a positive number and it should be an interger"
+  }  
+}
+</script>
+
+</body>
+</html>

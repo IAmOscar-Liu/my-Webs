@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+//deep copy Object
+    var a={name:'Will',age:35}
+    //var b= Object.assign({},a,{name:'Fred'})
+
+    let b = JSON.parse(JSON.stringify(a)); // 深層
+
+    //Test if it works
+    b.name = 'Oscar'
+    console.log(a)
+    console.log(b)
+
+
+//deep copy Array
+    var c = [0,1,2]
+    var d = c.slice()
+
+//copy Object with Array
+    var e={name:'Will',things:[0,1,2]}
+    //var f = Object.assign({},e,{name:'Fred'})
+    let f = JSON.parse(JSON.stringify(e)); // 深層
+    f.things = e.things.slice();
+
+    //Test if it works
+    f.name='George';
+    f.things[1]=100;
+    console.log(e)
+    console.log(f)
+ 
+    
+//copy Array with Object
+    let g=[{name:'Will',things:[0,1,2]},{name:'Ken',things:[3,4,5]}]
+    let h = [];
+    for(let i = 0; i<g.length; i++){
+        h[i] = JSON.parse( JSON.stringify(g[i]))
+    }
+
+    //Test if it works
+    h[0].name='George';
+    h[0].things=[0,100,200];
+    console.log(g)
+    console.log(h)    
+</script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <form  id="submitForm"  >
+    first name: <input type="text" name="firstName" value=""><br />
+    last name: <input type="text" name="lastName" value=""><br />
+
+    favorite fruit:
+    <select id="mySelect" name="favFruit">
+      <option value="Apple">Apple</option>
+      <option value="Orange">Orange</option>
+      <option value="Pineapple">Pineapple</option>
+      <option value="Banana">Banana</option>
+    </select><br />
+
+    <button type="submit" name="button" value="submit">submit</button>
+  </form>
+
+  <p id = "result">
+  </p>
+
+  <script>
+   //var form = document.getElementById("submitForm");
+   //form.onsubmit = function(e){
+  $(document).ready(function(){
+     $("form").submit(function(e){
+       e.preventDefault();
+
+       var result = document.getElementById("result")
+       result.innerHTML += "first name: " + $("input[name='firstName']").val() + " last name: " + $("input[name='lastName']").val() + " favotite food: " +$("select[name='favFruit']").val()+  "<br />";
+       $("input[name='firstName']").val('');
+       $("input[name='lastName']").val('');
+       //result.innerHTML += "first name: " + form.firstName.value + " last name: " + form.lastName.value + " favotite food: " +$("select[name='favFruit']").val()+ form.favFruit.value+ "<br />";
+       //form.firstName.value = form.lastName.value = '';
+     })
+  })
+
+  </script>
+
+</body>
+
+</html>

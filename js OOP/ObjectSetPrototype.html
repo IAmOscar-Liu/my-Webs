@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>   
+<script>
+
+//Object.setPrototypeOf(dObj,sObj);
+    // let toyota = {
+    //     drive(){
+    //         return 'driving toyota'
+    //     }
+    // };
+
+    // let camry = {
+    //     drive(){
+    //         return 'driving camry'
+    //     }
+    // }
+
+    // Object.setPrototypeOf(camry,toyota);
+    // console.dir(camry.drive());
+
+//Using Super
+    let toyota = {
+        drive(){
+            return 'driving toyota'
+        }
+    };
+
+    let camry = {
+        wifi(){
+            return 'using wifi'
+        },
+        drive(){
+            return `${super.drive()} camry`
+        }
+    }
+
+    Object.setPrototypeOf(camry,toyota);
+    //camry.__proto__ = toyota //try not to use this
+    console.dir(camry.drive());
+
+</script>
+</body>
+</html>

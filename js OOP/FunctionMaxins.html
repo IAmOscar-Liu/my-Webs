@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//Maxins Example
+    // const jsSkill = {
+    //     knowJS(){
+    //         return true;
+    //     }
+    // };
+
+    // const engDegree = {
+    //     hasDegree(){
+    //         return true
+    //     }
+    // };
+
+    // const backendSkill = {
+    //   knowsBackend(){
+    //       return true
+    //   }
+    // }
+
+    // const jsEngineer = Object.assign({},jsSkill,engDegree);
+    // const fullstackEngineer = Object.assign({},jsSkill , backendSkill , engDegree)
+
+    // console.log(fullstackEngineer.hasDegree())
+    // console.log(fullstackEngineer.knowsBackend())
+    // console.log(fullstackEngineer.knowJS())
+
+//Function Maxins
+    // let Car = function(color){
+    //     let moving = false;
+    //     return Object.assign({},{
+    //         color:color,
+    //         drive(){
+    //             moving = true;
+    //             return this;
+    //         },isMoving(){
+    //             return moving
+    //         }
+    //     })
+    // };
+
+    // let redCar = new Car('red');
+    // console.dir(redCar.drive().isMoving())
+
+//Function Maxins_2
+    const humanFactory = function(obj){
+        let isCrying = false;
+
+        return Object.assign({},obj,{
+            cry(){
+                isCrying = true
+                return this
+            },isCrying(){
+                return isCrying;
+            }
+        })
+    };
+
+    const flyFactory = function(obj){
+        let isFlying = false;
+
+        return Object.assign({}, obj, {
+            fly(){
+                isFlying = true
+                return this
+            },isFlying(){
+                return isFlying;
+            }
+        })
+    }
+
+    const superman = humanFactory(flyFactory({}))
+
+    console.dir(superman)
+    console.log( superman.fly().cry().isCrying())
+    console.log( superman.isFlying())
+
+    
+</script>
+</body>
+</html>

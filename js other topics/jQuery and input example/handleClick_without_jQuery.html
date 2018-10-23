@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>This example will show the item you click</h1>
+
+<!-- <ul id="myUL" onclick="handleClick(event)"> -->
+<ul id="myUL">
+  <li>Coffee</li>
+  <li>Milk</li>
+  <li>Soda</li>
+</ul>
+<p id ="pp">Please click one of the item above</p>
+
+<script>
+  let x = document.querySelectorAll("ul li")
+//   function handleClick(e){
+//       for(let i = 0; i < x.length ; i++){
+//           //if(x[i].innerHTML == e.target.innerHTML){
+//           if(x[i] == e.target){    
+//               console.log(i,x[i].innerHTML);
+//               x[i].style.background = 'yellow' 
+//           }else{
+//             x[i].style.background = 'transparent' 
+//           }
+//       }  
+//   }
+
+  document.getElementById('myUL').addEventListener("click", (e)=>{
+    for(let i = 0; i < x.length ; i++){        
+        if(x[i] == e.target){    
+            console.log(i,x[i].innerHTML);
+            x[i].style.background = 'yellow' 
+        }else{
+            x[i].style.background = 'transparent' 
+        }
+    } 
+  })
+</script>
+
+</body>
+</html>

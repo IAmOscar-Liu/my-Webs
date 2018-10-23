@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+
+let Car = function(color){
+    this.color = color;
+    // this.getColor = function(){
+    //     return this.color;
+    // }
+};
+
+Car.prototype.getColor = function(){
+    return this.color
+}
+
+//Create your own prototype
+Object.prototype.toString = function(){
+  return `color:${this.color}`;
+}
+
+let redCar = new Car('red');
+
+console.log(redCar)
+console.log(redCar.getColor())//Will search if getColor is a property in redCar, if not, then search the _proto_
+console.log(redCar.toString())
+
+let blah ={
+    color:'blah'
+};
+
+console.log(blah.toString())
+</script>
+
+</body>
+</html>

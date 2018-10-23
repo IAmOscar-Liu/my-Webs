@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    let Mammal = function(legs){
+        this.legs = legs;
+    };
+
+    Mammal.prototype = {
+        walk(){
+            return 'walking!';
+        }, sleep(){
+            return 'sleeping';
+        }
+    };
+
+    let Bat = function(legs,isVegetarian){
+      Mammal.call(this, legs)
+      this.isVegetarian = isVegetarian;
+    }
+
+    //console.dir(Bat)
+    Bat.prototype = Object.create(Mammal.prototype);//You would lose the constructor
+    Bat.prototype.constructor = Bat
+    Bat.prototype.fly = function(){
+        return 'fly'
+    };
+
+    let fruitBat = new Bat(4,true)
+    console.dir(fruitBat.walk())
+
+</script>
+</body>
+</html>

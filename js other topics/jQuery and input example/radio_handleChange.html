@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Check if the first Radio is checked<p>
+<form onchange="handleChange()">
+  <input type="radio" name="gender" value="male" id="firstRadio"> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other<br>
+</form>
+<p id="result">Here will show the first Radio's result<p>
+
+<script>
+  function handleChange(){
+   if(document.getElementById('firstRadio').checked){
+     document.getElementById('result').innerHTML = document.getElementById('firstRadio').value
+   }else{
+     document.getElementById('result').innerHTML = 'Male has not been checked'
+   }
+  }
+
+</script>
+</body>
+</html>

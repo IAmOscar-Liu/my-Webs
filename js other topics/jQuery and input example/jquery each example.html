@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("li").click(function(){
+         $("li").each(function(){
+             $(this).css("background-color", "white"); 
+             
+         });
+         $(this).css("background-color", "yellow");         
+         $("p").text(($( "li" ).index( $(this) )+1)+'. '+ $(this).text());
+         //var listItem = $(this);
+         //alert( "Index: " + $( "li" ).index( $(this) ) );          
+     });
+});
+</script>
+</head>
+<body>
+
+<h1>This example will show the item you click</h1>
+
+<ul>
+  <li>Coffee</li>
+  <li>Milk</li>
+  <li>Soda</li>
+</ul>
+<p id ="pp">Please click one of the item above</p>
+
+</body>
+</html>

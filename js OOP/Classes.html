@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//Class with Constructor
+    // class Car{
+    //     constructor(color){
+    //         this.color = color;
+    //     }
+    //     drive(){
+    //         console.log('driving')
+    //     }
+    // }
+
+    // let redCar = new Car('red')
+
+    // console.dir(redCar)
+
+//SubClass
+    // class Mammal{
+    //     constructor(_legs, _name='John doe'){
+    //         this.legs = _legs;
+    //         this.name = _name;
+    //         this.warmBlooded = true
+    //     }
+    //     walk(){
+    //         return `${this.name} is walking`
+    //     }
+    // }
+
+    // class Bat extends Mammal{
+    //     constructor(_legs,_name,_eatsMeat){
+    //         super(_legs,_name);
+    //         this.eatsMeat = _eatsMeat
+    //     }
+    //     fly(){
+    //         return `${this.name} is flying`
+    //     }
+    //     walk(){
+    //         let holding = this.eatsMeat ? 'bug' : 'carrot';
+    //         return `${super.walk()} with a ${holding}`;
+    //     }
+    // }
+
+    // let fruitBat = new Bat(4,'Peter',false);
+
+    // console.log(fruitBat.walk())
+
+//Make it easier
+    class Mammal{
+        constructor(a,b,c,d,e){
+            Object.assign(this,{a,b,c,d,e});
+        }
+        doSomething(){
+            return 'do something'
+        }
+    }
+
+    class Bat extends Mammal{
+        constructor(f,...args){
+            super(...args); //Remember to add Super
+            this.f = f
+        }
+        display(){
+            return super.doSomething();
+        }
+    }
+    
+    const newBat = new Bat('f','a','b','c','d','e');
+    console.log(newBat.display())
+
+    console.log(newBat)
+</script>
+</body>
+</html>

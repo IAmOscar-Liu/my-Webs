@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+// Example 1 :Function with constructor
+    // let Car = function(color){
+    //     this.color = color; //add a new property into window(global)
+    // }
+
+    // let redCar = new Car('red')
+    // //let blueCar = new Car('blue')
+
+    // console.log(redCar.color)
+
+//Example 2: Set private data
+  let Car = function(_color){
+      this.setColor = function(color){
+          _color = color;
+      };
+
+      this.getColor = function(){
+          return _color;
+      }
+  }
+
+  let redCar = new Car('red')
+
+  //console.log(redCar._color) // This won't work
+  console.log(redCar.getColor())
+
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Form</title>
+</head>
+<body>
+<h1>Creat your own account here </h1>
+    <form id="frm1" >
+        <table>
+            <tr>
+                <td>
+                    Nickname:
+                </td>
+                <td>
+                    <input type = "text" placeholder=" Nickname" id = "Nickname">
+                </td>
+                <td>
+                    <input type="button" onclick="checkNickname()" value="Check">
+                </td>
+                <td>
+                    <p id = "ppp"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password:
+                </td>
+                <td>
+                    <input type = "password" placeholder=" Password" id = "Password">
+                </td>
+                <td>
+                    <p id = "_Password"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    <input type = "radio"  name = "Gender" id = Gender_Male >Male
+                    <input type = "radio"  name = "Gender" id = Gender_Female >Female
+                </td>
+                <td>
+                    <p id = "_Gender"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email:
+                </td>
+                <td>
+                    <input type = "mail" placeholder="Email" id = "Email">
+                </td>
+                <td>
+                    <p id = "_Email"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone number:
+                </td>
+                <td>
+                    <select id = "ss" onchange = "getSelectValue();">
+                        <option value ="02">02</option>
+                        <option value ="03">03</option>
+                        <option value ="04">04</option>
+                        <option value ="05">05</option>
+                        <option value ="06">06</option>
+                        <option value ="07">07</option>
+                        <option value ="08">08</option>
+                        <option value ="09">09</option>
+                    </select>
+                    <input type = "Phone" placeholder="xx-xxxx-xxxx" id = "Phone">
+                </td>
+                <td>
+                    <p id = "_Phone"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="submitInformation()" value="Submit">
+                </td>
+                <td>
+                    <input type="button" onclick="clearInformation()" value="Clear all">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <h1>Log in </h1>
+    <form id="frm2" >
+        <table>
+           <tr>
+                <td>
+                    Nickname:
+                </td>
+                <td>
+                    <input type = "text" placeholder=" Nickname" id = "Nickname_2">
+                </td>
+                <td>
+                    <input type="button" onclick="checkLogin()" value="Log in">
+                </td>
+                <td>
+                    <p id = "ggg"></p>
+                </td>
+            </tr>
+        </table>
+    </form >
+    <p>_______________________________________________________________</p>
+    <p id = "num"></p>
+    <p id = "dply"></p>
+
+<script>
+
+var dataBase = [];
+
+function checkLogin(){
+    if(document.getElementById("Nickname_2").value.length == 0){
+        alert("Please input your Nickname! ");
+        document.getElementById("ggg").innerHTML = "Please input your Nickname!";
+    }
+    else{
+        var true_or_false = false;
+        for(db of dataBase){
+            if(db.Nickname == document.getElementById("Nickname_2").value){
+                var true_or_false = true;
+                break;
+            }
+        }
+        if (true_or_false){
+            window.open("https://lyiz17jsfahdo8wfyh7bfw-on.drv.tw/page/20180322.html","_new","top = 100,left = 200,height = 700,width = 500");
+            document.getElementById("ggg").innerHTML = "";
+        }
+        else{
+            alert("This Nickname has not been registered! ");
+            document.getElementById("ggg").innerHTML = "This Nickname has not been registered!";
+        }
+
+    }
+}
+
+
+function checkNickname(){
+    if(document.getElementById("Nickname").value.length == 0){
+        alert("Please input your Nickname! ");
+        //document.getElementById("frm1").reset();
+    }
+    else{
+        var true_or_false = false;
+        for(db of dataBase){
+            if(db.Nickname == document.getElementById("Nickname").value){
+                var true_or_false = true;
+                break;
+            }
+        }
+        if (true_or_false){
+            alert("This Nickname has alread been used, try another one! ");
+            //document.getElementById("frm1").reset();
+        }
+        else{
+            alert("This Nickname is available ! ");
+            //document.getElementById("frm1").reset();
+        }
+    }
+}
+
+function submitInformation() {
+    var true_or_false = false;
+    for(db of dataBase){
+        if(db.Nickname == document.getElementById("Nickname").value){
+            var true_or_false = true;
+            break;
+        }
+    }
+    if(document.getElementById("Nickname").value.length == 0){
+        alert("Please input your Nickname! ");
+    }
+    else if(true_or_false){
+        alert("This Nickname has alread been used, try another one! ");
+    }
+    else if((document.getElementById("Password").value.length < 5)||(document.getElementById("Password").value.length > 12)){
+        document.getElementById("_Password").innerHTML = "invalid Password" ;
+        document.getElementById("_Gender").innerHTML = "" ;
+        document.getElementById("_Email").innerHTML = "" ;
+        document.getElementById("_Phone").innerHTML = "" ;
+        alert("The length of the password should be between 5 and 12! ");
+
+    }
+    else if((document.getElementById("Gender_Male").checked == false) && (document.getElementById("Gender_Female").checked == false)){
+        document.getElementById("_Password").innerHTML = "" ;
+        document.getElementById("_Gender").innerHTML = "Please select your Gender" ;
+        document.getElementById("_Email").innerHTML = "" ;
+        document.getElementById("_Phone").innerHTML = ""
+        alert("Please select your Gender ");
+    }
+    else if(document.getElementById("Email").value.includes("@") == false){
+        document.getElementById("_Password").innerHTML = "" ;
+        document.getElementById("_Gender").innerHTML = "" ;
+        document.getElementById("_Email").innerHTML = "invalid Email" ;
+        document.getElementById("_Phone").innerHTML = "" ;
+        alert("This is not the correct form of Email, try it again! ");
+    }
+    else if((document.getElementById("Phone").value.length < 7)||(document.getElementById("Phone").value.length >8)||(checkPhonenumber(document.getElementById("Phone").value) )){
+        document.getElementById("_Password").innerHTML = "" ;
+        document.getElementById("_Gender").innerHTML = "" ;
+        document.getElementById("_Email").innerHTML = "" ;
+        document.getElementById("_Phone").innerHTML = "invalid phone number" ;
+        alert("This is not the correct form of Phone number, try it again! ");
+    }
+    else{
+        document.getElementById("_Password").innerHTML = "" ;
+        document.getElementById("_Gender").innerHTML = "" ;
+        document.getElementById("_Email").innerHTML = "" ;
+        document.getElementById("_Phone").innerHTML = "" ;
+        _selectValue = getSelectValue();
+        add_user(document.getElementById("Nickname").value, document.getElementById("Email").value, document.getElementById("Phone").value,_selectValue)
+        //document.getElementById("frm1").submit();
+        document.getElementById("frm1").reset();
+    }
+}
+function checkPhonenumber(phone_num){
+    var iswrong = false;
+    var n = phone_num.toString();
+    for ( i of n){
+        if ((i!="0")&&(i!="1")&&(i!="2")&&(i!="3")&&(i!="4")&&(i!="5")&&(i!="6")&&(i!="7")&&(i!="8")&&(i!="9")){
+            iswrong = true;
+            break;
+        }
+    }
+    if(iswrong){return true;}else{return false}
+}
+
+function clearInformation(){
+    document.getElementById("frm1").submit();
+}
+
+function getSelectValue(){
+    var  selectValue = document.getElementById("ss").value;
+    return selectValue;
+}
+
+function add_user(nkname,eml,phe,s){
+    var new_user = { Nickname:nkname, Email:eml, Phone:"("+s+")"+phe };
+    dataBase.push(new_user);
+    showDataBase();
+    // var db_length = dataBase.length;
+    // document.getElementById("num").innerHTML = "Number of the user: " + db_length;
+    // document.getElementById("dply").innerHTML = ""
+    // let _dply = "<table>"
+    // for(let i = 0; i<dataBase.length;i++){
+    //
+    //   _dply += `<tr><td>${dataBase[i].Nickname}</td><td>${dataBase[i].Email}</td><td>${dataBase[i].Phone}</td><td><button onclick='deleteUser(${i})'>Delete</button></td></tr>`;
+    //
+    // }
+    // _dply += `</table>`
+    // document.getElementById("dply").innerHTML = _dply
+  //document.getElementById("dply").innerHTML += dataBase[db_length-1].Nickname + " " +dataBase[db_length-1].Email + " " +dataBase[db_length-1].Phone + "<br/>";
+}
+
+function deleteUser(index){
+  dataBase.splice(index,1);
+  showDataBase();
+}
+function showDataBase(){
+  let db_length = dataBase.length;
+  document.getElementById("num").innerHTML = "Number of the user: " + db_length;
+  document.getElementById("dply").innerHTML = ""
+  let _dply = "<table>"
+  for(let i = 0; i<dataBase.length;i++){
+
+    _dply += `<tr><td>${dataBase[i].Nickname}</td><td>${dataBase[i].Email}</td><td>${dataBase[i].Phone}</td><td><button onclick='deleteUser(${i})'>Delete</button></td></tr>`;
+
+  }
+  _dply += `</table>`
+  document.getElementById("dply").innerHTML = _dply
+}
+</script>
+
+</body>
+</html>

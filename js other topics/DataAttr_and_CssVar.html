@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<style>
+
+
+li{
+  color:var(--main-index)
+}
+
+li::before{
+  content:attr(data-color)
+}
+/* #owl::before{
+ content:attr(data-color)
+}
+#salmon::before{
+ content:attr(data-color)
+}
+#tarantula::before{
+  content:attr(data-color)
+} */
+</style>
+</head>
+<body>
+
+<h1>Species</h1>
+<p>Click on a species to see what type it is:</p>
+
+<ul style="--ul-index:24px">
+  <li onclick="showDetails(this)" id="owl" data-animal-type="bird" data-color="red" style="--main-index:red">Owl </li>
+  <li onclick="showDetails(this)" id="salmon" data-animal-type="fish" data-color="blue" style="--main-index:blue">Salmon</li>  
+  <li onclick="showDetails(this)" id="tarantula" data-animal-type="spider" data-color="gray" style="--main-index:gray">Tarantula</li>  
+</ul>
+<input id="myInput" type="text"><button id="mybtn" onclick="handleClick()">Get first color</button>
+
+<script>
+  function handleClick(){
+    let myInputValue = document.getElementById('myInput')
+    myInputValue.dataset.color = myInputValue.value;
+    alert(myInputValue.dataset.color)
+  }
+
+  function showDetails(animal) {
+      var animalType = animal.getAttribute("data-animal-type");
+      alert("The " + animal.innerHTML + " is a " + animalType + ".");
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<body>
+<script>
+
+const varGlobal = 'x'
+
+function outer(paramOuter){
+  const varOuter ='y'
+
+  function inner(paramInner,jj){
+    const varInner ='z'
+
+    //print
+    document.write("varGlobal: " + varGlobal + "<br />")
+    document.write("varOuter: " + varOuter + "<br />")
+    document.write("varInner: " + varInner + "<br />")
+    document.write("paramOuter: " + paramOuter + "<br />")
+    document.write("paramInner: " + paramInner + "<br />")
+  }
+
+  return inner
+}
+
+const func = outer('a');
+func('b',45);
+</script>
+</body>
+</html>

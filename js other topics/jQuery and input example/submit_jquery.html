@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+var text = "";
+$(document).ready(function(){
+    $("form").submit(function(e){
+        e.preventDefault();
+        //text += "first name:" + this.FirstName.value + " last name: " + this.LastName.value + "<br />"
+        text += "first name:" + $("input[name='FirstName']").val() + " last name: " + $("input[name='LastName']").val() + "<br />"
+        $("p").html(text)
+    });
+});
+
+</script>
+</head>
+<body>
+
+<form action="">
+  First name: <input type="text" name="FirstName" value="Mickey"><br>
+  Last name: <input type="text" name="LastName" value="Mouse"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p></p>
+
+
+</body>
+</html>

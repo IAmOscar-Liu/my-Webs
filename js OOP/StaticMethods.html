@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//Example 1
+    // class Car{
+    //     constructor(color,price){
+    //         Object.assign(this,{color,price})
+    //     }
+
+    //     static comparePrice(car1,car2){  //in static function, the params are the class
+    //         return Math.abs(car1.price - car2.price);
+    //     }
+
+    //     getColor(){
+    //         return this.color;
+    //     }
+    // }
+
+    // const redCar = new Car('red',100);
+    // const blueCar = new Car('blue',102)
+
+    // console.log(redCar.getColor());
+    // console.log(Car.comparePrice(redCar,blueCar))
+
+//Example 2
+    class Car{
+        constructor(price,color){
+            this.price = price;
+            this.color = color;
+        }
+
+        DoublePrice(){
+            return this.price*2;
+        }
+
+        static sellCar(_car){ //_car is the class Toyota named camry
+            //console.log(_car)
+            return `selling for ${_car.price}`;
+        }        
+    }
+
+    class Toyota extends Car{
+        constructor(price,color,type){
+            super(price,color);//price ,color inherit from class Car
+            this.type = type;
+            //this.color = super.color
+        }
+
+        showDoublePrice(){
+            return `The double price of this ${this.type} is ${super.DoublePrice()}`;
+        }
+
+        static showThisCarColor(car){
+            return `Toyota is ${car.color}`;
+        }
+
+        static showCarPrice(car){
+            return `Toyota ${super.sellCar(car)}`;
+        }
+
+    }
+
+    const camry = new Toyota(100,'red','camry');
+    console.log(camry.showDoublePrice())
+    //console.log(camry.showThisCarColor(camry)); 
+    //This will not work because 'showThisCarColor' is a static function
+    console.log(Toyota.showThisCarColor(camry))
+    console.log(Toyota.showCarPrice(camry))
+    //console.log(camry)
+</script>   
+</body>
+</html>

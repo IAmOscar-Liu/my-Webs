@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<p>How would you like your coffee?</p>
+
+<form action="">
+<input type="checkbox" name="coffee"  value="cream">With cream<br>
+<input type="checkbox" name="coffee"  value="sugar">With sugar<br>
+<input type="checkbox" name="coffee"  value="chocolate">With chocolate<br>
+<br>
+<!-- <input type="button" onclick="myFunction()" value="Send order"> -->
+<input type="button"  value="Send order">
+<br><br>
+<input type="text" id="order" size="50">
+<input type="submit" value="Submit">
+</form>
+
+<script>
+// function myFunction() {
+//     var coffee = document.forms[0];
+//     var txt = "";
+//     var i;
+//     for (i = 0; i < coffee.length; i++) {
+//         console.log(coffee[i].value)
+//         if (coffee[i].checked) {
+//             txt = txt + coffee[i].value + " ";
+//         }
+//     }
+//     document.getElementById("order").value = "You ordered a coffee with: " + txt;
+// }
+
+// $(document).ready(function(){
+//    $("input[type='button']").click(function(){
+//    var txt = "You ordered a coffee with " + $( "input[type=checkbox]:checked" ).val();
+//    $("#order").val(txt)
+//    })
+// })
+
+$(document).ready(function(){
+   $("input[type='button']").click(function(){
+
+   var valueData = ['cream','sugar','chocolate']
+   var txt = "You ordered a coffee with "
+   var addAnd = false
+
+   // $( "input[type='checkbox']" ).prop( "checked", function( i, val ) {
+   //    if(val){
+   //      if(!addAnd){
+   //        txt += valueData[i]
+   //        addAnd = true
+   //      }else{
+   //        txt += ' and '+ valueData[i]
+   //      }
+   //
+   //    }
+   //  });
+   //
+   //  $("#order").val(txt)
+
+   /******************************************************************/
+   let textval=[]
+   $("input[type = 'checkbox']").each((index,value)=>{
+       console.log(index,value.checked)
+       if(value.checked){
+            textval.push(value.value)
+            if(!addAnd){
+                txt += (index+1) +". "+ value.value
+                addAnd = true
+            }else{
+                txt += ' and '+ (index+1) +". "+ value.value
+            }
+       }
+    })
+
+   /*******************************************************************/
+//    var textval=[]
+//    $( "input[type='checkbox']:checked" ).each(function(index,value){
+//       textval.push(value.value)
+//       if(!addAnd){
+//           //txt += $(this).val()
+//           //addAnd = true
+//           txt += value.value
+//           addAnd = true
+//       }else{
+//           //txt += ' and '+ $(this).val()
+//           txt += ' and '+ value.value
+//       }
+//    })
+
+   $("#order").val(txt)
+   console.log(textval)
+
+
+   })
+})
+
+</script>
+
+</body>
+</html>

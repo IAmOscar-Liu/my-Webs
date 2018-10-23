@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to trigger the recursive function.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+class aaa{
+  constructor(){
+    this.x = 1;
+    this.y = 2;
+  }
+  
+  recursion(n){
+    if(n==1){
+      return 'finished'
+    }else{
+      console.log(n)
+      return this.recursion(n-1)
+    }
+  }
+}
+
+//console.log(aaa)
+let AAA = new aaa()
+
+async function myFunction(){
+  let answer = await AAA.recursion(5)
+   console.log(answer)
+}
+</script>
+
+</body>
+</html>

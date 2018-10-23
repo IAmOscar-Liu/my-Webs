@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//Example 1
+    // let toyota = {
+    //     drive(){
+    //         return 'driving toyota'
+    //     },
+    //     break(){
+    //         return 'breaking toyota'
+    //     }
+    // };
+
+    // let camry = {
+    //     drive(){
+    //         return 'using wifi';
+    //     }
+    // };
+
+    // Object.assign(camry,toyota)//Create a copy, will overide the original one
+    // console.dir(camry)
+    // console.dir(camry.drive())
+
+//Example 2
+    let toyota = {
+        drive(){
+            return 'driving toyota'
+        },
+        break(){
+            return 'breaking toyota'
+        }
+    };
+    
+    //let copyToyota = Object.assign({},toyota);//shallow copy
+
+    //add new property to toyota
+    Object.assign(toyota,{
+        wifi(){
+            return 'using wifi';
+        },color:'red'
+    })
+    
+    console.dir(toyota)
+
+    //Create Object method:1
+    let c1 = function(x,y,z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    };
+
+    //Create Object method: 2 using Object.assign()
+    let c2 = function(x,y,z){
+        Object.assign(this,{x,y,z})
+    }
+
+    console.dir(c1)
+    console.dir(c2)
+
+</script> 
+</body>
+</html>

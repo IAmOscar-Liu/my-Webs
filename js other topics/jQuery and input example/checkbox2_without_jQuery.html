@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myForm{
+    margin-bottom: 20px;
+}
+input[type='text'] {
+  width:300px;
+}
+input[ id="ip1"] {
+  width:500px;
+}
+
+</style>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<p>How would you like your coffee?</p>
+
+<form id="myForm" action="">
+<label><input type="checkbox" name="coffee"  value="cream">With cream</label><br>
+<label><input type="checkbox" name="coffee"  value="sugar">With sugar</label><br>
+<label><input type="checkbox" name="coffee"  value="chocolate">With chocolate</label><br>
+<br>
+<select>
+    <option value="" selected disabled hidden>Choose here</option>
+    <option value="Apple">Apple</option>
+    <option value="Orange">Orange</option>
+    <option value="Pineapple">Pineapple</option>
+    <option value="Banana">Banana</option>
+</select>
+<input type="submit" value="Submit"><br>
+
+</form>
+
+<input type="text" id="ip1"><br>
+<input type="text">
+
+<script>
+
+
+document.getElementById('myForm').addEventListener("submit", (e)=>{
+   e.preventDefault(); 
+   var txt = "You ordered a coffee with "
+   var addAnd = false;
+   let textval=[]
+   
+   document.querySelectorAll("input[type = 'checkbox']").forEach((value,index)=>{
+       console.log(index,value.checked)
+       if(value.checked){
+            textval.push(value.value)
+            if(!addAnd){
+                txt += (index+1) +". "+ value.value
+                addAnd = true
+            }else{
+                txt += ' and '+ (index+1) +". "+ value.value
+            }
+       }
+   
+   })
+
+   document.querySelectorAll("input[type='text']")[0].value = txt;
+   document.querySelectorAll("input[type='text']")[1].value = "Your favorite fruit is "+document.querySelector("select").value;
+   console.log(txt)
+});
+
+</script>
+
+</body>
+</html>
+
