@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+function callAjax(){
+    //let tmp = $.ajax({
+    return $.ajax({    
+        type:'GET',
+        url:' https://learnwebcode.github.io/json-example/animals-1.json',
+        //url:' https://learnwebcode.github.io/json-example/aimals-1.json',
+    }).fail(function() {
+       alert( "error" );
+    });
+
+    //tmp.then(data=>console.log(data))
+}  
+
+$(document).ready(function(){
+    $("button").click(function(){
+        // $.ajax({
+        //     type:'GET',
+        //     url:' https://learnwebcode.github.io/json-example/animals-1.json',
+        //     //url:' https://learnwebcode.github.io/json-example/aimals-1.json',
+        //     success:function(data){
+        //         $.each(data,function(i,order){
+        //             $("#div1").append('<li>name: '+order.name + ', species: '+order.species+'</li>');
+        //         });
+        //     },
+        //     error:function(){
+        //         alert('error')
+        //     }
+        // });
+
+        let tt = callAjax().done(data=>{
+            $.each(data,function(i,order){
+                $("#div1").append('<li>name: '+order.name + ', species: '+order.species+'</li>');
+            });          
+        })
+        
+    
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+
+</body>
+</html>

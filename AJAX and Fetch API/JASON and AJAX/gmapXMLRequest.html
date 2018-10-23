@@ -1,0 +1,48 @@
+
+<html >
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JSON and AJAX</title>
+</head>
+<link rel="stylesheet" type = "text/css" href = "stylesheet.css">
+<body>
+<header>
+  <h1>JSON and AJAX</h1>
+  <button id="btn">Fetch Info for 3 New Animals</button>
+</header>
+
+<div id="animal-info"></div>
+</body>
+<script>
+var pageCounter = 1;
+var animalContainer = document.getElementById("animal-info");
+var btn = document.getElementById("btn");
+
+btn.addEventListener("click", function() {
+  var ourRequest = new XMLHttpRequest();
+  ourRequest.open('GET', 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyD9wNjcFxJYrYIQkI_G9D42i_dLsDncRjU');
+  //ourRequest.open('GET', 'sample' + pageCounter + '.txt');
+  ourRequest.onload = function() {
+    if (ourRequest.status >= 200 && ourRequest.status < 400) {
+      var ourData = JSON.parse(ourRequest.responseText);
+      renderHTML(ourData);
+    } else {
+      console.log("We connected to the server, but it returned an error.");
+    }
+
+  };
+
+  ourRequest.onerror = function() {
+    console.log("Connection error");
+  };
+
+  ourRequest.send();
+
+});
+
+function renderHTML(data) {
+  console.log(data)
+}
+</script>
+</html>

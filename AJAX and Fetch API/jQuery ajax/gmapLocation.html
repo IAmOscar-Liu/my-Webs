@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+     $("button").click(function(){
+
+       /*method 1*/
+       //url: 'https://api.douban.com/v2/movie/subject/26260853',
+       $.ajax({
+           url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyD9wNjcFxJYrYIQkI_G9D42i_dLsDncRjU',
+           type: 'GET',
+           dataType: 'jsonp',
+           jsonp: 'callback',
+           jsonpCallback: 'jsonpCallback',
+           success: function(data) {
+               //console.log(data.results)
+           }
+       });
+
+       /*method 2*/
+       // $.getJSON('https://api.douban.com/v2/movie/subject/26260853?callback=?', function(data) {
+       //     $('#result').text(data.title);
+       // });
+
+
+
+
+     });
+});
+
+
+
+// $(document).ready(function(){
+//     $("button").click(function(){
+//         $.ajax({
+//             type:'GET',
+//             url:' https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyD9wNjcFxJYrYIQkI_G9D42i_dLsDncRjU',
+//             //url:' https://learnwebcode.github.io/json-example/aimals-1.json',
+//             success:function(data){
+// console.log(data)
+//             },
+//             error:function(){
+//                 alert('error')
+//             }
+//         });
+//     });
+// });
+</script>
+</head>
+<body>
+
+<div id="result"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+
+</body>
+</html>
