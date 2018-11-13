@@ -1,0 +1,33 @@
+#sketch-holder{
+    position: relative
+  }
+  
+  .GO-content{
+    display:none;
+    background-color: yellow;
+    opacity: 0.7;
+    position: absolute;
+    height:100%;
+    width:100%;
+    left:0;
+    top:0;
+    z-index: 100;
+  }
+  
+  #message{
+    display:none;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 200;
+  }
+  
+  #message p{
+    display:none;
+    color: red;
+    font-size:36px;
+  }
