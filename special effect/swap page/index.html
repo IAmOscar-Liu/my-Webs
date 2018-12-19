@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    
+  <div class="container">
+    <nav>
+        <a href="#">Company</a>
+    </nav>
+
+    <main id="swup" class="transition-fade">
+        <h1>Home page here</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In esse quisquam reprehenderit sed facilis, eius ratione culpa nesciunt tempore incidunt, adipisci magnam neque, dolores est possimus cumque aspernatur sit. Dolorum?</p>
+        <p class="transition-left">Go to the other page</p>
+        
+    </main>
+
+    <div id="cover" class="transition-wipe overlay">
+       
+    </div>
+
+  </div>
+
+  <!-- <script src="./dist/swup.min.js"></script> -->
+  <script>
+    //const swup = new Swup(); 
+    function toggle_Class(){
+      document.getElementById('swup').classList.toggle('animating');
+      document.querySelectorAll('main p')[1].classList.toggle('animating');
+      document.getElementById('cover').classList.toggle('animating');
+    }
+
+    function swapPage(){
+      toggle_Class()
+      setTimeout(function(){
+        window.location.href = 'subpage.html'
+      },700)
+    }
+
+    document.querySelectorAll('main p')[1].addEventListener('click',swapPage)
+    
+    window.onload = function() {
+      toggle_Class()
+    };
+  </script>
+
+</body>
+</html>
