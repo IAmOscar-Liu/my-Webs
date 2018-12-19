@@ -646,19 +646,28 @@ function topFunction() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 /***********Set advertisement's top-margin***************/
-let nowTopBodyHeight;
-setNowTopBodyHeight()
-function setNowTopBodyHeight(){
+// let nowTopBodyHeight;
+// setNowTopBodyHeight()
+// function setNowTopBodyHeight(){
     
-    let a = document.querySelectorAll('div div');
-    let b = a[0].offsetHeight;
-    if(b != nowTopBodyHeight){
-        nowTopBodyHeight = b;
-        $(".advertisement").css("margin-top",`${nowTopBodyHeight+20}px`);
-        //console.log(nowTopBodyHeight)
-    }
-    setTimeout(()=>setNowTopBodyHeight(),50)
-}
+//     let a = document.querySelectorAll('div div');
+//     let b = a[0].offsetHeight;
+//     if(b != nowTopBodyHeight){
+//         nowTopBodyHeight = b;
+//         $(".advertisement").css("margin-top",`${nowTopBodyHeight+20}px`);
+//         //console.log(nowTopBodyHeight)
+//     }
+//     setTimeout(()=>setNowTopBodyHeight(),50)
+// }
+
+window.addEventListener('resize',function(event){
+     let a = document.querySelectorAll('div div');
+     let b = a[0].offsetHeight;
+     //console.log(b);
+     //document.querySelectorAll('.addvertisement').style.marginTop = `${b+20}px`;
+     //$(".advertisement").css("margin-top",`${b+20}px`);
+     document.querySelector('.advertisement').style.marginTop = `${b+20}px`;
+})
 
 $(document).ready(function() {
     

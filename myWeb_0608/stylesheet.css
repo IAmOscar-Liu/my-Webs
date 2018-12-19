@@ -288,9 +288,8 @@ body {
 
 .advertisement{
   margin: 20px 0px 0px 0px ;  /*up right down left*/
-  /* margin-top: 20px; */
 }
-/* 
+
 @media  (min-width: 956px) and (max-width: 1102px){
 .advertisement {
   margin-top:30px;
@@ -320,7 +319,7 @@ body {
 .advertisement {
   margin-top:550px;
  }
-} */
+}
 .mySlides {
   display:none;
 }
@@ -402,39 +401,20 @@ body {
   width:100%;
   height:100%;
   z-index: -100;
-  /* overflow: hidden; */
+  overflow: hidden;;
 }
 
 #mmd .box-bg .box-bg-carousel{
   height:100%;
-  width:100%;
-  position: relative;
-  overflow: hidden;
-  /* transform: translateX(0%);
-  transition: transform  ease 1s; */
+  width:500%;
+  transform: translateX(0%);
+  transition: transform  ease 1s;
 }
 
 #mmd .box-bg .box-bg-carousel img{
   height:100%;
-  width:100%;
-  position: absolute;
-  top:0
-}
-
-#mmd .box-bg .box-bg-carousel .img0{
-  left:0;
-}
-#mmd .box-bg .box-bg-carousel .img1{
-  left:100%;
-}
-#mmd .box-bg .box-bg-carousel .img2{
-  left:200%;
-}
-#mmd .box-bg .box-bg-carousel .img3{
-  left:300%;
-}
-#mmd .box-bg .box-bg-carousel .img4{
-  left:400%;
+  width:20%;
+  float:left;
 }
 
 #mmd h1 {
@@ -529,7 +509,7 @@ body {
 .circle {
 	width: 10px;
 	height: 10px;
-	background: gray;
+	/*background: gray;*/
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	cursor:pointer;
@@ -820,28 +800,24 @@ body {
       background-size:cover;
     background-position:center;
     background-repeat: no-repeat;
-    /* display:flex;
+    display:flex;
     justify-content:center;
-    align-items:start; */
-    position: relative;
+    align-items:start;
 }
 
-.horizon-boxes div:nth-child(1){ background-image:url(https://source.unsplash.com/random/210x201);  }
-.horizon-boxes div:nth-child(2){ background-image:url(https://source.unsplash.com/random/210x202);   }
-.horizon-boxes div:nth-child(3){ background-image:url(https://source.unsplash.com/random/210x203);  }
-.horizon-boxes div:nth-child(4){ background-image:url(https://source.unsplash.com/random/210x204);  }
-.horizon-boxes div:nth-child(5){ background-image:url(https://source.unsplash.com/random/210x205);  }
-.horizon-boxes div:nth-child(6){ background-image:url(https://source.unsplash.com/random/210x206);  }
-.horizon-boxes div:nth-child(7){ background-image:url(https://source.unsplash.com/random/210x207);  }
-.horizon-boxes div:nth-child(8){ background-image:url(https://source.unsplash.com/random/210x208);  }
-.horizon-boxes div:nth-child(9){ background-image:url(https://source.unsplash.com/random/210x209);  }
-.horizon-boxes div:nth-child(10){ background-image:url(https://source.unsplash.com/random/210x210); }
+.horizon-boxes div:nth-child(1){ background:url(https://source.unsplash.com/random/210x201);  }
+.horizon-boxes div:nth-child(2){ background:url(https://source.unsplash.com/random/210x202);   }
+.horizon-boxes div:nth-child(3){ background:url(https://source.unsplash.com/random/210x203);  }
+.horizon-boxes div:nth-child(4){ background:url(https://source.unsplash.com/random/210x204);  }
+.horizon-boxes div:nth-child(5){ background:url(https://source.unsplash.com/random/210x205);  }
+.horizon-boxes div:nth-child(6){ background:url(https://source.unsplash.com/random/210x206);  }
+.horizon-boxes div:nth-child(7){ background:url(https://source.unsplash.com/random/210x207);  }
+.horizon-boxes div:nth-child(8){ background:url(https://source.unsplash.com/random/210x208);  }
+.horizon-boxes div:nth-child(9){ background:url(https://source.unsplash.com/random/210x209);  }
+.horizon-boxes div:nth-child(10){ background:url(https://source.unsplash.com/random/210x210); }
 
 .horizon-boxes div a{
-  position: absolute;
-  left: 50%;
-  top: 170px;
-  transform: translateX(-50%);
+   margin-top:180px;
 }
 
  .welcome-section{

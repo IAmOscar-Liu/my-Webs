@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>myWeb</title>
+<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+<link rel="stylesheet" type = "text/css" href = "stylesheet.css">
+</head>
+
+<body>
+
+<div class="top-body">
+ <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+ <div class="entry-pic">
+  <div>
+    <h2 style="font-size: 48px; color: orange">Welcome to My Shopping Website</h2>
+    <p style="margin: 50px 0 ;color:lime ;font-size:36px">Everything you want can be found here!!!</p>
+    <a href="#" class="btn" style="font-size: 30px;background:red;border-radius: 25px;">Enjoy it</a>
+  </div>  
+ </div>
+ <div class="header">
+  <div class="inner-header">
+	 <ul class="header_left">
+		<li><a href="#">header1</a></li>
+		<li><a href="#">header2</a></li>
+		<li><a href="#">header3</a></li>
+	 </ul>
+     <ul class="header_right">
+        <li><a href="#">contact us</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">register</a></li>
+        <li><a href="#">log in </a></li>
+     </ul>
+     <div style="clear:both"></div>
+   </div>
+ </div>	
+ <div class="searchBar">
+  <form action="">
+    <div class="form-row">  
+      <h1><i class="fas fa-cart-arrow-down"></i>    My Shopping Website</h1>
+      <input type="text" id="name">
+      <div class="button"><a href="">Search</a></div>
+      <div class="icon"><i class="fas fa-question-circle" id="questionmark"></i>Help</div>
+      <div class="icon"><i class="far fa-envelope" id="mail"></i>Mail</div> 
+    </div>
+  </form>
+ </div>
+ <div class="navBar">  
+  <nav>
+    <ul id="navmenu">
+        <li><a href="#">hyperlink1</a></li>
+        <li><a href="#">hyperlink2</a><span class="darrow">&#9660;</span>
+            <ul class="sub1">         
+                <li><a href="#">hyperlink 2.1</a></li>
+                <li><a href="#">hyperlink 2.2</a></li>
+                <li><a href="#">hyperlink 2.3</a></li>
+                <li><a href="#">hyperlink 2.4</a></li>
+            </ul>
+        </li>
+        <li><a href="#">hyperlink3</a></li>
+        <li><a href="#">hyperlink4</a><span class="darrow">&#9660;</span>
+            <ul class="sub1">
+                <li><a href="#">hyperlink 4.1</a></li>
+                <li><a href="#">hyperlink 4.2</a></li>
+                <li><a href="#">hyperlink 4.3</a><span class="rarrow">&#9654;</span>
+                    <ul class="sub2">
+                        <li><a href="#">hyperlink 4.3.1</a></li>
+                        <li><a href="#">hyperlink 4.3.2</a></li>
+                        <li><a href="#">hyperlink 4.3.3</a></li>          
+                     </ul>
+                </li>
+                <li><a href="#">hyperlink 4.4</a></li>
+            </ul>
+        </li>
+        <li><a href="#">hyperlink5</a>
+      </ul>
+   </nav>
+ </div>
+
+</div>
+<!-- Advertisement -->
+
+<div class="advertisement" >
+  <div class="mySlides advertisement_1">
+    <h1>This is the ad1</h1>
+  </div>
+
+  <div class="mySlides advertisement_2">
+    <h1>This is the ad2</h1>
+  </div>
+
+  <div class="mySlides advertisement_3">
+    <h1>This is the ad3</h1>
+  </div>
+</div>
+<!-- boxes -->
+<div class="boxes">
+      <div class=" main_box" id="mmd">
+        <h1>Buy one get one FREE!</h1>
+        <p>From NOW!!! </p>
+        <a href="" class="btn" style="font-size:20px">Read more</a>
+        <div class="triangle-left" onclick="plusDivs(-1)"></div>
+        <div class="triangle-right" onclick="plusDivs(1)"></div>
+        <div class="circle circle1" onclick="selectDivs(1)"></div>
+        <div class="circle circle2" onclick="selectDivs(2)"></div>
+        <div class="circle circle3" onclick="selectDivs(3)"></div>
+        <div class="circle circle4" onclick="selectDivs(4)"></div>
+        <div class="circle circle5" onclick="selectDivs(5)"></div>
+      </div>
+
+      <div class="side_box_a">
+        <h1>On sales</h1>
+        <p>$199/mo</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+
+      <div class="side_box_b">
+        <h1>On sales</h1>
+        <p class="price">$299/mo</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+</div>
+
+<!--horizontal boxes-->
+<div class="horizon-boxes-wrapper">
+  <div class="horizon-boxes">
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+    <div><a href="#" class="btn">Buy Now</a></div>
+  </div>
+</div>
+
+
+<!--main body-->
+<div class="main-body">
+  <div class="main-nav-wrapper">
+   <nav class="main-nav">
+      <ul>
+        <li>
+          <a  onclick="selectPeriod(0)" class="bt">Week</a>
+        </li>
+        <li>
+          <a  onclick="selectPeriod(1)" class="bt">Month</a>
+        </li>
+        <li>
+          <a onclick="selectPeriod(2)" class="bt">Quarter</a>
+        </li>
+        <li>
+          <a  onclick="selectPeriod(3)" class="bt">Year</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- products -->
+  <div class="products">
+   <!-- week -->
+   <div class="product">
+    <h2>NO.1 in this week</h2>
+    <img src="https://source.unsplash.com/random/200x201" style="display:block">
+    <h4>Product 1</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div>
+  
+  <div class="product">
+    <h2>NO.2 in this week</h2>
+    <img src="https://source.unsplash.com/random/200x202" style="display:block">
+    <h4>Product 2</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div>
+  
+  <div class="product">
+    <h2>NO.3 in this week</h2>
+    <img src="https://source.unsplash.com/random/200x203" style="display:block">
+    <h4>Product 3</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div> 
+  <!-- month -->
+   <div class="product">
+    <h2>NO.1 in this month</h2>
+    <img src="https://source.unsplash.com/random/200x204" style="display:block">
+    <h4>Product 1</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div>
+  
+  <div class="product">
+    <h2>NO.2 in this month</h2>
+    <img src="https://source.unsplash.com/random/200x205" style="display:block">
+    <h4>Product 2</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div>
+  
+  <div class="product">
+    <h2>NO.3 in this month</h2>
+    <img src="https://source.unsplash.com/random/200x206" style="display:block">
+    <h4>Product 3</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div> 
+  <!-- quarter -->
+   <div class="product">
+    <h2>NO.1 in this quarter</h2>
+    <img src="https://source.unsplash.com/random/200x207" style="display:block">
+    <h4>Product 1</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div>
+  
+  <div class="product">
+    <h2>NO.2 in this quarter</h2>
+    <img src="https://source.unsplash.com/random/200x208" style="display:block">
+    <h4>Product 2</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div>
+  
+  <div class="product">
+    <h2>NO.3 in this quarter</h2>
+    <img src="https://source.unsplash.com/random/200x209" style="display:block">
+    <h4>Product 3</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div> 
+  <!-- year -->
+   <div class="product">
+    <h2>NO.1 in this year</h2>
+    <img src="https://source.unsplash.com/random/200x210" style="display:block">
+    <h4>Product 1</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div>
+  
+  <div class="product">
+    <h2>NO.2 in this year</h2>
+    <img src="https://source.unsplash.com/random/200x211" style="display:block">
+    <h4>Product 2</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div>
+  
+  <div class="product">
+    <h2>NO.3 in this year</h2>
+    <img src="https://source.unsplash.com/random/200x212" style="display:block">
+    <h4>Product 3</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam obcaecati vel.</p>
+    <a href="#" class="btn">Buy Now</a>
+  </div> 
+
+</div>
+</div>
+
+<div class="horizontal-wrapper">
+  <div class="horizontal-wrapper-head">
+     <h2><i class="fas fa-sitemap"></i>    Categories</h2>
+  </div>
+  <div class="horizontal-wrapper-body">
+     <div><p>link1</p></div>
+     <div><p>link2</p></div>
+     <div><p>link3</p></div>
+     <div><p>link4</p></div>
+     <div><p>link5</p></div>
+     <div><p>link6</p></div>
+     <div><p>link7</p></div>
+     <div><p>link8</p></div>
+     <div><p>link9</p></div>
+     <div><p>link10</p></div>
+     <div><p>link11</p></div>
+     <div><p>link12</p></div>
+   </div>  
+</div>
+
+<!-- category -->
+<div class="category">
+  <div class="item1">
+     <div class="item1-head">    
+       <h2><i class="far fa-newspaper"></i>  Activities</h2>
+     </div>
+     <div class="item1-body">
+       <ul>
+        <li><a href="#">U.S. ban on sales to China's ZTE opens fresh front as tensions escalate</a></li>
+        <li><a href="#">Robots will replace humans in retail, says China's JD.com</a></li>
+        <li><a href="#">Tech companies to be forced to give police overseas data under EU proposal</a></li>
+        <li><a href="#">Supreme Court rules that Microsoft email privacy dispute is moot</a></li>
+        <li><a href="#">Tech firms, including Microsoft, Facebook, vow not to aid government cyber attacks</a></li>
+     
+       </ul>
+     </div>      
+  </div>
+
+  <div class="item2">
+     <div class="item2-head">
+       <h2><i class="fas fa-book"></i>  item 2</h2>
+     </div>  
+     <div class="item2-body">
+        <ul>
+          <li><a href="#">item 2.1</a></li>
+          <li><a href="#">item 2.2</a></li>
+          <li><a href="#">item 2.3</a></li>
+          <li><a href="#">item 2.4</a></li>
+          <li><a href="#">item 2.5</a></li>
+          <li><a href="#">item 2.6</a></li>
+          <li><a href="#">item 2.7</a></li>
+          <li><a href="#">item 2.8</a></li>
+          <li><a href="#">item 2.9</a></li>
+        </ul>
+     </div>        
+  </div>
+
+  <div class="item3">
+    <div class="item3-head">
+      <h2><i class="fas fa-pencil-alt"></i>  item 3</h2>
+    </div> 
+    <div class="item3-body">
+      <ul>
+        <li><a href="#">item 3.1</a></li>
+        <li><a href="#">item 3.2</a></li>
+        <li><a href="#">item 3.3</a></li>
+        <li><a href="#">item 3.4</a></li>
+        <li><a href="#">item 3.5</a></li>
+      </ul>
+    </div>     
+  </div> 
+
+  <div class="item4">
+    <div class="item4-head">
+      <h2><i class="far fa-folder-open"></i>  item 4</h2>
+    </div>  
+    <div class="item4-body">
+      <ul>
+        <li><a href="#">item 4.1</a></li>
+        <li><a href="#">item 4.2</a></li>
+        <li><a href="#">item 4.3</a></li>
+        <li><a href="#">item 4.4</a></li>
+        <li><a href="#">item 4.5</a></li>
+      </ul>
+    </div>      
+  </div>
+
+  <div class="item5">
+    <div class="item5-head">
+      <h2>Others</h2>
+    </div>  
+    <div class="item5-body">
+    </div>    
+  </div>
+
+</div>
+
+<!--footer-->
+<div class="footer">
+  <p>Copyright &copy; Oscar Liu 2018</p>
+  
+</div>
+
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+/* advertisement */  
+var slideIndex = 0;
+carousel();
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "flex"; 
+    setTimeout(carousel, 2000); 
+}
+/*boxes*/
+var boxIndex = 1;
+showDivs(boxIndex);
+
+function plusDivs(n) {
+  showDivs(boxIndex += n);
+}
+function selectDivs(n){
+  boxIndex = n;
+  showDivs(boxIndex);
+}
+function showDivs(n) {
+  if (n > 5) {boxIndex = 1}    
+  if (n < 1) {boxIndex = 5};
+  switch(boxIndex) {
+        case 1:
+            document.getElementById("mmd").style.background="url(https://source.unsplash.com/random/201x200)";
+            break;
+        case 2:
+            document.getElementById("mmd").style.background="url(https://source.unsplash.com/random/202x200)";
+            break;
+        case 3:
+            document.getElementById("mmd").style.background="url(https://source.unsplash.com/random/203x200)";
+            break;
+        case 4:
+            document.getElementById("mmd").style.background="url(https://source.unsplash.com/random/204x200)";
+            break;
+        default:
+            document.getElementById("mmd").style.background="url(https://source.unsplash.com/random/205x200)";
+            break;    
+    }
+     document.getElementById("mmd").style.backgroundSize="cover";
+     document.getElementById("mmd").style.backgroundPsoition="center";
+     /*document.getElementById("mmd").style.zIndex=-1;*/
+
+
+     
+     var x =  x = document.getElementsByClassName("circle");
+      for (i = 0; i < x.length; i++) {
+         x[i].style.background="gray";
+      }
+      x[boxIndex-1].style.background = "white";
+}
+/*products*/
+
+var periodIndex = 0;
+ showProduct(periodIndex);
+
+function selectPeriod(n){
+    periodIndex = n;
+    showProduct(periodIndex);
+
+}
+function showProduct(n){
+    var x = document.getElementsByClassName("product");
+    var y = document.getElementsByClassName("bt");
+    for (var i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    for(var j=0;j<3;j++){
+     x[3*n+j].style.display="flex";
+    }
+  
+    for (var s=0;s<y.length; s++){
+     y[s].style.background="#ddd";
+     y[s].style.boxShadow="0 1px 5px rgba(104, 104, 104, 0.8)";
+    }
+    y[periodIndex].style.background="#d5f5a6";
+    y[periodIndex].style.boxShadow= "none";
+
+}
+/*top button*/
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+$(document).ready(function() {
+         
+    $(".entry-pic a").click(function() {
+                   
+        $(".entry-pic").hide();
+ 
+    });
+    
+    
+});
+
+</script>
+
+</html>
