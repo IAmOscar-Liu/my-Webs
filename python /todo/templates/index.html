@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <div>Add a new todo item: 
+        <!--<form action="{{ url_for('add') }}" method="POST">-->
+        <form>
+            <input type="text" name="todoitem" id="theItem">
+            <input type="submit" value="Add Item">
+
+        </form>
+        <button id="btn" value="show data" onclick="showData()">Show data</button>
+    </div>
+    <div>
+        <h2>Incomplete Items</h2>
+        <ul>
+            {% for todo in incomplete %}
+            <li style="font-size: 30pt">{{ todo.text }} <a href="{{ url_for('complete', id=todo.id) }}">Mark As Complete</a></li>
+            {% endfor %}    
+        </ul>
+        <h2>Completed Items</h2>
+        <ul>
+            {% for todo in complete %}
+            <li style="font-size: 30pt">{{ todo.text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('form').on('submit',function(e){
+      e.preventDefault();
+      //$.ajax({
+        //data:{todoitem:$('#theItem').val()},
+        //type:'POST',
+        //url:'{{ url_for('add') }}'
+      //})
+
+      let token = new FormData();
+      token.append('todoitem',$('#theItem').val());
+      //token.append('todoitem2','happy');
+      fetch('{{ url_for('add') }}',{
+        method:'POST',
+        body:token
+      })
+      .then(res=>console.log('sucess123'))
+      .catch(err=>console.log(err))
+    })
+  })
+
+  function showData(){
+    fetch('http://localhost:5000',{
+      method:'POST'
+    })
+    .then(res=>{return res.json()})
+    .then(data=>console.log(data))
+    .catch(err=>console.log(err))
+  }
+</script>
+</body>
+</html>
