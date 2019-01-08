@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to rearrange the following list</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var vocabularies = [{name:'frog'},{name:'cat',next:'dog'},{name:'dog',next:'egg'},{name:'banana',next:'cat'},{name:'apple',next:'banana'},{name:'egg',next:'frog'}];
+
+for(let vocabulary of vocabularies){
+  document.getElementById("demo").innerHTML += vocabulary.name + ", " 
+}
+
+function myFunction() {
+   document.getElementById("demo").innerHTML = '';
+  
+  let start;
+  for(let vocabulary of vocabularies){
+    let child = vocabulary.next;
+    //console.log(child)
+    for(let v of vocabularies){
+      if(child == v.name){
+        vocabulary['child'] = v;
+        v['parent'] = vocabulary
+        //console.log(vocabulary)
+        break;
+      }
+    }
+    
+  }
+  
+  for(let vocabulary of vocabularies){
+    if(vocabulary.parent == undefined){
+       start = vocabulary
+       //console.log(start)
+    }
+  }
+  
+  let next = start;
+  while(next){
+    document.getElementById("demo").innerHTML += next.name + ", ";
+    next = next.child
+  }
+  
+   //console.log(vocabularies)
+}
+</script>
+
+</body>
+</html>

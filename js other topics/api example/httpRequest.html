@@ -1,0 +1,47 @@
+
+<html >
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JSON and AJAX</title>
+</head>
+
+<body>
+<header>
+  <h1>JSON and AJAX</h1>
+  <button id="btn">Fetch Info for 3 New Animals</button>
+</header>
+
+<div id="animal-info"></div>
+</body>
+<script>
+var pageCounter = 1;
+var animalContainer = document.getElementById("animal-info");
+var btn = document.getElementById("btn");
+
+btn.addEventListener("click", function() {
+  var ourRequest = new XMLHttpRequest();
+
+  //ourRequest.open('GET', 'sample' + pageCounter + '.txt');
+  ourRequest.onreadystatechange  = function() {
+    if (ourRequest.status >= 200 && ourRequest.status < 400) {
+      var ourData = JSON.parse(ourRequest.responseText);
+      console.log(ourData);
+    } else {
+      console.log("We connected to the server, but it returned an error.");
+    }
+
+  };
+
+
+  ourRequest.open('GET', 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyBH959l1KOCgndIu6yEQ1rgyFB8MffgPcA'
+);
+  ourRequest.setRequestHeader('Referer', 'something')
+  ourRequest.send();
+
+
+});
+
+
+</script>
+</html>
