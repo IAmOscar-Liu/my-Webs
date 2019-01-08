@@ -24,7 +24,7 @@ function setup() {
 
 function draw() {
   background(51);
-  end.follow(mouseX, mouseY);
+  end.follow(mouseX, mouseY);  //The last segment follow the mouse
   end.update();
 
   let next = end.parent;
@@ -34,7 +34,7 @@ function draw() {
     next = next.parent;
   }
 
-
+  // The first segment attach to the base
   start.setA(base);
   start.calculateB();
   next = start.child;
