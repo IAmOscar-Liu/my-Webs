@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>shopping list</title>
+</head>
+<body>
+    <div>
+        <h1>My Shoppinglist</h1>
+        <form action="" id='myForm'>          
+            <label >
+                <span>Item </span>
+                <input type="text" id='item' >
+            </label>          
+            <label>
+                <span>Price </span> 
+                <select id="itemPrice">
+                    <option value="100">100</option>
+                    <option value="200">200</option> 
+                    <option value="300">300</option>
+                    <option value="400">400</option>
+                </select>
+            </label>
+            <label>
+                <span>Number </span>
+                <input type="number" id='itemNum' value ='1' min = "1" max= "5">
+            </label>         
+            <button type="submit">submit</button>
+        </form>
+        <p class="line"></p>
+        <table id='myTable'></table>
+        <p id="sum">total: <span>0</span></p>        
+    </div>
+
+<script>
+
+  class itemlist{
+      constructor(item, price, number){
+          this.item = item;
+          this.price = price;
+          this.number = number;
+          this.isEditing = false;
+      }
+
+      toggleEditing(){
+          //console.log('start editing')
+          this.isEditing = !this.isEditing
+          Shop.showItems();
+      }
+
+      handleEditing(e){
+        //console.log(e.target.name)
+        if(e.target.name == 'price'){
+            this.price = parseInt(e.target.value)
+        }else{
+            this.number = parseInt(e.target.value);
+        }  
+      }
+
+      display(i){
+          if(!this.isEditing){
+            return `<tr>
+                        <td>item: ${this.item}</td>
+                        <td>price: ${this.price}</td>
+                        <td>number: ${this.number} </td>
+                        <td><button onclick="Shop.store[${i}].toggleEditing()">Edit</button></td>
+                        <td><button onclick="Shop.handleDelete('${this.item}')">Delete</button></td>
+                    </tr>`
+          }else{ 
+            return `<tr>
+                        <td>item: ${this.item}</td>
+                        <td>price: <select name="price" onchange="Shop.store[${i}].handleEditing(event)">
+                                        <option value='${this.price}' selected disabled hidden>${this.price}</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option> 
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                    </select>
+                        </td>
+                        <td>number: <input name="number" type="number" value='${this.number}' min="1" max="5" onchange="Shop.store[${i}].handleEditing(event)"> </td>
+                        <td><button onclick="Shop.store[${i}].toggleEditing()">OK</button></td>
+                        <td><button onclick="Shop.handleDelete('${this.item}')">Delete</button></td>
+                    </tr>`           
+          }
+      }
+  }    
+
+  class shop{
+    constructor(){
+        this.store = [];
+        //this.itemlist = [];
+    }
+
+    handleSubmit(){
+      let item = document.querySelector('#item').value;
+      let price = parseInt(document.querySelector('#itemPrice').value);
+      let number = parseInt(document.querySelector('#itemNum').value);
+      //store[item] = {'price':price,'number':number}
+      if(item == ''){
+          alert('You have to fill in the item')
+      }else{
+        this.addItem(item,price,number);
+      }   
+    }
+
+    addItem(item,price,number){
+        let isExist = false;
+        for(let i = 0; i<this.store.length; i++){
+            if(this.store[i].item == item){
+                //console.log('same item')
+                if(this.store[i].price == price){
+                    if((this.store[i].number + number) <= 5){
+                        this.store[i].number += number;
+                    }else{
+                        alert("The total number of a single item can't exceed 5")
+                    }
+                }else{
+                    alert("You can't add the same product with different price")
+                }
+                isExist = true;
+                break;
+            }
+        }
+
+        if(!isExist){
+            this.store.push(new itemlist(item, price, number))
+        }
+
+        this.showItems()
+    } 
+
+    showItems(){ 
+      let content = '';
+      let sum = 0
+      this.store.forEach((item,i)=>{
+          content += item.display(i);
+          sum += item.number * item.price
+      })
+      document.getElementById('myTable').innerHTML = content;
+      document.querySelector("#sum span").innerText = sum;
+    }
+
+    handleDelete(_item){
+      //console.log(_item)
+      this.store = this.store.filter(item => item.item !== _item);
+      this.showItems();
+    }
+  }
+
+  let Shop = new shop();
+  document.querySelector('#myForm').addEventListener('submit',e=>{
+      e.preventDefault();
+      Shop.handleSubmit();
+  })
+
+
+</script>    
+</body>
+</html>
