@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Search for your Soulmate</h1>
+
+        <div class="search-contain">
+            <div class="input-wrapper">
+                <input type="text" id="search" placeholder=""  data-message="Man who love weirdos">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/search.svg" id="search-btn" alt="search button">
+                <div class="input-border"></div>
+            </div>
+            <p id="tip">Hit enter to search</p>
+        </div>
+    </div>
+
+<script>
+    const searchContain = document.querySelector('div.search-contain');
+    const searchBtn = document.getElementById('search-btn');
+    const search = document.getElementById('search');
+    const border = document.querySelector('div.input-border')
+    const tip = document.getElementById('tip');
+
+    let i = 0;  
+    //let message = 'Man who love weirdos';
+    let speed = 100;
+    let isExpanded = false;
+    let searchValue = '';
+     
+    searchBtn.addEventListener('click', ()=>{
+        searchContain.style.width = isExpanded ? '60px' : '80%' ;
+        //search.style.width = isExpanded ? '60px' : '100%';
+        search.style.paddingLeft = isExpanded ? '20px' : '60px';
+        search.style.cursor = isExpanded ? 'pointer' : 'text';
+
+        if(isExpanded){
+            tip.style.visibility = 'hidden';
+            tip.style.opacity = 0;
+            setTimeout(()=>{
+                border.style.display = 'block';
+            },1000)
+        }else{           
+            border.style.display = 'none';
+            if(searchValue != ''){
+                tip.style.visibility = 'visible';
+                tip.style.opacity = 1;
+            }
+        }
+        
+        // border.style.animation = isExpanded ? 'grow 1s infinite' : 'none';
+        isExpanded ? search.blur() : search.focus();
+        isExpanded = !isExpanded;
+        typeWriter();
+
+    })
+
+    function typeWriter(){
+        if(i < search.dataset.message.length  && isExpanded){
+            //let msg = search.getAttribute('placeholder') + message.charAt(i);
+            let msg = search.getAttribute('placeholder') + search.dataset.message.charAt(i); 
+            search.value = searchValue;
+            search.setAttribute('placeholder',msg);
+            i++;
+            setTimeout(typeWriter,speed)
+        }else if(!isExpanded){
+            i = 0;
+            search.value = '';
+            search.setAttribute('placeholder','');
+        }
+    }
+
+    search.addEventListener('keydown',function(e){
+        search.value = searchValue; 
+        //You have to wait for a while to access the new value
+        setTimeout(()=> {
+            //console.log(search.value)
+            searchValue = search.value;
+            if(searchValue.length == 0){
+                tip.style.visibility = 'hidden';
+                tip.style.opacity = 0;
+            }else{
+                tip.style.visibility = 'visible';
+                tip.style.opacity = 1;
+            }
+        },10);
+    })
+
+    // function saveSearchValue(){
+    //     searchValue = search.value
+    // }
+
+</script>
+</body>
+</html>
