@@ -1,0 +1,39 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+  <!-- uncomment lines below to include extra p5 libraries -->
+  <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js"></script>
+  <!--<script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.js"></script>-->
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="grid.js"></script>
+  <script language="javascript" type="text/javascript" src="cell.js"></script>
+
+</head>
+
+<body>
+  <div>
+      <p id="info">Life: <span></span> &ThickSpace; Score: <span></span> &ThickSpace; Best: <span></span></p>
+      <div id="sketch-holder">
+          <div id='result'></div>
+          <div id="message">
+            <p></p>
+            <button id='reset' onclick="reload()">Play Again</button>
+          </div>
+          <div id="imgContainer">
+              <div></div>
+      </div>
+      </div>
+      <div class='buttons'>
+          <button name='myBtn' value='red'>Clear Red</button>
+          <button name='myBtn' value='blue'>Clear Blue</button>
+          <button name='myBtn' value='yellow'>Clear Yellow</button>
+          <button name='myBtn' value='green'>Clear Green</button>
+          <button name='myBtn' value='purple'>Clear Purple</button>
+      </div>   
+  </div>
+
+  <script language="javascript" type="text/javascript" src="others.js"></script>
+</body>
+</html>

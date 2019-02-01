@@ -1,0 +1,74 @@
+body {
+    padding: 15px;
+     margin: 0;
+}
+
+p#info {
+     margin-top: 10px; font-size: 25px; 
+} 
+
+div#sketch-holder{
+    position: relative;
+}
+
+div#sketch-holder #frogs-holder{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 99; 
+}
+
+div#sketch-holder #frogs-holder > div{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+div#sketch-holder #result{
+    background-color: white;
+    opacity: 0.7;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100; 
+    display: none;
+}
+
+div#sketch-holder #message{
+    display: none;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 101;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div#sketch-holder #message p{
+    font-size: 36px;
+    color: red;
+}
+
+button{
+    background: orange;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+button:hover{
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+img{
+    position:absolute; 
+    top:450; 
+    left:200; 
+}
