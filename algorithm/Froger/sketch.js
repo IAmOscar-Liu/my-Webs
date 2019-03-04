@@ -8,6 +8,8 @@ const numOfLanes_Log = 3;
 let numOfSuccess_Frog = 0;
 let life = 3;
 let img;
+let tmpString = '';
+let myTimeout = undefined;
 
 // function preload() {
 //     img = loadImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv57P7THa-1RjXNlCBg8EATwVQZVu4mHyHXw_r4w3Sk6ozn0lc');
@@ -35,9 +37,11 @@ function setup(){
 function keyPressed(){
     //left: 37  right:39 top:38 down:40
     switch(keyCode){
-        case 37: if((Frogs[0].x - grid) >= 0) Frogs[0].x -= grid;                  
+        case 37: if((Frogs[0].x - grid) >= 0)  Frogs[0].x -= grid
+                 else  Frogs[0].x = 0                 
                   break;
-        case 39: if((Frogs[0].x + grid) <= (width-grid)) Frogs[0].x += grid;
+        case 39: if((Frogs[0].x + grid) <= (width-grid)) Frogs[0].x += grid
+                 else Frogs[0].x = width-grid
                   break;      
         case 38: 
                 if((Frogs[0].y - grid) >= grid){
@@ -52,9 +56,38 @@ function keyPressed(){
                 }  
                 break; 
         case 40: if((Frogs[0].y + grid) <= (height-grid)) Frogs[0].y += grid;
-                  break; 
+                  break;          
         default: break;
     }
+
+    if(key == 'G' || key == "O" || key == 'W' || key == "I" || key == 'N'){
+        //console.log(`pressing ${key}`)
+        tmpString += key;       
+        if(myTimeout != undefined) clearTimeout(myTimeout);
+        myTimeout = setTimeout(()=>{
+            tmpString = '';
+            myTimeout = undefined
+        },1000)       
+
+        if(tmpString == 'GO'){
+            noLoop();
+            showGameover();
+        }
+        else if(tmpString == 'WIN'){
+            noLoop();
+            showSuccess();
+        } 
+
+    }
+    // let onlane;
+    // if(Frogs[0].y <= (height-2*grid) && Frogs[0].y >=(height-5*grid)){
+    //     onlane = ((height-2*grid) - Frogs[0].y)/grid
+    //     console.log('on road' , onlane)
+    // }else if(Frogs[0].y <= (height-7*grid) && Frogs[0].y >=(height-9*grid)){
+    //     onlane = ((height-7*grid) - Frogs[0].y)/grid
+    //     console.log('on water' , onlane)
+    // }
+    //console.log(Frogs[0].x)
 }
 
 function draw(){
