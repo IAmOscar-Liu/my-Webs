@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        unSortedArray : <span></span><br>
+        SortedArray : <span></span>
+    </div>
+
+<script>
+
+ const unSortedArray = [99,153,3,2,1,5,6,7,8,9,1,4,6,]
+ let SortedArray = [];
+ document.querySelectorAll('div span')[0].innerText = unSortedArray; 
+ //document.querySelectorAll('div span')[1].innerText = SortedArray;    
+
+function quickSort(arr){
+    if (arr.length <= 1) return arr;
+    let cmp = [];
+    let small = [];
+    let large = [];
+    cmp.push(arr.shift());
+
+    while( arr.length > 0){
+        if(arr[0] < cmp) small.push(arr.shift())
+        else large.push(arr.shift())
+    }
+
+    return quickSort(small).concat(cmp).concat(quickSort(large))
+}
+
+document.querySelectorAll('div span')[1].innerText  = quickSort(unSortedArray)
+
+
+</script>
+    
+</body>
+</html>

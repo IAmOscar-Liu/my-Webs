@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <p>Click the button to join the array elements into a string.</p>
+        
+        <button onclick="myFunction()">Try it</button>
+        
+        <p id="demo"></p>
+        
+        <script>
+        function myFunction() {
+          var fruits = ["Banana", "Orange", "Apple", "Mango"];
+          var x = document.getElementById("demo");
+          x.innerHTML = fruits.join("&#8202 ");
+        }
+        </script>
+        
+        </body>
+</html>

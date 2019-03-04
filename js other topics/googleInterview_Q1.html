@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+function Combination(selection, choice, arr){
+    if(selection != arr.length) console.log('The number of selection should be equal to the length of array')  
+    else if(choice == 0) return [[]];   
+    else if(selection == choice) return [arr];
+    else{
+        let results = [];
+        for(let i = 0; i <= (arr.length - choice); i++){
+            let nowResults = [];
+            let CmbResults = Combination(selection - i - 1, choice - 1, arr.slice(i + 1, arr.length));
+
+            while(CmbResults.length > 0){
+                nowResults.push([arr[i]].concat(CmbResults[0]));
+                CmbResults.shift()
+            }
+
+            results =results.concat(nowResults)
+        }
+
+        return results;
+    }  
+}
+
+//console.log(Combination(5 ,5 ,['a','b','c','d','e']))
+
+function findMaxCommonStr(str1, str2){
+    let tmpComStr = ''
+    for(let e of str2){
+        if(str1.includes(e)) tmpComStr = tmpComStr.concat(e)
+    }
+    
+    const tmpComArray = tmpComStr.split('');
+    
+    str1 = str1.split('');
+    str1.forEach((e, index)=>{
+        if(!tmpComArray.includes(e)) str1.splice(index,1) 
+    })
+    str1 = str1.join('')       
+
+    let allCombination = [];
+
+    for(let i = 1; i <= tmpComArray.length; i++){
+        allCombination.push( Combination(tmpComArray.length , i, tmpComArray))
+    }
+
+    let NumOfMaxCommonStr = 0;
+    let MaxCommonStr = [];
+
+    allCombination.forEach((cmb) =>{
+        cmb.forEach(el=>{
+            if(str1.includes(el.join(''))){
+                if(el.join('').length > NumOfMaxCommonStr){
+                    NumOfMaxCommonStr = el.length;
+                    MaxCommonStr = [el.join('')]
+                }else if(el.join('').length == NumOfMaxCommonStr && !MaxCommonStr.includes(el.join(''))) MaxCommonStr.push(el.join(''))
+            }
+
+        })
+    })
+
+    return MaxCommonStr;
+}
+
+console.log(findMaxCommonStr('ABAZDC','BACBAD'))  // [ABAD]
+console.log(findMaxCommonStr('AGGTAB','GXTXAYB'))  // [GTAB]
+console.log(findMaxCommonStr('ABBA','ABCABA'))  // [ABBA]
+console.log(findMaxCommonStr('AA','AAAA'))  // [AA]
+console.log(findMaxCommonStr('AXBCD','CBABD'))  // [CD, AB]
+console.log(findMaxCommonStr('...','.'))  // [.]
+
+
+</script>    
+    
+</body>
+</html>

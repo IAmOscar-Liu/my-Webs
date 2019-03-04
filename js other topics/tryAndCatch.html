@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+  <div></div>
+
+<script>
+    let myData = {
+        'title_1':{
+            'subtitle_1':'This is subtitle 1.1',
+            'subtitle_2':'This is subtitle 1.2'
+            },
+        'title_2':{
+            'subtitle_1':'This is subtitle 2.1',
+            'subtitle_2':'This is subtitle 2.2',
+            'subtitle_3':{
+                    'detail_1':'This is detail 2.3.1',
+                    'detail_2':'This is detail 2.3.2',
+                }
+            },    
+        'title_3':'This is title 3'
+        }
+
+        //if you run this, you will get an error of undefined
+        //console.log(myData.title_1.subtitle_3.detail_1)  
+        //console.log('we can still go on')  
+    
+        let data = undefined;
+
+        try{
+            //console.log(myData.title_1.subtitle_3['detail_1'])
+            //data = myData.title_2.subtitle_3['detail_1'] 
+            
+            data = myData.title_1.subtitle_2['detail_1']  
+        }catch(e){
+            console.log('Error occurs, but we can still move on. The Error is ' + e);
+            data = undefined;
+        }
+        
+        console.log('The data we get is: ' + data)
+
+  
+
+</script>
+</body>
+</html>

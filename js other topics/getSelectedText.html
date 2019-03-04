@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>getSelection</title>
+</head>
+<body>
+
+    <div>
+        <p style="text-align:justify">Lorem &ThinSpace; ipsum dolor sit amet consectetur adipisicing elit. Magni perferendis unde debitis blanditiis doloribus itaque culpa et in voluptatum consequuntur, hic nihil totam repudiandae! Perspiciatis eveniet explicabo accusantium blanditiis cupiditate?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias sequi odit iure quidem magni sit maiores doloremque voluptate laudantium rem non exercitationem eveniet suscipit dignissimos asperiores amet, hic magnam ut?
+        </p>
+
+        <textarea name="selected-result" id="" cols="30" rows="10"></textarea>
+    </div>
+    
+
+<script>
+    
+    getSelectionText = ()=>{
+        let text = "";
+        if (window.getSelection) {
+            text = window.getSelection().toString();
+        } else if (document.selection && document.selection.type != "Control") {
+            //console.log(document.selection)
+            text = document.selection.createRange().text;
+        }
+        return text;
+    }
+
+    document.onmouseup = document.onkeyup = document.onselectionchange = function() {
+        document.querySelector("textarea[name='selected-result']").value = getSelectionText();
+    };
+</script>
+</body>
+</html>

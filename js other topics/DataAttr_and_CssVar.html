@@ -5,9 +5,13 @@
 
 <style>
 
+ul{
+ font-size: var(--ul-index);
+
+}
 
 li{
-  color:var(--main-index)
+  color:var(--main-index);
 }
 
 li::before{
@@ -22,21 +26,96 @@ li::before{
 #tarantula::before{
   content:attr(data-color)
 } */
+
+
+#text-anim{
+  margin: 10px 0;
+  font-size: 50px;
+  color:blueviolet;
+  width:1000px;
+   height:100px; 
+  position: relative; 
+}
+
+#text-anim span{
+  /* display:none; */
+  opacity: 0;
+}
+
+#text-anim span.init-text{
+   display: inline-block;
+   line-height:100px;
+   text-align: center;
+   width:32px;
+   background: yellow; 
+   position: absolute; 
+   top:0px; 
+   top:0px; 
+   left:calc(var(--main-index)*32px + 500px);
+   opacity: 0; 
+    transition: left 2s ease, opacity 2s ease;
+   transition-delay: calc(.1s * var(--main-index));
+
+
+}
+
+
+#text-anim span.example{
+   left:calc(var(--main-index)*var(--main-pos)) ;
+   opacity: 1;
+}
+
 </style>
 </head>
 <body>
 
 <h1>Species</h1>
+
 <p>Click on a species to see what type it is:</p>
 
-<ul style="--ul-index:24px">
-  <li onclick="showDetails(this)" id="owl" data-animal-type="bird" data-color="red" style="--main-index:red">Owl </li>
-  <li onclick="showDetails(this)" id="salmon" data-animal-type="fish" data-color="blue" style="--main-index:blue">Salmon</li>  
-  <li onclick="showDetails(this)" id="tarantula" data-animal-type="spider" data-color="gray" style="--main-index:gray">Tarantula</li>  
+
+
+<ul style="--ul-index:36px"  >
+  <li onclick="showDetails(this)" id="owl" data-animal-type="bird" data-color="red" style="--main-index:red;--main-num:100px">Owl </li>
+  <li onclick="showDetails(this)" id="salmon" data-animal-type="fish" data-color="blue" style="--main-index:blue;--main-num:200px">Salmon</li>  
+  <li onclick="showDetails(this)" id="tarantula" data-animal-type="spider" data-color="gray" style="--main-index:gray;--main-num:300px">Tarantula</li>  
 </ul>
 <input id="myInput" type="text"><button id="mybtn" onclick="handleClick()">Get first color</button>
 
+<h2 id='text-anim' style="--main-pos:30px" >
+  <span style='--main-index:0' class="init-text">S</span>
+  <span style='--main-index:1' class="init-text">P</span>
+  <span style='--main-index:2' class="init-text">E</span>
+  <span style='--main-index:3' class="init-text">C</span>
+  <span style='--main-index:4' class="init-text">I</span>
+  <span style='--main-index:5' class="init-text">E</span>
+  <span style='--main-index:6' class="init-text">S</span>
+</h2>
+
 <script>
+
+  doAnim();
+  function doAnim(){
+      setTimeout(()=>{
+        document.querySelectorAll('#text-anim span').forEach(el=>{
+          el.classList.add('init-text')
+        })
+      },10)
+      setTimeout(()=>{
+        document.querySelectorAll('#text-anim span').forEach(el=>{
+          el.classList.add('example')
+        })
+      },50)
+      setTimeout(()=>{
+        document.querySelectorAll('#text-anim span').forEach(el=>{
+          el.classList.remove('init-text');
+          el.classList.remove('example');
+        })
+        //console.log('repeat anim')
+        doAnim();
+      },5000)
+  }
+
   function handleClick(){
     let myInputValue = document.getElementById('myInput')
     myInputValue.dataset.color = myInputValue.value;
