@@ -6,3 +6,5 @@ document.body.contentEditable = true
 
 var html = document.getElementsByTagName('html')[0];
 html.style.setProperty("--main-background-color", "green");
+
+myObj.hasOwnProperty('key')
