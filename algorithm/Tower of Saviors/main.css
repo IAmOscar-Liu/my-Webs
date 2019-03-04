@@ -1,0 +1,169 @@
+body {
+  padding: 15px;
+   margin: 0;
+}
+
+p#info {
+  margin: 0 0 10px 0;
+  font-size: 25px;
+  /* margin-bottom: 0px; */
+} 
+
+div#sketch-holder{
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+div#sketch-holder #imgContainer{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 90;
+}
+
+div#sketch-holder #imgContainer > div{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 90;
+}
+
+div#sketch-holder #imgContainer > div img{
+  position: absolute;
+}
+
+div#sketch-holder #result{
+  background-color: white;
+  opacity: 0.4;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100; 
+  display: none;
+}
+
+div#sketch-holder #message{
+  display: none;
+  position: absolute;
+  /* opacity:0; */
+  /* transition: top linear .3s, opacity linear .3s ;            */
+  left:50%;
+  /* top:150%; */
+  transform: translateX(-50%) translateY(-50%) scale(1);
+  z-index: 101;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden
+}
+
+div#sketch-holder #message.go{
+  visibility: visible;
+  top:50%; 
+  opacity:1
+}
+
+div#sketch-holder #message.anim{
+  animation-name: example;
+  animation-duration: 0.7s;
+  visibility: visible;
+  top:50%; 
+  opacity:1
+}
+@keyframes example{
+  from { top:150%; opacity:0.3; transform: translateX(-50%) translateY(-50%) scale(0.2);}
+  to { top:50%; opacity:1; transform: translateX(-50%) translateY(-50%) scale(1);}
+}
+
+div#sketch-holder #message p{
+  font-size: 36px;
+  color: red;
+  font-weight: bolder; 
+}
+
+button#reset{
+  background: orange;
+  border-radius: 50%;
+  padding: 15px;
+  display: none;
+}
+
+button#reset:hover{
+  cursor: pointer;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+div.buttons{
+  display: flex;
+  justify-content: space-evenly;
+  width: 500px;
+}
+
+#scoreInfo{
+  display: flex;
+  justify-content: space-evenly;
+  width: 499px;
+  height: 50px;
+  /* padding-top: 5px; */
+  margin-bottom: 10px;
+  background-color: rgb(51, 51, 51);
+}
+
+#scoreInfo div {
+  color: white;
+  width: 18%;
+  height: 100%;
+  position: relative;
+}
+
+#scoreInfo div > img{
+  /* display: inline-block; */
+  position: absolute;
+  top:12px;
+  left:5px;
+}
+
+#scoreInfo div > p{
+  /* display: inline-block; */
+  position: absolute;
+  top: 3px;
+  left: 45px;
+  line-height: 22px;
+  margin: 0;
+  padding:0;
+}
+
+.time-bar{
+  height: 10px;
+  width:500px;
+  background-color: blue;
+  position: relative;
+  overflow: hidden;
+}
+
+.inner-time-bar{
+  background-color: red;
+  position: absolute;
+  height:100%;
+  width:100%;
+  left:0;
+}
+
+.inner-time-bar.anim{
+  animation: animBar 5s linear;
+}
+
+@keyframes animBar{
+  0%{
+    left:0;
+  }
+  100%{
+    left:-100%;
+  }
+}
