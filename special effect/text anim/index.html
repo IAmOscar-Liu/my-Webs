@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2 id='text-anim' style="--main-pos:30px" >
+        <span style='--main-index:0' data-index=0 >S</span>
+        <span style='--main-index:1' data-index=1>P</span>
+        <span style='--main-index:2' data-index=2>E</span>
+        <span style='--main-index:3' data-index=3>C</span>
+        <span style='--main-index:4' data-index=4>I</span>
+        <span style='--main-index:5' data-index=5>E</span>
+        <span style='--main-index:6' data-index=6>S</span>
+    </h2>
+
+
+<script>
+
+doAnim();
+function doAnim(){
+    // setTimeout(()=>{
+    //     document.querySelectorAll('#text-anim span').forEach(el=>{
+    //         el.classList.add('init-text')
+    //     })
+    // },10)
+
+    document.querySelectorAll('#text-anim span').forEach((el)=>{
+        setTimeout(()=>el.classList.add('init-text'),100 + el.dataset.index * 100)
+    })
+    // setTimeout(()=>{
+    //     document.querySelectorAll('#text-anim span').forEach(el=>{
+    //         el.classList.add('example')
+    //     })
+    // },50)
+    setTimeout(()=>{
+        document.querySelectorAll('#text-anim span').forEach(el=>{
+            el.classList.remove('init-text');
+            // el.classList.remove('example');
+        })
+        //console.log('repeat anim')
+        doAnim();
+    },5000)
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+.outer-Wrapper{
+    width:500px;
+    height: 500px;
+    border-radius: 50%;
+    position: relative;
+    border: 2px blue solid;
+}
+
+.header{
+    background: lime;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header span{
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    background-color: black;
+    color: yellow;
+    /* padding: 5px 5px; */
+    font-size: 36px;
+    position: absolute;
+    top:50%;
+    left:calc((var(--main-index) - 0.75) * 40px);
+    opacity: 0;
+    /* transform: translate(2400%,100%); */
+}
+
+.header span.anim{
+    opacity: 0;
+    transform: translate(0,-50%) scale(1); 
+    animation: headerAnim 10s ease calc( .1s * var(--main-index));
+}
+
+.header span.fade-out{
+    animation: headerAnimFadeOut 1s ease;
+}
+
+@keyframes headerAnim{
+    0%{
+        opacity: 0;
+        transform: translate(2000%,100%) scale(0.1);
+    }
+    20%{
+        opacity: 1;
+        transform: translate(0,-50%) scale(1);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0,-50%) scale(1);
+    }
+}
+
+@keyframes headerAnimFadeOut{
+  0%{
+      opacity: 1;
+  }
+  100%{
+      opacity: 0;
+  }
+}
+
+.header span:nth-of-type(6){
+    background-color: transparent;
+}
+
+.header span a:hover, .message > p:hover{
+    cursor: default;
+}
+
+.scroll{
+    background-color: coral;
+    position: relative;
+    height: 50px;
+    line-height: 49px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.scroll span{
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    display: inline-block;
+    padding: 0 5px;
+    left: 120%;
+    animation: scrollAnim 5s linear  infinite;
+}
+
+@keyframes scrollAnim{
+    0%{
+        left:120%;
+    }
+    100%{
+        left:-40%;
+    }
+}
+
+.message{
+    width: 30%;
+    height: 20%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 30;
+    transform: translate(-50%,-50%);
+    display: flex;
+}
+
+.message > p{
+    margin: auto;
+    font-size: 24px;
+}
+
+/* .message > p:hover{
+    cursor: default;
+} */
+
+.anim-box{
+    width:50%;
+    height: 50%;
+    position: absolute;
+    left:50%;
+    top:50%;
+    background-color: yellow;
+    z-index: 10;
+    transform: translate(-50%,-50%)
+}
+
+/* .anim-box:hover{ */
+.message:hover + .anim-box{      
+    animation: boxAnim 2s linear infinite ;
+}
+
+@keyframes boxAnim{
+    0%{
+        transform: translate(-50%,-50%) rotate(0deg)
+    }
+    25%{
+        transform: translate(-50%,-50%) rotate(90deg)
+    }
+    50%{
+        transform: translate(-50%,-50%) rotate(180deg)
+    }
+    75%{
+        transform: translate(-50%,-50%) rotate(270deg)
+    }
+    100%{
+        transform: translate(-50%,-50%) rotate(360deg)
+    }
+}
+
+.anim-circle{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: red;
+    z-index: 20;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform-origin: calc(50% - 250px) 50%;
+    transform: translate(calc(-50% + 250px),-50%);
+}
+
+/* .anim-box:hover + .anim-circle{  */
+.message:hover + .anim-box + .anim-circle{     
+    animation: circleAnim 2s linear infinite ;
+}
+
+@keyframes circleAnim{
+    0%{
+        transform: translate(calc(-50% + 250px),-50%) rotate(0deg);
+    }
+    25%{
+        transform: translate(calc(-50% + 250px),-50%) rotate(-90deg);
+    }
+    50%{
+        transform: translate(calc(-50% + 250px),-50%) rotate(-180deg);
+    }
+    75%{
+        transform: translate(calc(-50% + 250px),-50%) rotate(-270deg);
+    }
+    100%{
+        transform: translate(calc(-50% + 250px),-50%) rotate(-360deg);
+    }  
+}
+
+
+

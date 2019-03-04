@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Awesome Animation</title>
+</head>
+<body>
+    <div>
+        <div class='header'>
+                <span style="--main-index:1"><a>H</a></span>
+                <span style="--main-index:2"><a>E</a></span>
+                <span style="--main-index:3"><a>L</a></span>
+                <span style="--main-index:4"><a>L</a></span>
+                <span style="--main-index:5"><a>O</a></span>
+                <span style="--main-index:6">&ThickSpace;</span>
+                <span style="--main-index:7"><a>W</a></span>
+                <span style="--main-index:8"><a>O</a></span>
+                <span style="--main-index:9"><a>R</a></span>
+                <span style="--main-index:10"><a>L</a></span>
+                <span style="--main-index:11"><a>D</a></span>
+            </div>
+            <h1 class='scroll' ><span>This is the Scroll</span></h1>
+            <div class='outer-Wrapper'>
+                <div class='message'>             
+                    <p>hover over me</p>                   
+                </div>
+                <div class='anim-box'>
+                </div>
+                <div class="anim-circle">
+                </div>
+            </div>
+    </div>
+    
+<script>
+    const doAnim = () =>{
+        document.querySelectorAll('.header span').forEach(el=>{
+            setTimeout(()=>el.classList.add('anim'),100)
+            setTimeout(()=>el.classList.add('fade-out'),5000)
+            setTimeout(()=>{
+                el.classList.remove('anim');
+                el.classList.remove('fade-out')
+            },6000)         
+        })
+        setTimeout(()=>doAnim(),6100)
+    }
+    doAnim();
+</script>   
+</body>
+</html>

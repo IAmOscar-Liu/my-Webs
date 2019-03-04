@@ -1,0 +1,58 @@
+#text-anim{
+    margin: 10px 0;
+    font-size: 50px;
+    color:blueviolet;
+    width:1000px;
+     height:100px; 
+    position: relative; 
+  }
+  
+  #text-anim span{
+     /* display:none;  */
+    opacity: 0;
+  }
+  
+  #text-anim span.init-text{
+     display: inline-block;
+     line-height:100px;
+     text-align: center;
+     width:32px;
+     background: yellow; 
+     position: absolute; 
+     top:0px; 
+     /* left:calc(var(--main-index)*32px + 500px);
+     opacity: 0;    
+     transition: left 2s ease, opacity 2s ease;
+     transition-delay: calc(.1s * var(--main-index)); */
+
+     left:calc(var(--main-index)*var(--main-pos)) ;
+     opacity: 1;
+     transform: scale(1); 
+     animation-name: example;
+     /* animation-delay:  calc(.1s * var(--main-index)); */
+     animation-duration: 2s;
+     animation-iteration-count: 1;
+  
+  }
+  
+  
+  /* #text-anim span.example{
+     left:calc(var(--main-index)*var(--main-pos)) ;
+     opacity: 1;
+  } */
+
+  @keyframes example{
+      from{
+        top:calc(var(--main-index)*40px); 
+        left:calc(var(--main-index)*32px + 500px);
+        opacity: 0;
+        transform: scale(0.1); 
+      }
+      to{
+        top:0px; 
+        left:calc(var(--main-index)*var(--main-pos)) ;
+        opacity: 1; 
+        transform: scale(1);        
+      }
+  }
+  
