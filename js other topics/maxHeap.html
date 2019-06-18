@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Max Heap</title>
+</head>
+<body>
+<script>
+
+function swap(arr, index_1, index_2){
+    const tmp = arr[index_1];
+    arr[index_1] = arr[index_2];
+    arr[index_2] = tmp
+}
+
+function MaxHeapify(arr, _root, _len){
+    const left = 2 * _root;
+    const right = 2 * _root + 1;
+    let largest;
+
+    if(left <= _len && arr[left] > arr[_root]) largest = left
+    else largest = _root
+
+    if(right <= _len && arr[right] > arr[largest]) largest = right
+
+    if(largest != _root){
+        swap(arr, largest, _root);
+        MaxHeapify(arr, largest, _len);
+    }
+}
+
+function BuildMaxHeap(arr){
+    for(let i = Math.floor(arr.length/2); i >=1 ; i--){
+        MaxHeapify(arr, i, arr.length - 1);
+    }
+    return arr
+}
+
+function HeapSort(arr){
+    arr.unshift(0);
+
+    builtupArray = BuildMaxHeap(arr).slice(1, arr.length); 
+
+    let size = arr.length - 1;
+
+    for(let i = arr.length - 1 ; i >= 2; i--){
+        swap(arr, 1, i);
+        size--;
+        MaxHeapify(arr, 1, size)
+    }
+
+    arr.shift()
+    return arr;
+}
+
+function insert(_arr, el){
+    let arr = _arr.slice();
+    arr.unshift(0)
+    arr.push(el);
+    let newElement = arr.length - 1;
+    while(Math.floor(newElement / 2) >= 1 && arr[Math.floor(newElement / 2)] < el){
+        swap(arr, Math.floor(newElement / 2), newElement);
+        newElement = Math.floor(newElement / 2);
+    }
+    arr.shift();
+    return arr;
+}
+
+function deleteArr(_arr, el){
+    let arr = _arr.slice();
+    arr.unshift(0);
+    //console.log(arr)
+    if(!arr.slice(1,arr.length).includes(el)){  //the deleted one doesn't exist
+        console.log('the value is not in the heap');
+        arr.shift();
+        return arr;
+    }else if(arr.indexOf(el) * 2 > arr.length){  //the deleted one is the leaf
+        arr.splice(arr.indexOf(el), 1);
+        arr.shift();
+        return arr;
+    }else if(arr.indexOf(el) * 2 == arr.length - 1){ //the deleted one has only left child
+        swap(arr, arr.indexOf(el), arr.indexOf(el) * 2);
+        arr.splice(arr.length - 1, 1);
+        arr.shift();
+        return arr;
+    }else{  //the deleted one has both left child and right child
+        const _index = arr.indexOf(el);
+        let farthestRight = _index * 2 + 1;
+        //console.log(farthestRight)
+        while(farthestRight * 2 <= arr.length - 1){
+            if(farthestRight * 2 == arr.length - 1) farthestRight = farthestRight * 2
+            else farthestRight = farthestRight * 2 + 1
+            //console.log(farthestRight)
+        }
+        //console.log(arr[farthestRight])
+        swap(arr, _index, farthestRight);
+        arr.splice(farthestRight, 1);
+        MaxHeapify(arr, _index, arr.length - 1);
+        arr.shift();
+        return arr;
+    }
+}
+
+function replace(_arr, el, newEl){
+    let arr = _arr.slice();
+    arr.unshift(0);
+    
+    if(!arr.slice(1,arr.length).includes(el)){  
+        console.log("the replacing one doesn't exist");
+        arr.shift();
+        return arr;
+    }else if(arr.indexOf(el) == arr[1]){  //the replaced one is the root
+        arr[1] = newEl;
+        MaxHeapify(arr, 1, arr.length - 1)
+        arr.shift();
+        return arr;
+    }else{
+        let _index = arr.indexOf(el);
+        arr[_index] = newEl;
+
+        if(newEl < arr[_index * 2] || newEl < arr[_index * 2 + 1]) MaxHeapify(arr, _index, arr.length - 1)
+
+        while(Math.floor(_index / 2) >= 1 && arr[Math.floor(_index / 2)] < newEl){
+            swap(arr, Math.floor(_index / 2), _index);
+            _index = Math.floor(_index / 2);         
+        }
+
+        arr.shift();
+        return arr;
+    }
+}
+
+let arr = [9,4,1,6,7,3,10,8,2,5];
+let builtupArray;
+let sortedArr = HeapSort(arr);
+console.log(sortedArr);
+
+let insertedArr = insert(builtupArray, 11)
+console.log(insertedArr);
+
+let deletedArr = deleteArr(builtupArray, 6)
+console.log(deletedArr);
+
+let replacedArr = replace(builtupArray, 8, 0.5)
+console.log(replacedArr)
+
+
+
+</script>  
+</body>
+</html>

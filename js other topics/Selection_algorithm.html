@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+function swap(a,i,j){
+    const tmp = a[i];
+    a[i] = a[j];
+    a[j] = tmp;
+}
+
+function partition(_arr, p){
+    swap(_arr, p, _arr.length-1);
+    let i = -1;
+    for(let j = 0; j < _arr.length-1; j++){
+        if(_arr[j] < _arr[_arr.length-1]){
+            i++;
+            swap(_arr, i, j);
+        }
+    }
+    swap(_arr, i+1, _arr.length-1);
+    return i + 1;
+}
+
+function insertionSort(a, indexes){ //indexes is the index of array a
+    let v, j;
+    for(let i = 1; i <= indexes.length - 1 ; i++){
+        v = a[indexes[i]];
+        j = i;
+        while(j - 1 >= 0 && a[indexes[j-1]] > v){
+             a[indexes[j]] = a[indexes[j-1]];
+             j--;
+        }
+        a[indexes[j]] = v;
+    }
+    return indexes[Math.floor((indexes.length-1)/2)];
+}
+
+function select(arr, i){
+    if(i - Math.floor(i) != 0 || i < 0 || i > arr.length-1){
+        console.log('You have to enter an integer between 0 and the length of the array-1')
+        return undefined;
+    }
+    let mids = [];
+    //console.log( Math.ceil(arr.length/5) )
+    for(let j = 0; j < Math.ceil(arr.length/5) ; j++){
+        let indexes = [];
+        let k = 0;
+        while(5*j + k < arr.length && k < 5){
+            indexes.push(5*j + k);
+            k++;
+        }
+        mids.push( insertionSort(arr,indexes) );
+        //console.log(indexes)
+    }
+
+    //console.log(arr)
+    const median = insertionSort(arr, mids);  
+    //console.log(arr,k,arr[k])
+    const pivot = partition(arr, median)
+    //console.log(arr,pivot,arr[pivot])
+
+    if(i == pivot) return arr[pivot]
+    else if(i < pivot){
+        return select(arr.slice(0,pivot),i);
+    }else{
+        return select(arr.slice(pivot+1,arr.length),i-pivot-1);
+    }
+}
+
+let arr = [50,20,10,30,80,90,0,40,70,60]
+//let arr = [120,110,100,90,80,70,60,50,40,30,20,10,0]
+
+console.log(select(arr,6))
+
+
+</script>    
+    
+</body>
+</html>

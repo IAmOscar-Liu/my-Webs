@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+// you can shift 1,3, or 5 steps at once
+// use bottom-up approach
+const staircase = (n) => {
+    if(n == 0) return [[0]]
+    else{
+        let bottom_up_arr = [[0]];
+        for(let i = 1; i <= n; i++){
+            //let total = [];
+            bottom_up_arr[i] = [];
+            for(let j of [1,3,5]){
+                if(i >= j){
+                    for(let k = 0; k < bottom_up_arr[i - j].length; k++){      
+                        //total.push([i].concat(bottom_up_arr[i - j][k]));
+                        bottom_up_arr[i].push([i].concat(bottom_up_arr[i - j][k]));
+                    }
+                }                
+            }
+            //bottom_up_arr[i] = total;
+        }
+        return bottom_up_arr[n];
+    }
+}
+
+console.log(staircase(15))
+
+</script>
+</body>
+</html>

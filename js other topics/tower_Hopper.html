@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<script>
+function nextOptStep(current, towers){
+    let farestDist = 0;
+    let nextStep = null;
+    for(let i = 1; i<=towers[current] ;i++){
+        if(current + i >= towers.length){         
+            return current +  i;
+        } 
+        else if(towers[current + i] > 0){
+            if(current + i + towers[current + i] > farestDist){
+                farestDist = current + i + towers[current + i];
+                nextStep = current +  i;
+            }
+        }
+    }
+    return nextStep;
+}
+
+function towerHopper(towers){
+    let current = 0;
+    let path = [];
+    while (true){
+        if(current >= towers.length){
+            path.push(current)
+            return path
+        } 
+        else if(current == null) return 'no solution'
+        
+        path.push(current)
+        //console.log(nextOptStep(current, towers))
+        current = nextOptStep(current, towers)
+    }
+      
+}
+
+console.log( towerHopper([4,0,0,2,0]) )
+console.log( towerHopper([1,3,5,3,1]) )
+
+
+</script>    
+</body>
+</html>

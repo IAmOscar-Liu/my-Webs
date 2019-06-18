@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+class node{
+    constructor(value){
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+const root = new node(1);
+root.left = new node(1);
+root.right = new node(1);
+root.right.left = new node(2);
+root.right.right = new node(1);
+root.right.right.right = new node(2);
+
+function findUniversal(_root){
+
+    if(_root.left == null && _root.right == null) return {trees:1,rootOfUniversal: true}    //leaves
+    else{
+        if(_root.left && _root.right){  //has both left node and right node
+            const leftUniversal = findUniversal(_root.left);
+            const rightUniversal = findUniversal(_root.right)
+            if(_root.left.value == _root.value && _root.right.value == _root.value && leftUniversal.rootOfUniversal && rightUniversal.rootOfUniversal ){
+                return {trees:leftUniversal.trees + rightUniversal.trees + 1,rootOfUniversal: true}
+            }else{
+                return {trees:leftUniversal.trees + rightUniversal.trees,rootOfUniversal: false}  
+            }     
+        }else if(_root.left){   //only has left node
+            const leftUniversal = findUniversal(_root.left);
+            if(_root.left.value == _root.value && leftUniversal.rootOfUniversal){
+                return {trees:leftUniversal.trees + 1,rootOfUniversal:true}
+            }else{
+                return {trees:leftUniversal.trees ,rootOfUniversal:false}
+            }
+        }else{    //only has right node
+            const rightUniversal = findUniversal(_root.right);
+            if(_root.right.value == _root.value && rightUniversal.rootOfUniversal){
+                return {trees:rightUniversal.trees + 1,rootOfUniversal:true}
+            }else{
+                return {trees:rightUniversal.trees ,rootOfUniversal:false}
+            }
+        }
+    }
+}
+
+console.log( findUniversal(root).trees )
+
+</script>    
+
+</body>
+</html>

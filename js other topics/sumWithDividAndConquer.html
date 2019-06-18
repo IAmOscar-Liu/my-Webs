@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+const sumup = arr => {
+    if(arr.length == 0) return 0
+    else if(arr.length == 1) return arr[0]
+    else return sumup(arr.slice(0, Math.floor(arr.length/2))) + sumup(arr.slice(Math.floor(arr.length/2),arr.length)); 
+}
+
+console.log( sumup([1,2,3,4,5,6]) )
+
+</script>
+</body>
+</html>
