@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <svg>
+        <defs>
+            <clipPath id='clipPath'>
+                <circle class='one' cx='200' cy='400' r='1300' transform='scale(0)' />
+                <circle class='two' cx='-2200' cy='1900' r='800' transform='scale(0)' />
+            </clipPath>
+        </defs>
+    </svg> 
+
+    <button id='open'>Open Nav</button>
+
+    <div class="wrapper">
+        <nav>
+            <ul>
+                <li><a href="#">Holy</a></li>
+                <li><a href="#">Balls</a></li>
+                <li><a href="#">This</a></li>
+                <li><a href="#">Rocks</a></li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores quia nesciunt suscipit perferendis nemo nostrum magnam maxime ea dolorum. Obcaecati natus fugit odit officia impedit, nulla incidunt sequi doloribus! Similique!</p>
+        </nav>
+    </div>
+
+    <h1>Bro, wooooooah</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+<script>
+
+    let tl = new TimelineMax({paused: true});
+
+    document.getElementById('open').addEventListener('click', ()=>{
+        tl.play();
+    })
+
+    tl.from("nav", 1, {
+        x: 100,
+        display: 'none',
+        ease: Power2.easeOut,
+        delay: 0
+    })
+
+    tl.to("circle.one", 3, {
+        scale: 1,
+        x: 0,
+        y: -1300,
+        ease: Power2.easeOut
+    }, "-=1")
+
+    tl.to('circle.two', 4, {
+        scale: 1.8,
+        x: 2900,
+        y: -500,
+        ease: Power2.easeOut
+    }, "-=3")
+
+    tl.from('h1', 1, {
+        opacity: 0,
+        y: 100,
+        ease: Bounce.easeOut,
+        delay: 0
+    }, "-=3.2")
+
+</script>
+
+
+</body>
+</html>

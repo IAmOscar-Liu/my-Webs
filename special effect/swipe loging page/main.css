@@ -1,0 +1,110 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width:100vw;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-container{
+    width:50vw;
+    height:25vh;
+    background-color: bisque;
+    border: 3px black solid;
+    position: relative;
+}
+
+.text-ground{
+    width: 100%;
+    height:100%;
+    display:flex;
+}
+
+.text-ground .left-page, .text-ground .right-page{
+    /*flex-basis: 1;*/
+    width: 50%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-ground .left-page h1, .text-ground .right-page h1{
+    color: purple;
+    font-size: 2em;
+    width:90%;
+}
+
+.text-ground .left-page p, .text-ground .right-page p{
+    font-size: 1.2em;
+    width: 90%;
+    margin: 10px 0;
+}
+
+.text-ground .left-page button, .text-ground .right-page button{
+    border: white 3px solid;
+    border-radius: 20px;
+    background-color: transparent;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.text-ground .left-page button:hover, .text-ground .right-page button:hover{
+    transform: scale(1.2);
+    font-style: italic;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.5) ;
+}
+
+.text-ground .left-page button:focus, .text-ground .right-page button:focus{
+    outline: none;
+}
+
+.moving-text{
+    position: absolute;
+    top:0;
+    left:0;
+    width:50%;
+    height:100%;
+    background-color: red;
+    overflow: hidden;
+    z-index: 2;
+    transform:translateX(100%);
+    transition: transform .4s ease-in-out;    
+}
+
+.moving-text.login{
+    transform:translateX(0%);
+}
+
+.moving-text > div{
+    width: 200%;
+    height: 100%;
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    transform:translateX(-50%);
+    transition: transform .4s ease-in-out;
+}
+
+.moving-text > div.login{
+    transform:translateX(0%);
+}
+
+.moving-text > div h1{
+    width:40%;
+    color: white;
+    font-size: 18px;
+}

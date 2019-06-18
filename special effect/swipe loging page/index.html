@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="text-container">
+            <div class="text-ground">
+                <div class='left-page'>
+                    <h1>Please Log in</h1>
+                    <p>Press the bottom below to log in</p>
+                    <button>Log in</button>
+                </div>
+                <div class='right-page'>
+                    <h1>Welcome here!</h1>
+                    <p>Press the bottom below to log out</p>
+                    <button>Log out</button>
+                </div>
+            </div>
+            <div class="moving-text" id='text-cover'>
+                <div>
+                    <h1>You are now loging in. Congratulation!</h1>
+                    <h1>Hello friend, We want to see you log in</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<script>
+   let isLogin = false;
+   document.querySelectorAll('.text-ground button').forEach((e) => {
+       e.addEventListener('click',()=>{
+           isLogin ? isLogin = false : isLogin = true;
+           document.querySelector('.moving-text').classList.toggle('login');
+           document.querySelector('.moving-text > div').classList.toggle('login');
+       })
+   })
+
+</script>    
+</body>
+</html>

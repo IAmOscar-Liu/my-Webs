@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+ 
+    <div class="sidebar">
+        <div class="logo">Awesome<span>Portfolio</span></div>
+        <nav>
+          <a href="" class="nav-item">Home</a>
+          <a href="" class="nav-item">About</a>
+          <a href="" class="nav-item active">Portfolio</a>
+          <a href="" class="nav-item">Contact</a>
+        </nav>
+      </div>
+      
+      <div class="main-content">
+        <div class="portfolio">
+          <div class="portfolio-item medium">one</div>
+          <div class="portfolio-item large two">two</div>
+          <div class="portfolio-item medium">three</div>
+          <div class="portfolio-item small">four</div>
+          <div class="portfolio-item tall">five</div>
+          <div class="portfolio-item wide">six</div>
+          <div class="portfolio-item wide">six</div>
+          <div class="portfolio-item medium">one</div>
+        </div>
+      </div>
+
+      <div class="model-canvas" id="model-canvas">
+           <div class="model" id="model">
+               <p>This is the model for <span></span></p>
+               <a href="">Close</a>
+           </div>
+      </div>
+ 
+<script>
+    let model_open = false;
+    let currentPos;
+
+    document.querySelectorAll('.portfolio-item').forEach((el, index)=>{
+        el.addEventListener('click',event => {
+            //console.log(el.innerText);
+            model_open = true;
+            document.querySelector('.model-canvas').classList.add('open');
+            //console.log(document.documentElement.scrollTop)
+            currentPos = document.documentElement.scrollTop;
+        })
+    })
+
+    document.querySelector('#model-canvas').addEventListener('click',(e)=>{
+        if(e.target.id == "model-canvas"){
+            model_open = false;
+            document.querySelector('.model-canvas').classList.remove('open');
+        }
+    })
+
+    document.querySelector('#model a').addEventListener('click', e=>{
+        e.preventDefault();
+        model_open = false;
+        document.querySelector('.model-canvas').classList.remove('open');
+    })
+
+    document.addEventListener('scroll',e=>{
+        //console.log('scrolling');
+        if(model_open){
+            document.documentElement.scrollTo(0,currentPos)
+        }
+ 
+    })
+
+
+</script>      
+</body>
+</html>

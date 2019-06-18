@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <svg id='logo' width="798" height="184" viewBox="0 0 798 184">
+        <text class='DESIGNER'  fill="transparent" transform="translate(0 5)" stroke="#fff" stroke-width="5" font-size="144" font-family="ArialMT, Arial">
+            <tspan y="130">D</tspan>
+            <tspan dx ="-34px" y="130">E</tspan>
+            <tspan dx ="-34px" y="130">S</tspan>
+            <tspan dx ="-34px" y="130">I</tspan>
+            <tspan dx ="-34px" y="130">G</tspan>
+            <tspan dx ="-34px" y="130">N</tspan>
+            <tspan dx ="-34px" y="130">E</tspan>
+            <tspan dx ="-34px" y="130">R</tspan>
+        </text>
+    </svg>
+   
+<script>
+
+const logo = document.querySelectorAll('.DESIGNER tspan');
+
+for(let i = 0; i < logo.length; i++){
+    
+        const proStyles = window.getComputedStyle(logo[i])
+        
+        console.log(`textLength: ${logo[i].textLength.baseVal.value}, stroke-dasharray: ${proStyles.getPropertyValue('stroke-dasharray')}, stroke-dashoffset: ${proStyles.getPropertyValue('stroke-dashoffset')}`);
+}
+
+</script>    
+</body>
+</html>

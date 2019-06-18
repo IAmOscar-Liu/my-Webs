@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --star-container-width: 45vw;
+    --star-rating: 3.7;
+    --star-rating-floor: 3;
+    --star-spacing: calc((var(--star-container-width) - 250px) / 4);
+    --star-cover-width: calc(var(--star-rating-floor) * var(--star-spacing) + var(--star-rating) * 50px); 
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+}
+
+.star-container{
+    width: var(--star-container-width);
+    height:51px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.star-cover{
+    position: absolute;
+    z-index: 101;
+    background-color: blanchedalmond;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--star-cover-width);  /*Adjust the width*/
+    overflow: hidden;
+}
+
+.star-cover > div{
+    position: relative;
+    width: var(--star-container-width);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.star{
+    width:50px;
+    height: 50px;
+    background-color: gray;
+    -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.highlight-star{
+    background-color: gold;
+}
+

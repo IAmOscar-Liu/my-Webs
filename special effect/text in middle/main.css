@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --h1-width: 80%;
+    --h1-skew-angle:25deg;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 75vw;
+    height: 30vh;
+    background-color: lightblue;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    z-index: 1;
+}
+
+.container > h1{
+    color:blue;
+    margin: auto;
+    /* width: 80%; */
+    width: var(--h1-width);
+    text-align: center;
+}
+
+.container .left{
+    position: absolute; 
+    width:100%;
+    height:100%;
+    right:50%;
+    top:0;
+    background-color: blue;
+    transform-origin: right 50%;
+    transform: skew(var(--h1-skew-angle));
+    z-index: 10;
+}
+
+.container .left > div{
+    width:100%;
+    height:100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.container .left > div > h1{
+    position: absolute;
+    top:50%;
+    left:100%;
+    transform: translate(-50%,-50%) skew(calc(-1 * var(--h1-skew-angle)));;
+    color: lightblue;
+    /* width: 160%; */
+    width: var(--h1-width);
+    text-align: center;
+}
+
+.chart-container{
+    margin-top:25px;
+    border: 3px blue solid;
+    width:500px;
+    height:200px;
+    position: relative;
+}
+
+.chart-ground{
+    position: absolute;
+    left:25%;
+    top:50%;
+    box-sizing: content-box;
+    width:0px;
+    height:0px;
+    border: beige 50px solid;
+    border-radius: 50%; 
+    transform: translate(-50%,-50%);
+    z-index: 100;
+}
+
+.chart-90deg{
+    border: transparent 50px solid;
+    /* border-radius: 50%;  */
+    border-top-color: red;
+    transform: translate(-50%,-50%) rotate(45deg);
+    z-index: 109;
+}
+
+.chart-90plus27deg{
+    border: transparent 50px solid;
+    /* border-radius: 50%;  */
+    border-top-color: red;
+    transform: translate(-50%,-50%) rotate(calc(45deg - 27deg));
+    z-index: 201;
+}
+
+.precentage1{
+    border:none;
+    /* display: block; */
+    width:50px;
+    height:16px;
+    text-align: center;
+    font-size: 16px;
+    color:gray;
+    font-weight: bold;
+    /* transform: translate(-50%, -50%); */
+    z-index:1000;
+}
+
+.second{
+    left: 75%;
+}
+
+.chart-90minus25deg{
+    border: transparent 50px solid;
+    /* border-radius: 50%;  */
+    border-top-color: red;
+    transform: translate(-50%,-50%) rotate(calc(45deg + 25deg));
+    z-index: 109;
+}
+
+.chart-cover{
+    border: transparent 50px solid;
+    /* border-radius: 50%;  */
+    border-width: 51px;
+    border-top-color: beige;
+    transform: translate(-50%,-50%) rotate(calc(45deg + 90deg));
+    z-index: 110;
+}
+

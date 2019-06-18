@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .wrapper{
+        width:500px;
+        height:500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper > div{
+        background-color: yellow;
+        width:20%;
+        height:20%;
+        /**/
+        position: relative;
+        /**/
+        display: flex;
+    }
+    
+    .wrapper > div::before{
+        border: 3px red solid;
+        /* display: block; */
+        /**/
+        position: absolute;
+        left:0;
+        top:0;
+        /**/
+        box-sizing: border-box; 
+        content: '';
+        width:100%;
+        height:100%;
+        
+    }
+
+    .wrapper > div[data-anim = 'true']::before{
+        animation: anim .5s ease infinite;
+    } 
+
+    .wrapper > div p{
+        margin:auto;
+        padding:0;
+    }
+
+    @keyframes anim{
+        from{
+            transform: scale(1);
+        }
+        to{
+            transform: scale(1.2);
+        }
+    }
+
+</style>
+<body>
+    <div class="wrapper" >
+        <div data-anim='true' >
+           <p>animating</p>
+        </div>
+    </div>
+<script>
+    document.querySelector('.wrapper > div').addEventListener('click',()=>{   
+        if(document.querySelector('.wrapper > div').dataset.anim == 'true'){
+            document.querySelector('.wrapper > div').dataset.anim = 'false';
+            document.querySelector('.wrapper > div p').innerText = 'no anim';
+        }else{
+            document.querySelector('.wrapper > div').dataset.anim = 'true';
+            document.querySelector('.wrapper > div p').innerText = 'animating';
+        } 
+    })
+
+</script>    
+</body>
+</html>

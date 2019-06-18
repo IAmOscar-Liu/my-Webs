@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <svg width="100%" height="920" viewBox="0 0 1317 920">
+        <g id="sushi" transform="translate(-96 -80)">
+          <rect id="frame" width="1317" height="920" transform="translate(96 80)" fill="none"/>
+          <circle id="bg2" cx="220.5" cy="220.5" r="220.5" transform="translate(274 312)" fill="#a2ffe2" opacity="0.18"/>
+          <circle id="bg1" cx="50" cy="50" r="50" transform="translate(782 312)" fill="#a2ffe2" opacity="0.18"/>
+          <g id="bowl" transform="translate(-80 187)">
+            <path id="Path_5" data-name="Path 5" d="M672.882,534.8s164.36,70.293,240.151,81.777,118.682-.564,137.937-60.7-183.028-49.949-203.345-39.5-36.451,23.413-64.782,25.756-57.643,6.94-75.652,0A114.021,114.021,0,0,0,672.882,534.8Z" fill="#009869"/>
+            <path id="Path_1" data-name="Path 1" d="M741,546s-84.555-6.555-117-39L468,351s-1.215-37.155,273-39,273,39,273,39S897.147,468.953,858,507,741,546,741,546Z" fill="none" stroke="#fff" stroke-width="8"/>
+            <path id="Path_2" data-name="Path 2" d="M468,351s25.4,37.381,273,39,273-39,273-39" fill="none" stroke="#fff" stroke-width="8"/>
+          </g>
+          <path id="chopstick1" d="M1178.951,234.573v316.4s.3,1.443-3.8,6.135-5.1-6.135-5.1-6.135l-10.57-316.4s2.459-6.249,8.408-6.808S1178.951,234.573,1178.951,234.573Z" transform="translate(155.846 -508.49) rotate(39)" fill="#fff"/>
+          <path id="chopstick2" d="M1178.951,234.573v316.4s.3,1.443-3.8,6.135-5.1-6.135-5.1-6.135l-10.57-316.4s2.459-6.249,8.408-6.808S1178.951,234.573,1178.951,234.573Z" transform="matrix(0.695, 0.719, -0.719, 0.695, 329.67, -568.323)" fill="#fff"/>
+          <g id="sushi2" transform="translate(330.281 509.617) rotate(10)">
+            <path id="Union_2" data-name="Union 2" d="M0,35.83V7.733C0,3.462,13.495,0,30.141,0S60.283,3.462,60.283,7.733v28.1c0,4.271-13.495,7.733-30.141,7.733S0,40.1,0,35.83Z" transform="translate(287 110)" fill="#574e4e"/>
+            <ellipse id="Ellipse_4" data-name="Ellipse 4" cx="25.373" cy="4.898" rx="25.373" ry="4.898" transform="translate(291.64 111.804)" fill="#fff"/>
+          </g>
+          <g id="sushi1" transform="translate(343.87 747.382) rotate(-33)">
+            <path id="Union_2-2" data-name="Union 2" d="M0,35.83V7.733C0,3.462,12.483,0,27.881,0S55.762,3.462,55.762,7.733v28.1c0,4.271-12.483,7.733-27.881,7.733S0,40.1,0,35.83Z" transform="translate(287 110)" fill="#574e4e"/>
+            <ellipse id="Ellipse_4-2" data-name="Ellipse 4" cx="23.112" cy="4.898" rx="23.112" ry="4.898" transform="translate(291.64 111.804)" fill="#fff"/>
+          </g>
+        </g>
+    </svg>
+
+    <h1>Your sushi is ready</h1>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineMax.min.js"></script>   
+<script>
+
+    let tl = new TimelineMax();
+
+    tl.from('#bowl', 1, {
+        x: '-190',
+        opacity: 0,
+        ease: Power1.easeOut
+    })
+    tl.from('#sushi1', 1, {
+        y: '-250',
+        opacity: 0,
+        rotation: 20,
+        transformOrigin: '50% 50%',
+        ease: Bounce.easeOut
+    },'-=.4')
+    tl.from('#sushi2', 1, {
+        y: '-250',
+        opacity: 0,
+        rotation: -70,
+        transformOrigin: '50% 50%',
+        ease: Bounce.easeOut
+    },'-=.7')
+    tl.from('#chopstick1', .4, {
+        y: '-250',
+        opacity: 0,
+        rotation: 20,
+        transformOrigin: '50% 50%',
+        ease: Power1.easeOut
+    },'-=.7')
+    tl.from('#chopstick2', .4, {
+        y: '-350',
+        opacity: 0,
+        rotation: -60,
+        transformOrigin: '50% 50%',
+        ease: Power1.easeOut
+    },'-=.6')
+    tl.from('#bg1', 1, {
+        x: '1100',
+        opacity: 0,
+        ease: Power1.easeOut
+    },'-=.7')
+    tl.from('#bg2', 1, {
+        x: '100',
+        opacity: 0,
+        ease: Power1.easeOut
+    },'-=.7')
+
+    tl.from('h1', 2, {
+        y: '150',
+        opacity: 0,
+        ease: Power1.easeOut
+    },'-=1')
+
+
+</script>
+</body>
+</html>
