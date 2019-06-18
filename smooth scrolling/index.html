@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">Service</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+        <section id="home">
+          <h1>Welcome To My Site</h1>
+          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, quis!</p>
+        </section>
+        <section id="about">
+            <h1>About</h1>
+            <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, quis!</p>
+        </section>
+        <section id="service">
+            <h1>Service</h1>
+            <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, quis!</p>
+        </section>
+        <section id="contact">
+            <h1>Contact</h1>
+            <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, quis!</p>
+        </section>
+      </div>
+      
+<script>
+  
+document.querySelectorAll('.navbar ul li a').forEach((ele , index)=>{
+    ele.addEventListener('click',(e)=>{
+        e.preventDefault();
+        //console.log(`pressing ${index}`)
+        handleScroll(index);
+    })
+})
+
+function handleScroll(index){
+    //console.log('scrolling')
+    const finalPos = window.innerHeight * index
+    const step = (finalPos - document.querySelector('div.container').scrollTop) > 0 ? 75: -75;
+    //console.log(xOff)
+    smoothScroll(finalPos, step);
+}
+
+function smoothScroll(finalPos, step){
+    //console.log('scrolling')
+    if(Math.abs(document.querySelector('div.container').scrollTop - finalPos) < Math.abs(step)){
+        document.querySelector('div.container').scrollTo(0, finalPos);
+    }else{
+        document.querySelector('div.container').scrollBy(0, step);
+        setTimeout(()=> smoothScroll(finalPos, step),10)
+    }
+}
+
+let myTimeout = undefined;
+let isScrolling = false
+document.querySelector('div.container').addEventListener('scroll',()=>{
+    isScrolling = true
+    if(myTimeout){
+        clearTimeout(myTimeout);
+    }
+    myTimeout = setTimeout(()=>{
+        myTimeout = undefined;
+        //isScrolling = false;
+        if(!isMouseDown) handleEndScrolling();
+    },200)
+})
+
+let isMouseDown = false;
+document.querySelector('div.container').addEventListener('mousedown',()=>isMouseDown = true);
+document.querySelector('div.container').addEventListener('mouseup',()=>{
+    isMouseDown = false;
+    if(isScrolling){
+        isScrolling = false;
+        handleEndScrolling();
+    }
+});
+
+function handleEndScrolling(){
+    //console.log('end scroll')
+    const finalPos = Math.round( document.querySelector('div.container').scrollTop / window.innerHeight ) * window.innerHeight;
+    const step = (finalPos - document.querySelector('div.container').scrollTop) > 0 ? 75 : -75;
+    smoothScroll(finalPos, step);
+}
+
+</script>      
+</body>
+</html>
