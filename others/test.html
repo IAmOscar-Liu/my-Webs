@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+class Car{
+    constructor(x,y){
+        this.x = x;
+        this.y = y;
+        this.z = Math.floor( Math.random(5) );
+    }
+}
+
+class Bus extends Car{
+    constructor(x,y,w){
+        super(x,y);
+        this.w = w;
+    }
+    showAllParams(){
+        console.log(this.x,this.y,this.w)
+    }
+}
+
+let car_1 = new Bus(1,2,55);
+car_1.showAllParams();
+
+
+</script>
+</body>
+</html>

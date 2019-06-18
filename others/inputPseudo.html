@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        label{
+            position: relative;
+            display: inline-block;
+        }
+
+        label::before{
+            content:'';
+            position: absolute;
+            z-index: 100;
+            top: 2px;
+            right:2px;
+            width: 15px;
+            height:calc(100% - 4px);
+            background-color: yellow;
+        }
+    
+    </style>
+</head>
+<body>
+<form action="">
+    <label>input: <input id='input' type="text"></label>
+
+</form>    
+    
+</body>
+</html>
