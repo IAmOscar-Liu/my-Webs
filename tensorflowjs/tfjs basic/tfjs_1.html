@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+  x: <input type='number' id='x' />
+  y: <input type='number' id='y' />
+  <input type="button" id="append" value='submit' />
+  <div style="padding:50px">
+      <canvas id='myChart' width='600' height='300' ></canvas>
+  </div> 
+  
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.15.1/dist/tf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"> </script>
+<script>
+//tf.disableDeprecationWarnings()
+    let xs = [];
+    let ys = [];
+    let bestfit = [] // to be populated by tf.js
+    document.getElementById('x').value = 1;
+    const model = tf.sequential();
+    model.add(tf.layers.leakyReLU({units:128,inputShape:[1]}));
+    model.add(tf.layers.leakyReLU({units:128,inputShape:[128],activation:'sigmoid'}));
+    model.add(tf.layers.dense({units:1,inputShape:[128]}));
+    model.compile({loss:'meanSquaredError', optimizer:'adam'})
+
+    document.getElementById('append').addEventListener('click',()=>{
+        let x = document.getElementById("x").value; // grab the current value for x
+        let y = document.getElementById("y").value; // grab the current value for y
+        xs.push(parseInt(x)) // append that value to the xs
+        ys.push(parseInt(y)) // append that value to the ys
+        document.getElementById('x').value = parseInt(x)+1; // add 1 to the x automatically
+
+        // Train the model...then:
+        model.fit(tf.tensor(xs), tf.tensor(ys), {epochs:150}).then(() => {
+        bestfit = model.predict(tf.tensor(xs, [xs.length, 1])).dataSync(); // create best-fit line from xs data
+        let ctx = document.getElementById("myChart").getContext('2d'); // begin chart
+        // Chart data and settings:
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            options: {scales:{yAxes: [{ticks: {beginAtZero: true}}]}},
+            data: {
+                labels: xs,
+                datasets: [
+                {
+                    label: 'Original Data',
+                    data: ys,
+                    borderWidth: 1,
+                },{
+                    label: 'Best Fit line',
+                    data: bestfit,
+                    borderWidth: 1,
+                    borderColor: '#FF0000',
+                    backgroundColor: 'rgba(1,1,1,0)'
+                    },]
+                },
+            });
+        });
+
+    })
+
+</script>
+</body>
+</html>

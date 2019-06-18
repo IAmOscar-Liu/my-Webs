@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.15.1/dist/tf.min.js"></script>
+<body>
+
+
+<script>
+tf.disableDeprecationWarnings();
+
+const model = tf.sequential({
+     layers: [
+        tf.layers.dense({units: 1, inputShape: [10]}),
+        //tf.layers.dense({units: 1, inputShape:[3], activation: 'sigmoid'})  
+    ]
+});
+model.compile({optimizer: 'sgd', loss: 'meanSquaredError'});
+
+async function train(){
+
+    for (let i = 1; i < 5 ; i++) {
+        const h = await model.fit(tf.ones([8, 10]), tf.ones([8, 1]), {
+            batchSize: 4,
+            epochs: 3
+        });
+        console.log("Loss after Epoch " + i + " : " + h.history.loss[0]);
+        if(i == 4) predict();
+    }
+
+}
+
+function predict(){
+   console.log( model.predict(tf.ones([8, 10]), {batchSize: 4}).dataSync() )
+}
+
+train();
+
+
+
+
+
+</script>    
+
+</body>
+</html>
