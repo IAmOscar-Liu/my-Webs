@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mega Menu</title>
+    <link rel="stylesheet" href="main.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav id="overlay">
+        <!-- <img src="Address-Symbol.jpg" alt="" class="close-btn" id='close-menu'> -->
+        <span class='close-btn' id='close-menu'>
+            <i class="fas fa-times"></i>
+        </span>
+        
+
+
+        <ul>
+            <li>
+                <a href="#">home</a>
+                <span>hurry, get back to the choppa!</span>
+            </li>
+            <li>
+                <a href="#">about us</a>
+                <span>hurry, get back to the choppa!</span>
+            </li>
+            <li>
+                <a href="#">services</a>
+                <span>hurry, get back to the choppa!</span>
+            </li>
+            <li>
+                <a href="#">contact us</a>
+                <span>hurry, get back to the choppa!</span>
+            </li>
+        </ul>
+    </nav>
+
+    <header>
+        <a href="#" class="logo">mysite</a>
+
+        <img src="navigation-bar-icons-png-3.png" alt="" class="menu-btn" id='open-menu'>
+    </header>
+
+    <section>
+        <h1>This is fancy</h1>
+    </section>
+
+<script>
+
+    let overlay = document.getElementById('overlay');
+    let closeMenu = document.getElementById('close-menu');
+
+    document.getElementById('open-menu').addEventListener('click',()=>{
+        overlay.classList.add('show-menu');
+    });
+
+    document.getElementById('close-menu').addEventListener('click',()=>{
+        overlay.classList.remove('show-menu');
+    });
+
+
+
+</script>    
+</body>
+</html>
