@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+  <button>Click me</button>
+  <div>Not clicked</div>
+
+<script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js"></script> 
+<script>
+
+let clickEmitted = new Rx.BehaviorSubject('Not clicked');  // Create a subject with an initial value
+let button = document.querySelector('button');
+let div = document.querySelector('div');
+
+button.addEventListener('click', ()=>{
+  clickEmitted.next('Clicked')
+});
+
+clickEmitted.subscribe(
+  value => div.textContent = value
+);
+
+</script>  
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js"></script> 
+<script>
+
+let observable = Rx.Observable.interval(1000);
+let observer = {
+    next: function(value){
+        console.log(value);
+    }
+}
+
+observable.map(value => {
+    return 'number: ' + value;
+})
+  .throttleTime(2000)
+  .subscribe(observer)
+
+</script>  
+</body>
+</html>

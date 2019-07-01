@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+    <button>Click me</button>
+
+<script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js"></script>   
+<script>
+
+let button = document.querySelector('button');
+
+let observer = {
+    next: function(value){
+        console.log(value);
+    },
+    error: function(error){
+        console.log(error);
+    },
+    complete: function(){
+        console.log('Complete')
+    }
+};
+
+// /* Example 1 */
+// Rx.Observable.create(obs => {
+//     obs.next('A value');
+//     obs.error('An error');   // If an error occurs, it will complete the observerble
+//     obs.next('A second value');  // So the next observable will not execute 
+// })
+//   .subscribe(observer);
+
+
+// /* Example 2 */
+// Rx.Observable.create(obs => {
+//     obs.next('A value');
+//     obs.complete();  // If we call complete, the observable will finish here
+//     obs.next('A second value');  // So the next observable will not execute
+// })
+//     .subscribe(observer)
+
+
+// /* Example 3 */
+// Rx.Observable.create(obs => {
+//     obs.next('A value');
+//     setTimeout(()=>{
+//         obs.complete();
+//     }, 2000)    // The observable will complete 2s later.   
+//     obs.next('A second value');  
+// })
+//     .subscribe(observer)
+
+
+// /* Example 4 */
+let subscription = Rx.Observable.create(obs => {
+    button.onclick = function(event){
+        obs.next(event);
+    }
+})
+    .subscribe(observer);
+    
+setTimeout(() => {
+    subscription.unsubscribe();
+}, 5000)
+  
+</script> 
+</body>
+</html>
