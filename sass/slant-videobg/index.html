@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="#">
+          <img src="images/main.svg" alt="" >
+        </a>
+
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Who</a></li>
+            <li><a href="#">What</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="hero">
+        <video autoplay muted loop id="video">
+          <source src="mybgVideo.mp4" type="video/mp4">
+        </video>
+
+        <div id="content">
+
+          <!-- <h1 class="fall-down words chars splitting" data-splitting="" style="--word-total:2; --char-total:7;">
+            <span class="word" data-word="Level" style="--word-index:0;">
+              <span class="char" data-char="L" style="--char-index:0;">L</span>
+              <span class="char" data-char="e" style="--char-index:1;">e</span>
+              <span class="char" data-char="v" style="--char-index:2;">v</span>
+              <span class="char" data-char="e" style="--char-index:3;">e</span>
+              <span class="char" data-char="l" style="--char-index:4;">l</span>
+            </span>
+            <span class="whitespace"> </span>
+            <span class="word" data-word="up" style="--word-index:1;">
+              <span class="char" data-char="u" style="--char-index:5;">u</span>
+              <span class="char" data-char="p" style="--char-index:6;">p</span>
+            </span>
+          </h1> -->
+
+           <h1 class="fall-down" data-splitting>Level up</h1>
+           <p style="--paragrapy-index:1">Acess backing tracks, tabs &amp; more for free</p>
+
+           <a href="#" class="btn">Let Jam</a>
+
+        </div>
+      </div>
+    </div>
+    <script> Splitting(); </script>
+  </body>
+</html>
