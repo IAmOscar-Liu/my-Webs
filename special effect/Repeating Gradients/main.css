@@ -1,0 +1,20 @@
+body{
+    height: 100vh;
+    background:linear-gradient(to top, green 20%, yellow 20%, red 50%, blue 80%, black 80%);
+    /*This means: from bottom to top, at 0%-20% is complete green, at 20% is complete yellow, at 50% is complete red, at 80% is complete blue, at 80%-100% is complete black*/
+
+
+    /* background: repeating-linear-gradient(-45deg,
+    rgba(255,255,255,1),
+    lightgray 25px,
+    darkgray 25px,
+    rgba(0,0,0,1) 50px); */
+
+    /* background: linear-gradient(45deg, rgb(76, 0, 255), transparent),
+                repeating-linear-gradient(45deg,
+                 rgb(183, 0, 255) 0%,
+                 rgb(183, 0, 255) 5%,
+                 transparent 5%,
+                 transparent 10%
+                 ); */
+}
