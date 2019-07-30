@@ -131,7 +131,7 @@ var data={
 function setup() {
   graph = new Graph();
   dropdown = createSelect();
-  dropdown.changed(bfs);
+  dropdown.changed(dfs);
   noCanvas();
   //console.log(data);
 
@@ -156,38 +156,66 @@ function setup() {
   }
 }
 
-function bfs() {
-  console.log(graph.nodes)  
-  graph.reset();
-  var start = graph.setStart(dropdown.value());
-  var end = graph.setEnd("Kevin Bacon");//shallow copy, end will be changed
 
-  //console.log(graph);
-
-  let tmp = [];
-  let finalResult;
-  start.search = true
-  finalResult = start.addStack(end,tmp)
-
-  let txt= '';
-  if(finalResult=="find"){
-    let path = [];
-    path.push(end)
-    let next = end.parent;
-    while (next != null) {
-        path.push(next);
-        next = next.parent;
+function dfs() {
+    graph.reset();
+    var start = graph.setStart(dropdown.value());
+    // var start = graph.setStart("Kevin Bacon");
+    var end = graph.setEnd("Kevin Bacon");//shallow copy, end will be changed
+  
+    console.log(graph);
+  
+    var stack = [];
+  
+  
+    //start.searched = true;
+    stack.push(start);
+  
+    while (stack.length > 0) {
+        let current = stack.pop();
+        if (current == end) {
+            console.log("Found " + current.value);
+            break;
+        }
+        
+        current.searched = true;
+        for(edge of current.edges){
+            if(!edge.searched){
+                edge.parent = current
+                stack.push(edge);
+            }
+        }       
     }
-
-    for (let i = path.length - 1; i >= 0; i--) {
-        let n = path[i];
+  
+    var path = [];
+    path.push(end);
+    var next = end.parent;
+    while (next != null) {
+      path.push(next);
+      next = next.parent;
+    }
+  
+    var txt = '';
+    
+    if(path.length == 1){
+      txt = "Not found"
+    }else{
+      for (var i = path.length - 1; i >= 0; i--) {
+        var n = path[i];
         txt += n.value
         if (i != 0) {
-            txt += ' --> '
+          txt += ' --> '
         };
+      }
     }
-  }else{
-    txt = "Not Found!!!"
+  
+    // for (var i = path.length - 1; i >= 0; i--) {
+    //   var n = path[i];
+    //   txt += n.value
+    //   if (i != 0) {
+    //     txt += ' --> '
+    //   };
+    // }
+    createP(txt);
   }
-  createP(txt); 
-  }
+
