@@ -45,21 +45,21 @@ class cell{
         }
     }
 
-    returnRandomNeighbor() {
-        let nonVisitedNeighbors = [];
-        for(let i = 0; i<this.neighbors.length; i++){
-            if(this.numOfMinesNearby==0 && !this.neighbors[i].visited &&  !this.neighbors[i].isMine){
-                nonVisitedNeighbors.push(this.neighbors[i])
-            }
-        }
+    // returnRandomNeighbor() {
+    //     let nonVisitedNeighbors = [];
+    //     for(let i = 0; i<this.neighbors.length; i++){
+    //         if(this.numOfMinesNearby==0 && !this.neighbors[i].visited && !this.neighbors[i].isMine){
+    //             nonVisitedNeighbors.push(this.neighbors[i])
+    //         }
+    //     }
 
-        if (nonVisitedNeighbors.length > 0) {
-          let r = floor(random(0, nonVisitedNeighbors.length));
-          return nonVisitedNeighbors[r];
-        } else {
-          return undefined;
-        } 
-    }
+    //     if (nonVisitedNeighbors.length > 0) {
+    //       let r = floor(random(0, nonVisitedNeighbors.length));
+    //       return nonVisitedNeighbors[r];
+    //     } else {
+    //       return undefined;
+    //     } 
+    // }
 
     drawCell(){
         stroke(255)
