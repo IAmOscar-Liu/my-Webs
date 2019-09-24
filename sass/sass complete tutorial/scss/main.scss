@@ -1,0 +1,60 @@
+@import './resets';
+@import './variables';
+
+// function is used to compute and return a value
+@function weight($weight-name){
+    @return map-get($font-weights, $weight-name);
+}
+
+// mixin is used to define style
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    flex-direction: $direction;
+}
+
+@mixin theme($light-theme: true) {
+    @if $light-theme {
+        background: lighten($primary-color, 100%);
+        color: darken($text-color, 100%);
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile){
+        // use the content when the mixin is called
+        @content ;
+    }
+}
+
+body{
+    background: $primary-color;
+    color: $text-color;
+   
+    .main{
+        @include flexCenter(row);
+        width: calc(80% - 40px);
+        margin: 0 auto;
+
+        &_paragraph_1{
+            font-weight: weight(regular);
+
+            &:hover{
+                color: pink;
+            }
+        }
+
+        &_paragraph_2{
+            @extend .main_paragraph_1;
+        }
+
+        @include mobile{
+            flex-direction: column;
+        }
+    }
+}
+
+.light{
+    @include theme(true);
+}
