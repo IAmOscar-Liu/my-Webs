@@ -1,0 +1,300 @@
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    --primary-color: #0088ff;
+    --header-bg-color: #222f2b;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body * {
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+    height: 10vh;
+    max-height: 60px;
+    background-color: var(--header-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+}
+
+header img {
+    width: 32px;
+    height: 32px;
+}
+
+header ul {
+    display: flex;
+    list-style-type: none;
+}
+
+header ul li {
+    color: white;
+}
+
+header ul li + li {
+    margin-left: 3.5vw;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 28px;
+}
+
+header ul li a:hover {
+    text-decoration: underline;
+}
+
+header ul li:last-of-type a {
+    background-color: var(--primary-color);
+    border-radius: 60px;
+    padding: 4px 18px;
+}
+
+main {
+    height: 90vh;
+    min-height: calc(100vh - 60px);
+    overflow-y: scroll;
+}
+
+main section {
+    min-height: 100%;
+} 
+
+
+/* header-section */
+
+main section.header-section {
+    display: flex;
+    background-image: url('/assets/photo-1510915228340-29c85a43dcfe.jfif');
+    background-size: cover;
+    position: relative;
+}
+
+main section.header-section::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: -1;
+}
+
+main section.header-section .tile {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+main section.header-section .tile h1 {
+    font-size: 100px;
+    text-shadow: 3px 2px 5px darkgrey;
+    letter-spacing: 2px;
+}
+
+main section.header-section .tile p {
+    font-size: 50px;
+    margin-top: 2vh;
+    margin-bottom: 2.5vh;
+}
+
+main section.header-section .tile button {
+    outline: none;
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 200px;
+    padding: 8px 24px;
+    font-size: 30px;
+    color: inherit;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px black;
+}
+
+main section.header-section .tile button:hover  {
+    font-style: italic;
+}
+
+main section.header-section img {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    color: white;
+    width: 75px;
+    height: 75px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+/* curriculum-section */
+
+main section.curriculum-section {
+    padding-top: 3vh;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main section.curriculum-section h1 {
+    font-size: 72px;
+    text-align: center;
+}
+
+main section.curriculum-section .curriculum-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+main section.curriculum-section .curriculum-grid .curriculum-grid-column {
+    padding: 0 5vw;
+}
+
+@media(max-width: 940px) {
+    main section.curriculum-section .curriculum-grid .curriculum-grid-column {
+        grid-column: 1/3;
+    }
+}
+
+main section.curriculum-section .curriculum-grid ul {
+    list-style-type: none;
+}
+
+main section.curriculum-section .curriculum-grid ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main section.curriculum-section .curriculum-grid ul li img {
+    width: 194px;
+    height: 194px;
+    margin-right: 2vw;
+    cursor: pointer;
+}
+
+main section.curriculum-section .curriculum-grid ul li p {
+    font-size: clamp(24px, calc(18px + 0.8vw), 36px);
+    text-align: justify;
+    color: var(--header-bg-color);
+}
+
+main section.curriculum-section footer {
+    background-color: var(--primary-color);
+    width: 100%;
+    color: white;
+    padding: 16px;
+}
+
+/* @media(max-width: 940px) {
+    main section.curriculum-section footer {
+        position: initial;
+    }
+} */
+
+main section.curriculum-section footer h1 {
+    letter-spacing: 3px;
+    font-size: 60px;
+    margin-bottom: 12px;
+}
+
+main section.curriculum-section footer p {
+    font-size: 24px;
+    width: 60%;
+    min-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* contact-section */
+
+main section.contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main section.contact-section h1 {
+    font-size: 72px;
+    text-align: center;
+}
+
+main section.contact-section .form {
+    width: 80vw;
+    margin: 0 auto;
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+main section.contact-section .form p {
+    padding: 12px 1vw;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+@media(max-width: 940px) {
+    main section.contact-section .form p {
+        grid-column: 1/3;
+    };
+}
+
+main section.contact-section .form p input,
+main section.contact-section .form p textarea {
+    outline: none;
+    width: 100%;
+    height: 34px;
+    border-radius: 12px;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+main section.contact-section .form p input:focus,
+main section.contact-section .form p textarea:focus {
+    border-color: var(--primary-color);
+}
+
+main section.contact-section .form p:last-of-type {
+    grid-column: 1/3;
+}
+
+
+main section.contact-section .form p:last-of-type textarea {
+    border-width: 2px;
+    height: 36vh;
+}
+
+main section.contact-section .form > input {
+    outline: none;
+    border: none;
+    margin-right: 1vw;
+    margin-top: 16px;
+    grid-column: 2/3;
+    justify-self: right;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 24px;
+    border-radius: 50px;
+    padding: 6px 0;
+    width: 60%;
+    min-width: 160px;
+    cursor: pointer;
+    box-shadow: 2px 3px 3px 0 rgba(0,0,0,1);
+}
+
+main section.contact-section .form > input:hover {
+    font-style: italic;
+    font-weight: 700;
+}
