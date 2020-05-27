@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <style>
+        form span{
+            color: red;
+            opacity: 0;
+        }
+        .company-info ul{
+          list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Tracker</h1>
+    <h2>Entry the Symbol of the Company. eg. AAPL, BA, GOOG</h2>
+    <form onsubmit="onSubmit(event)">
+      <label for="input_1">Company 1</label>
+      <input id="input_1" type="text">
+      <span>No such company</span><br>
+      <label for="input_2">Company 2</label>
+      <input id='input_2' type="text">
+      <span>No such company</span><br>
+      <label for="input_3">Company 3</label>
+      <input id="input_3" type="text">
+      <span>No such company</span><br>
+      <input type="submit" value="Submit">
+    </form>
+    <div class="canvas-container" style="width: 80%; height: 400px;">
+       <p style="display: none;">Loading Data, please wait!</p>
+    </div>
+    <div class="company-info"></div>
+<script>
+    let isProcessing = false;
+
+    function fetchDataByPromise(symbol){
+        return new Promise((resolve, reject) => {
+            fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=1OEPW3ZCJARW2WCL`)
+              .then(data => data.json())
+              .then(data => resolve(data['Time Series (Daily)']))
+              .catch(err => new Error("fail"));
+        })
+    }
+   
+    async function onSubmit(e){
+        e.preventDefault();
+        if(isProcessing) return;
+        isProcessing = true;
+        let myChart = document.querySelector('#myChart');
+        let canvasSizeMinitor = document.querySelector('.chartjs-size-monitor');
+        if(myChart != null) myChart.remove();
+        if(canvasSizeMinitor != null) canvasSizeMinitor.remove();
+        document.querySelector('.canvas-container p').setAttribute('style', 'display:block');
+        document.querySelector('.canvas-container p').innerText = "Loading Data, please wait!";
+        document.querySelectorAll('form span').forEach(el => el.setAttribute('style','opacity:0'));
+        document.querySelector('.company-info').innerHTML = '';
+        let labels = [];
+        let validSymbols = []
+        let results = [];
+        // console.log('submit');
+        let inputs = [];
+        let errorRequests = [];
+        document.querySelectorAll('form > input[type=text]').forEach(el => {
+            if(el.value != '') inputs.push(el.value.toUpperCase())
+        });
+        // console.log(symbols);
+        for(let i = 0; i < inputs.length; i++){
+            try{
+                const data = await fetchDataByPromise(inputs[i]);
+                //console.log(data)
+                if(data == undefined){ // undefined means no such company
+                    throw 'Error';
+                } 
+                if(labels.length == 0){
+                    labels = Object.keys(data).reverse();
+                }
+                validSymbols.push(inputs[i]);    
+                results.push(labels.map(lb => data[lb]['4. close']));
+                errorRequests.push(null);
+            } catch(e) {
+                console.log(`${inputs[i]} not OK`);
+                errorRequests.push(i);
+            }
+        }
+        console.log(validSymbols);
+        // console.log(results);
+        console.log(errorRequests);
+        errorRequests.forEach((err, _i) => {
+            if(err != null)  document.querySelector(`form span:nth-of-type(${_i+1})`).setAttribute('style', 'opacity:1');
+        });
+        drawCanvas(validSymbols, labels, results);
+    }
+
+    function drawCanvas(symbols, labels, results){
+        if(symbols.length == 0) {
+            document.querySelector('.canvas-container p').innerText = "";
+            isProcessing = false;
+            return;
+        };
+
+        document.querySelector('.canvas-container p').setAttribute('style', 'display:none');
+        let ctx = document.createElement('canvas');
+        ctx.id = "myChart";
+        ctx.width = "800";
+        ctx.height = "800";
+        document.querySelector('.canvas-container').appendChild(ctx);
+
+        const colorSets = [{
+            r: 255,
+            g: 0,
+            b: 0,
+        },{
+            r: 0,
+            g: 255,
+            b: 0,
+        },
+        {
+            r: 0,
+            g: 0, 
+            b: 255,
+        }];
+        //var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: results.map((result, index) => {
+                    return {
+                        label: symbols[index],
+                        data: result,
+                        borderColor: `rgba(${colorSets[index].r}, ${colorSets[index].g}, ${colorSets[index].b}, 1)`,
+                        backgroundColor: `rgba(${colorSets[index].r}, ${colorSets[index].g}, ${colorSets[index].b}, .3)`,
+                    };
+                }),
+                // [{
+                //     label: symbols[0],
+                //     data: results[0],
+                //     // backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                //     borderColor: 'rgba(255, 99, 132, 1)',
+                //     borderColor: 'rgba(255, 99, 132, 1)',
+                // }]
+
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        showInfo(symbols, labels, results);
+        isProcessing = false;
+    }
+
+    function showInfo(symbols, labels, results){
+        let info = ``;
+        results.forEach((result, index) => {
+            info += `<ul><li><strong>${symbols[index]}</strong></li>`;
+            info += `<li>Last close: ${parseFloat(result[result.length-1]).toFixed(2)}</li>`;
+            let resultObj = result.map((r, i) => {
+                return {value: r, date: labels[i]};
+            });
+            let sortedResultObj = resultObj.sort((a, b) => a.value - b.value);
+            info += `<li>100 days high: ${parseFloat(sortedResultObj[sortedResultObj.length-1].value).toFixed(2)} (${sortedResultObj[sortedResultObj.length-1].date})</li>`;
+            info += `<li>100 days low: ${parseFloat(sortedResultObj[0].value).toFixed(2)} (${sortedResultObj[0].date})</li></ul>`;
+        });
+        document.querySelector('.company-info').innerHTML = info;
+
+    }
+</script> 
+</body>
+</html>
