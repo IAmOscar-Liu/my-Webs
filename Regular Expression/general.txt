@@ -1,0 +1,42 @@
+/g: global
+/The/g
+/the/g
+
+/\ea?/g : match 'e' with 'a' or without 'a' behind
+/\ea+/g : match 'e' with one 'a' or one more 'a' benind 
+/\ea*/g : match 'e' with no 'a' or one more 'a' behind 
+
+
+/.at/g : match every letter in front of 'at'
+/\w/g : match every character
+/\W/g : match every non-character
+/\d/g : match every digit
+/\D/g : match every non-digit
+/\s/g : match every space
+/\S/g: match every non-space
+
+/\w{4}/g : get every word with 4 characters
+/\w{4,}/g : get every word with more than 4 characters
+/\w{4,5}/g : get every word with characters between 4 and 5
+/\{fc}at/g : match fat or character
+/\{a-zA-Z0-9}at/g : match every word starts with every letter end with at
+/t|The/g : match 't' or 'The'
+/(t|T)he/g : match 'the' or 'The'
+/(t|T){4,5}he/g : match 't' or 'T' between 4 and 5 times than 'he'
+/(re){2,3}/g : match 're' between 2 and 3 times 
+/b[aie]/g : match 'bad', 'big' or 'beg'
+/^the/g : match all contents starts with the
+/^I/gm : match each sentence starts with I
+/\.$/g : match all contents ends with '.'
+
+Look behind
+/(?<=[tT]he)./g : Find every character or number behind 'the' or 'The'
+/(?<![tT]he)./g : Find every character or number not behind 'the' or 'The'
+
+Look Ahead
+/.(?=at)/g : Find every character or number in front of 'at'
+/.(?=at)/g : Find every character or number not in front of 'at'
+
+
+
+

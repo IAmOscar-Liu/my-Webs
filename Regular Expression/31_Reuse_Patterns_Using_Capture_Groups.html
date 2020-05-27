@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+let repeatStr = "regex regex";
+let repeatRegex = /(\w+)\s\1/;
+console.log(repeatRegex.test(repeatStr));  //true
+console.log(repeatStr.match(repeatRegex));  // ["regex regex", "regex"]
+
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+)\s\1\s\1$/;    //We only want to match 3 times
+let result = reRegex.test(repeatNum);
+console.log(result);
+console.log(repeatNum.match(reRegex));
+ 
+</script>    
+    
+</body>
+</html>

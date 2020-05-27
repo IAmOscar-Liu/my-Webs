@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+/*
+1. If there are numbers, they must be at the end.    
+2. Letters can be lowercase and uppercase.
+3. At least two characters long. Two-letter names can't have numbers.
+*/
+
+let username = "JackOfAllTrades123";
+let userCheck = /^[A-Za-z]{2,}\d*$/;
+let result = userCheck.test(username);
+console.log(result)
+
+</script>    
+    
+</body>
+</html>

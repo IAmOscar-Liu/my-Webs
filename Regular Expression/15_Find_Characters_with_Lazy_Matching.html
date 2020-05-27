@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+let string = "titanic";
+let regex = /t[a-z]*i/;
+let regexLazy = /t[a-z]*?i/;
+console.log( string.match(regex) );
+console.log( string.match(regexLazy) );
+
+let text = "<h1>Winter is coming</h1>";
+let myRegex = /<.*>/;
+let myRegexLazy = /<.*?>/;
+let result1 = text.match(myRegex);
+let result2 = text.match(myRegexLazy);
+
+console.log(result1);
+console.log(result2);
+
+</script>    
+    
+</body>
+</html>

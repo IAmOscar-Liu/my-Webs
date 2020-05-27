@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+let wrongText = "The sky is silver.";
+let silverRegex = /silver/;
+console.log(wrongText.replace(silverRegex, "blue")); // The sky is blue.
+
+console.log("Code Camp".replace(/(\w+)\s(\w+)/, '$2 and $1'));  // "Camp and Code"
+
+let huhText = "This sandwich is good.";
+let fixRegex = /good/;
+let replaceText = "bad";
+let result = huhText.replace(fixRegex, replaceText);
+
+console.log(result);
+ 
+</script>    
+    
+</body>
+</html>
