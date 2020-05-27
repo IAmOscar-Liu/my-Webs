@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+        
+          <h1 class="logo">Generico<span>Logo</span></h1>
+          <button class="menu-toggle" role="button">
+            <div class="hamburger"></div>
+          </button> 
+          <nav class="site-nav site-nav--closed">
+              <ul>    
+                <li><a href=""><i class="fa fa-home site-nav--icon"></i>Home</a></li> 
+                <li><a href=""><i class="fa fa-info site-nav--icon"></i>About</a></li>  
+                <li><a href=""><i class="fa fa-pencil site-nav--icon"></i>Blog</a></li>
+                <li><a href=""><i class="fa fa-usd site-nav--icon"></i>Pricing</a></li>
+                <li><a href=""><i class="fa fa-envelope site-nav--icon"></i>Contact</a></li>
+              </ul> 
+          </nav>
+          
+          
+          
+        </div>
+        
+    </header>    
+    <script>
+        const toggle = document.querySelector(".menu-toggle");
+        const siteNav = document.querySelector(".site-nav");
+
+        toggle.addEventListener("click", function() {
+        if (siteNav.classList.contains("site-nav--open")) {
+            siteNav.classList.remove("site-nav--open");
+            toggle.classList.remove("open");
+
+            siteNav.classList.add("site-nav--closed");
+        } else {
+            siteNav.classList.remove("site-nav--closed");
+            toggle.classList.add("open");
+
+            siteNav.classList.add("site-nav--open");
+        }
+        // siteNav.classList.toggle("site-nav--open");
+        // toggle.classList.toggle("open");
+        });
+    </script>    
+    
+</body>
+</html>

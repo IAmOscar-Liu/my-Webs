@@ -1,0 +1,305 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700");
+
+:root {
+    --bezier: cubic-bezier(.3,-0.01,.49,1);
+}
+
+body {
+  background: #f0f8ea;
+  font-family: "Quicksand", sans-serif;
+}
+ 
+.container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  background: #e54b4b;
+  color: #ebebd3;
+  padding: 1em 0;
+  position: relative;
+}
+
+header::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.logo {
+  float: left;
+  font-size: 1rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.logo span {
+  font-weight: 400;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  right: 0%;
+  bottom: 0;
+  width: 100%;
+  background: #464655;
+  transform: translateX(100%);
+  transition: transform ease-in-out 750ms;
+}
+.site-nav--open {
+  transform: translateX(0);
+}
+
+@supports (clip-path: circle(0px)) {
+  .site-nav {
+    transform: none;
+    clip-path: circle(0px at top right);
+    transition: clip-path ease-in-out 700ms;
+  }
+  
+  .site-nav--open {
+    clip-path: circle(250% at top right);
+  }
+
+  .site-nav--close {
+      transition-delay: 250ms;
+  }
+}
+
+.site-nav ul {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.site-nav li {
+  height: 100%;
+}
+
+.site-nav li:not(:last-child) {
+  border-bottom: 1px solid #575766;
+}
+
+.site-nav--open li {
+    /* Starting state */
+    opacity: 0;
+    animation: fadeIn var(--bezier) 750ms forwards;
+}
+
+.site-nav--open li:nth-child(1){ animation-delay: 0ms; }
+.site-nav--open li:nth-child(2){ animation-delay: 100ms; }
+.site-nav--open li:nth-child(3){ animation-delay: 200ms; }
+.site-nav--open li:nth-child(4){ animation-delay: 300ms; }
+.site-nav--open li:nth-child(5){ animation-delay: 400ms; }
+
+.site-nav--closed li {
+    /* Starting state */
+    opacity: 1;
+    animation:  fadeOut var(--bezier) 500ms forwards;
+}
+
+.site-nav--close li:nth-child(5){ animation-delay: 100ms; }
+.site-nav--close li:nth-child(4){ animation-delay: 200ms; }
+.site-nav--close li:nth-child(3){ animation-delay: 300ms; }
+.site-nav--close li:nth-child(2){ animation-delay: 400ms; }
+.site-nav--close li:nth-child(1){ animation-delay: 500ms; }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+    75%{
+        opacity: .2;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    75%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(500px);
+    }
+}
+
+.site-nav a {
+  color: #ebebd3;
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  background: #e4b363;
+  color: #464655;
+}
+
+.site-nav--icon {
+  display: inline-block;
+  font-size: 1.5em;
+  margin-right: 1em;
+  width: 1.1em;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.menu-toggle {
+  display: block;
+  font-size: 1rem;
+  border: 0;
+  background: 0;
+  padding: 1em;
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.menu-toggle:focus {
+  outline: 4px solid #ebebd3;
+}
+
+
+
+.open:focus {
+  outline: none;  
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  background: #ebebd3;
+  height: 3px;
+  width: 1.75em;
+  border-radius: 3px;
+  transition: transform ease-in-out 500ms, opacity linear 300ms;
+}
+
+.hamburger::before {
+  transform: translateY(-6px);
+}
+
+.hamburger::after {
+  transform: translateY(3px);
+}
+
+.open .hamburger {
+  transform: rotate(45deg);
+}
+
+.open .hamburger::before {
+  opacity: 0;
+}
+
+.open .hamburger::after {
+  transform: translateY(-3px) rotate(-90deg);
+}
+
+:root { --bezier: cubic-bezier(.34,.05,.52,1) }
+
+/* demo 01 */
+.menu-toggle {
+  transition: transform var(--bezier) 250ms;
+}
+
+.menu-toggle.open:hover {
+  transform: scale(1.2);
+}
+
+.site-nav a {
+  transition: background var(--bezier) 150ms;
+}
+
+.open.menu-toggle:hover .hamburger  {
+  transform: rotate(1.125turn);
+}
+
+.open .hamburger {
+  transform: rotate(45deg);
+}
+
+/* for demo 2 */
+ 
+.site-nav li {
+  opacity: 0;
+  transition: opacity 350ms linear;
+}
+
+.site-nav--open li {
+  animation: fadeIn var(--bezier) 750ms forwards;
+}
+
+.site-nav--open li:nth-child(1) { animation-delay: 100ms; }
+.site-nav--open li:nth-child(2) { animation-delay: 200ms; }
+.site-nav--open li:nth-child(3) { animation-delay: 300ms; }
+.site-nav--open li:nth-child(4) { animation-delay: 400ms; }
+.site-nav--open li:nth-child(5) { animation-delay: 500ms; }
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateX(-200px)}
+  75% {opacity: .2; transform: translateX(0) }
+  100% { opacity: 1; transform: translateX(0) }
+}
+
+@keyframes fadeOut {
+  0% {  opacity: 1; transform: translateX(0); }
+  70% { opactiy: 0; }
+  100% { opacity: 0; transform: translateX(500px)}
+}
+
+.site-nav--closed li {
+  opacity: 1;
+  animation: fadeOut var(--bezier) 500ms forwards;
+}
+
+.site-nav--closed li:nth-child(1) { animation-delay: 500ms; }
+.site-nav--closed li:nth-child(2) { animation-delay: 400ms; }
+.site-nav--closed li:nth-child(3) { animation-delay: 300ms; }
+.site-nav--closed li:nth-child(4) { animation-delay: 200ms; }
+.site-nav--closed li:nth-child(5) { animation-delay: 100ms; }
+
+// $class-slug: gogo !default;
+
+// @for $i from 1 through 4{
+//   .#{$class-slug}-#{$i}{
+//     width: 60px + $i
+//   }
+// }    
+
+// $list: adam john wynn mason kuroir;
+
+// .author-bio{
+//   @each $author in $list{
+//     .photo-#{$author} {
+//       background: image-url("avatars/#{$author}.png") no-repeat;
+//     }  
+//   }
+// }  
+
+  
