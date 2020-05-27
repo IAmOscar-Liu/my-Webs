@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Syncopate);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+  height: 100vh;
+  padding: 10vh 5%;
+}
+
+/* body { 
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+
+div{
+    margin-left: 3%;
+    margin-right: 3%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* body > div{
+    width: 500px;
+    height: 500px;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body > div > div{
+    width: 20%;
+    height: 60px;
+    background-color: red;
+    position: relative;
+}
+
+body > div > div > h2{
+    font-size: 36px;
+    line-height: 60px;
+    text-align: center;
+    position: absolute;
+    left: calc(50% - 100% /(0.2*2));
+    width: calc(100% / 0.2);
+} */
+
+h1 {
+  text-align: center;
+  font-size: 80px;
+  font-family: 'Syncopate', sans-serif;
+  text-transform: uppercase;
+  background: radial-gradient(
+    circle farthest-corner at center center,
+    white,
+    #111
+  ) no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

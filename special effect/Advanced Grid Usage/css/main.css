@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+.grid-outer-container {
+  padding: 2em;
+  height: 100%;
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1.2fr 1.5fr;
+      grid-template-columns: 1fr 1.2fr 1.5fr;
+  -ms-grid-rows: 1fr 4fr 3fr 2fr;
+      grid-template-rows: 1fr 4fr 3fr 2fr;
+      grid-template-areas: "main    main  header" "main    main  candy" "nom     yum   candy" "footer footer candy";
+  height: calc(100% - 50px);
+  width: 80%;
+  margin: 25px auto 25px auto;
+}
+
+main {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: main;
+  background: #FFFADF;
+}
+
+section.nom {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: nom;
+  background: #C4B35A;
+}
+
+section.yum {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: yum;
+  background: #333333;
+}
+
+section.diabeetus {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: footer;
+  background: #202020;
+}
+
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: header;
+}
+
+.candy {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 3;
+  grid-area: candy;
+  background-image: url("https://www.water-technology.net/wp-content/uploads/sites/28/2017/11/water-thumb.png");
+  background-size: cover;
+}
+/*# sourceMappingURL=main.css.map */
