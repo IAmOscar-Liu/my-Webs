@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+<script>
+
+// const myArray = [1,2,3,4,5,5,1,2];
+// const mySet = new Set(myArray);
+
+// console.log(myArray);
+// console.log(mySet);
+
+// const uniqueArray = [...mySet];
+// console.log(uniqueArray);
+
+/***********Set Method****************/
+const myArray = [1,2,3,4,4,5];
+const mySet = new Set(myArray);
+
+mySet.add('6');
+mySet.add({language: 'javaScript'});
+mySet.delete(2);
+// mySet.clear();
+
+console.log(mySet);
+console.log(mySet.has(4));
+console.log(mySet.size);
+// mySet.forEach(set => console.log(set));
+
+/**************Map Method*****************/
+
+// 1. basic usage
+// const myMap = new Map([['name','John'], ['surname','Doe']]);
+// console.log(myMap);
+
+
+// 2. assign a key
+// const a = {};
+// const b = {};
+
+// const myMap = new Map([[a, 'a'], [b, 'b']]);
+// console.log(myMap);
+
+const myMap = new Map([[{}, 'a'], [{}, 'b']]);
+myMap.set('a', 'one');
+myMap.set('b', 2);
+myMap.delete('a');
+//myMap.clear();
+
+console.log(myMap);
+console.log(myMap.has('b'));
+console.log(myMap.size);
+myMap.forEach((key, value) => console.log(`key: ${key}`));
+
+</script>    
+
+</body>
+</html>
